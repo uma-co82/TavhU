@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag "nomiya/index", :media => "all" %>
+<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<%= link_to "Myprofile", user_path(current_user.id) %>
+<div class="wrapper">
+	<h1>aaaaaa</h1>
+	<p>ああああああああああ</p>
+</div>
+<div class="container">
+	<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<ul>
+		<% @shops.each do |shop| %>
+		<li class="img_box">
+		<p><%= attachment_image_tag shop, :shop_image, :fill, 50, 50%></p>
+	    <p><%=link_to shop.shop_name, shop_path(shop.id) %></p>
+		<p><%= shop.shop_info %></p>
+		<% if shop.favorite_by?(current_user) %>
+		  <%= link_to fav_shops_path(shop), class: "fav", remote: true do %>
+		    <i class="fa-heart" id="<%= shop.id %>"></i>
+		  <% end %>
+		    <p><%= shop.favorites.count %></p>
+		<% else %>
+		  <%= link_to fav_shops_path(shop), class: "fav", remote: true do %>
+		    <i class="fa-heart-o" id="<%= shop.id %>"></i>
+		  <% end %>
+		    <p><%= shop.favorites.count %></p>
+		<% end %>
+	    </li>
+		<% end %>
+		</ul>
+    </div>
+</div>
+</div>
+
+
+
+

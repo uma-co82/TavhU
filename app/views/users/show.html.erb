@@ -1,0 +1,6 @@
+<%= attachment_image_tag @user, :profile_image, :fill, 300, 300 %>
+<%= @user.name %>
+<%= @user.email %>
+<% if @user.id == current_user.id %>
+	<%= link_to "edit", edit_user_path(@user) %>
+<% end %>

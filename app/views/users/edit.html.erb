@@ -1,0 +1,8 @@
+<%= form_for(@user) do |f| %>
+<p>Name</p>
+<%= f.text_field :name, autofocus: true %>
+<p>ProfileImage</p>
+<%= attachment_image_tag @user, :profile_image, :fill, 300, 300 %>
+<%= f.attachment_field :profile_image %>
+<%= f.submit "Save" %>
+<% end %>

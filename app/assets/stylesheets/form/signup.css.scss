@@ -1,0 +1,146 @@
+
+
+html {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100vh;
+}
+
+body {
+	cursor: crosshair;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100vh;
+	background-image: image-url("BG.jpg");
+	background-size: cover;
+	display: table;
+}
+
+
+
+.signup {
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	border-radius: 5px;
+	padding: 3em;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+}
+
+.overlay-2 {
+	z-index: 0;
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	background: #8f689e;
+	z-index: 3;
+}
+
+.overlay {
+	z-index: 1;
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	background: #6d6d68;
+	z-index: 4;
+}
+
+.overlay p {
+	font-size: 300px;
+	font-weight: 800;
+}
+
+.screen {
+	color: #323232;
+	font-family: Poppins;
+	position: absolute;
+	top: 12%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.myBtn {
+	font-family: Poppins;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+button {
+	display: block;
+	padding: 24px 48px;
+	font-family: Poppins;
+	font-weight: 700;
+	font-size: 12px;
+	letter-spacing: 6px;
+	color: #fff;
+	border: 2px solid #fff;
+	text-transform: uppercase;
+	outline: none;
+	overflow: hidden;
+	background: none;
+	z-index: 1;
+	cursor: crosshair;
+	transition: 0.8x ease-out;
+}
+
+.mtBtn:hover {
+	color: #101010;
+	cursor: crosshair;
+}
+
+.myBtn:before {
+	content: "";
+	position: absolute;
+	background: #fff;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 100%;
+	z-index: -1;
+	transition: top 0.8s ease-out;
+}
+
+.myBtn:hover:before {
+	top: 0;
+}
+
+h2 {
+	margin-top: 0px;
+	font-family: Impact, Source, Sans, Pro;
+	font-weight: lighter;
+	color: rgb(204,153,255);
+	font-size: 50px;
+	text-align: center;
+}
+
+input {
+	display: block;
+	width: 320px;
+	height: 50px;
+	background: rgba(204,153,255,0.3);
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.5);
+	font-family: Source Sans Pro;
+	font-weight: lighter;
+	font-size: 14px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+	border-radius: 5px;
+}
+
+input[type="submit" i] {
+	width: 332px;
+	height: 50px;
+	font-size: 16px;
+	background: #000;
+	font-weight: lighter;
+	color: #fff;
+	border: 0px;
+	border-radius: 5px;
+}

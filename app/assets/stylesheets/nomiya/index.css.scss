@@ -1,0 +1,105 @@
+body {
+	font-family: Impact Sans Pro;
+	background: #282828;
+	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background-size: 400% 400%;
+	animation: Gradient 15s ease infinite;
+	background-repeat: no-repeat;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+h1 {
+	font-weight: lighter;
+	font-size: 80px;
+	color: #fff;
+	text-align: center;
+	padding-top: 50px;
+	margin-bottom: 0;
+}
+
+p {
+	color: #fff;
+	text-align: center;
+	font-family: Impact Sans Pro;
+	font-weight: lighter;
+	font-size: 20px;
+	margin-top: 0;
+}
+
+/*.media {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: inline-block;
+	width: 100%;
+}*/
+
+li {
+	list-style: none;
+	margin: 10px;
+	display: inline-block;
+	font-size: 10px;
+	padding: 20px 20px;
+	color: #fff;
+	border: 1px solid #fff;
+	transition: .5s;
+	text-align: center;
+}
+
+li:hover {
+	color: #292929;
+	border: 1px solid #292929;
+	transition: .5s;
+}
+
+ul {
+	margin-top: 50px
+}
+
+
+.img_box {
+	animation: img_box_9955 3s linear infinite;
+	transform-origin: 50% 50%;
+	margin: 1rem 10px !important;
+}
+
+@keyframes img_box_9955 {
+	0% { transform: translateY(0) }
+	33.33333% { transform: translateY(-10px) }
+	66.66667% { transform: translateY(0) }
+	100% { transform: translateY(0) }
+}
+
+i {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+     font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	font-size: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+

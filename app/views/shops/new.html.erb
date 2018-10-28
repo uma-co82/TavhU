@@ -1,0 +1,9 @@
+<%= form_for(@shop, url: shops_path) do |f| %>
+<p>image</p>
+<%= f.attachment_field :shop_image %>
+<p>name</p>
+<%= f.text_field :shop_name %>
+<p>info</p>
+<%= f.text_field :shop_info %>
+<%= f.submit "create" %>
+<% end %>

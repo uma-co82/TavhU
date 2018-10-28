@@ -1,0 +1,94 @@
+<%= stylesheet_link_tag "form/signup", :media => "all" %>
+
+  <div class="overlay">
+    <p class="screen">aaa</p>
+    <div class="intro">
+      <button class="myBtn" onclick="fadeOut()">NOMIIKU</button>
+    </div>
+  </div>
+
+  <div class="overlay-2"></div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+<div class="signup">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <h2>Login</h2>
+
+  <div class="field">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email"%>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div>
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+<%= render "devise/shared/links" %>
+</div>
+  </div>
+</div>
+</div>
+  <script>
+
+    function fadeOut() {
+
+    TweenMax.to(".myBtn", 1, {
+      y: -100,
+      opacity: 0
+    });
+
+    TweenMax.to(".screen", 2, {
+      y: -400,
+      opacity: 0,
+      ease: Power2.easeInOut,
+      delay: 2
+    });
+
+    TweenMax.from(".overlay", 2, {
+            ease: Power2.easeInOut
+    });
+
+    TweenMax.to(".overlay", 2, {
+      delay: 2.6,
+      top: "-110%",
+      ease: Expo.easeInOut
+    });
+
+       TweenMax.to(".overlay-2", 2, {
+            delay: 3,
+            top: "-110%",
+            ease: Expo.easeInOut
+       });
+
+       TweenMax.from(".signup", 2,{
+            delay: 3.2,
+            opacity: 0,
+            ease: Power2.easeInOut
+       });
+
+       TweenMax.to(".signup", 2, {
+            opacity: 1,
+            y: -300,
+            delay: 3.2,
+            ease: Power2.easeInOut
+       });
+
+    }
+
+  </script>
