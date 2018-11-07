@@ -1,13 +1,15 @@
 <%= stylesheet_link_tag "nomiya/show", :media => "all" %>
+<%= render 'shared/side_bar' %>
 	<div class="media">
 		<p><%= attachment_image_tag @shop, :shop_image, :fill, 300, 300,  class: "shopa"%></p>
 	    <p><%= @shop.shop_name %></p>
 		<p><%= @shop.shop_info %></p>
         <%= render 'favorites/favorite' %>
 		<% @user.each do |u| %>
-		<%= u.name %>
+		<%= link_to u.name, user_path(u.id) %>
 		<% end %>
     </div>
 
 
 <%= link_to "Back", shops_path %>
+<%= link_to "Destory", shop_path(@shop), method: :delete %>

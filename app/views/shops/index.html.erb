@@ -1,37 +1,41 @@
 <%= stylesheet_link_tag "nomiya/index", :media => "all" %>
-<%= link_to "Logout", destroy_user_session_path, method: :delete %>
-<%= link_to "Myprofile", user_path(current_user.id) %>
-<div class="wrapper">
-	<h1>aaaaaa</h1>
-	<p>ああああああああああ</p>
-</div>
-<div class="container">
-	<div class="row">
-	<div class="col-md-6 col-md-offset-3">
-		<ul>
-		<% @shops.each do |shop| %>
-		<li class="img_box">
-		<p><%= attachment_image_tag shop, :shop_image, :fill, 50, 50%></p>
-	    <p><%=link_to shop.shop_name, shop_path(shop.id) %></p>
-		<p><%= shop.shop_info %></p>
-		<% if shop.favorite_by?(current_user) %>
-		  <%= link_to fav_shops_path(shop), class: "fav", remote: true do %>
-		    <i class="fa-heart" id="<%= shop.id %>"></i>
-		  <% end %>
-		    <p><%= shop.favorites.count %></p>
-		<% else %>
-		  <%= link_to fav_shops_path(shop), class: "fav", remote: true do %>
-		    <i class="fa-heart-o" id="<%= shop.id %>"></i>
-		  <% end %>
-		    <p><%= shop.favorites.count %></p>
-		<% end %>
-	    </li>
-		<% end %>
-		</ul>
-    </div>
-</div>
-</div>
+<%= render 'shared/side_bar' %>
 
 
-
-
+	<div class="container">
+		<div class="row">
+		<div>
+			<h1>aaaaaa</h1>
+			<p class="hitokoto">ああああああああああ</p>
+		</div>
+		<div class="shop_all">
+					<% @shops.each do |shop| %>
+				<div class="shop_box">
+					<div class="shop_image">
+					 <%= link_to (shop_path(shop.id)) do %>
+				   <%= attachment_image_tag shop, :shop_image, fallback: "no_image.jpg"%>
+					 <% end %>
+			    </div>
+					<div class="shop_jouhou">
+					<div class="shop_name">
+				   <p><%= shop.shop_name %></p>
+				  </div>
+					<div class="shop_info">
+				   <p><%= shop.shop_info %></p>
+				  </div>
+					<% if shop.favorite_by?(current_user) %>
+					<%= link_to fav_shops_path(shop), class: "fav", remote: true do %>
+					<i class="fa-heart" id="<%= shop.id %>"></i>
+					<% end %>
+					<% else %>
+					<%= link_to fav_shops_path(shop), class: "fav", remote: true do %>
+					<i class="fa-heart-o" id="<%= shop.id %>"></i>
+					<% end %>
+					<% end %>
+					<%= shop.favorites.count %>
+				</div>
+			</div>
+				<% end %>
+		    </div>
+			</div>
+		</div>

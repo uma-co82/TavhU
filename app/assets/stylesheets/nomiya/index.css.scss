@@ -1,40 +1,28 @@
 body {
+	margin: 0px;
+	padding: 0px;
 	font-family: Impact Sans Pro;
-	background: #282828;
-	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
-	background-size: 400% 400%;
-	animation: Gradient 15s ease infinite;
-	background-repeat: no-repeat;
+	background-image: image-url('back.jpg');
+	// background-size: 400% 400%;
+	background-size: cover;
 }
 
-@-webkit-keyframes Gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
 
 h1 {
 	font-weight: lighter;
 	font-size: 80px;
 	color: #fff;
 	text-align: center;
-	padding-top: 50px;
+	padding-top: 20px;
 	margin-bottom: 0;
 }
 
-p {
+.hitokoto {
 	color: #fff;
-	text-align: center;
 	font-family: Impact Sans Pro;
 	font-weight: lighter;
 	font-size: 20px;
-	margin-top: 0;
+	text-align: center;
 }
 
 /*.media {
@@ -45,41 +33,42 @@ p {
 	display: inline-block;
 	width: 100%;
 }*/
-
-li {
-	list-style: none;
-	margin: 10px;
-	display: inline-block;
-	font-size: 10px;
-	padding: 20px 20px;
-	color: #fff;
-	border: 1px solid #fff;
-	transition: .5s;
-	text-align: center;
+.shop_all {
+	margin-left: 60px;
 }
-
-li:hover {
+.shop_box  {
+	border: 1px solid #fff;
+	margin: 0 auto;
+	margin-bottom: 30px;
+	width: 30%;
+	height: 450px;
+	display: inline-block;
+}
+.shop_box:hover {
 	color: #292929;
 	border: 1px solid #292929;
 	transition: .5s;
 }
-
-ul {
-	margin-top: 50px
+.shop_image {
+	height: 200px;
+	width: 100%
 }
-
-
-.img_box {
-	animation: img_box_9955 3s linear infinite;
-	transform-origin: 50% 50%;
-	margin: 1rem 10px !important;
+.shop_jouhou {
+	display: block;
 }
-
-@keyframes img_box_9955 {
-	0% { transform: translateY(0) }
-	33.33333% { transform: translateY(-10px) }
-	66.66667% { transform: translateY(0) }
-	100% { transform: translateY(0) }
+.shop_name {
+	height: 20px;
+	text-align: center;
+}
+.shop_name p {
+	color: #ffffff;
+	font-family: Impact Sans Pro;
+	font-weight: lighter;
+	font-size: 20px;
+	text-align: center;
+}
+.shop_info {
+	height: 164px;
 }
 
 i {
@@ -92,14 +81,6 @@ i {
 	text-align: center;
 	font-size: 30px;
 }
-
-
-
-
-
-
-
-
-
-
-
+.fa-heart {
+	color: red;
+}

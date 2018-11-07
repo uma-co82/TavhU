@@ -19,18 +19,25 @@ class ShopsController < ApplicationController
 		@user = @shop.favorite_users
 	end
 
-	 def fav
-	 	shop = Shop.find(params[:id])
-	 	if shop.favorite_by?(current_user)
-	 	  fav = current_user.favorites.find_by(shop_id: shop.id)
-	 	  fav.destroy
-	 	  render json: shop.id
-	 	else
-	 	  fav = current_user.favorites.new(shop_id: shop.id)
-	 	  fav.save
-	 	  render json: shop.id
-	 	end
+	def destroy
+		@shop = Shop.find(params[:id])
+		@shop.destroy
+		redirect_to shops_path
+	end
+
+	def fav
+	 shop = Shop.find(params[:id])
+	 if shop.favorite_by?(current_user)
+	   fav = current_user.favorites.find_by(shop_id: shop.id)
+	   fav.destroy
+	   render json: shop.id
+	 else
+	   fav = current_user.favorites.new(shop_id: shop.id)
+	   fav.save
+	   render json: shop.id
 	 end
+	end
+
 	private
 
 	 def shop_params

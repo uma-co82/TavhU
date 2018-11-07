@@ -1,0 +1,19 @@
+<div id="MenuIcon">
+  <div id="MenuLine"></div>
+</div>
+
+<div id="MainMenu">
+  <div id="logo">
+    <img src="/assets/logo.png" height="150px" width="150px"/>
+  </div>
+  <ul class="abc">
+    <li>HOME<div class="line"></div></li>
+    <li><%= link_to "Myprofile", user_path(current_user.id) %><div class="line"></div></li>
+    <li>NOMIYA<div class="line"></div></li>
+    <li>HOME<div class="line"></div></li>
+    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %><div class="line"></div></li>
+  </ul>
+  <div id="close">
+    <img src="/assets/Close.png" height="30px" width="30px"/>
+  </div>
+</div>
