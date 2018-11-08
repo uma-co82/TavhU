@@ -1,4 +1,6 @@
+<%= stylesheet_link_tag "users/show", :media => "all" %>
 <%= render 'shared/side_bar' %>
+<div class="profile">
 <%= attachment_image_tag @user, :profile_image, :fill, 300, 300 %>
 <%= @user.name %>
 <%= @user.email %>
@@ -8,3 +10,4 @@
 	<%= render 'stats' %>
 <% end %>
 <%= render 'follow_form' %>
+<div>
