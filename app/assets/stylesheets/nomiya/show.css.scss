@@ -1,39 +1,33 @@
 body {
-	background: #282828;
-	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
-	background-size: 400% 400%;
-	animation: Gradient 15s ease infinite;
-	overflow: auto;
-}
-
-@-webkit-keyframes Gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
-
-
-p {
-	color: #fff;
+	margin: 0px;
+	padding: 0px;
 	font-family: Impact Sans Pro;
-	font-weight: lighter;
-	font-size: 20px;
-	margin-top: 0;
-	display: block;
+	background-image: image-url('back.jpg');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
 }
 
 .media {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	display: inline-block;
+	border: 1px solid #fff;
+	margin: 0 auto;
+	margin-top: 50px;
+	margin-bottom: 30px;
+	width: 700px;
+}
+
+.shop_image {
 	width: 100%;
+}
+
+.shop_jouhou {
+	display: block;
+}
+.shop_name {
 	text-align: center;
+}
+.shop_name p {
+	color: #ffffff;
+	font-family: Impact Sans Pro;
+	font-weight: lighter;
+	font-size: 20px;
 }

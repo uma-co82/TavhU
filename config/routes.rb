@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications/link_through'
   devise_for :users
   root 'shops#index'
   resources :users, only: [:show, :edit, :update] do
@@ -12,4 +13,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
+  get 'notifications/:id/link_through', to: 'notifications#link_through',
+  as: :link_through
+  get 'shops/:id/fav' => 'shops#shop_fav', as: "fav_user"
 end

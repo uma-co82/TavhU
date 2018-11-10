@@ -38,6 +38,11 @@ class ShopsController < ApplicationController
 	 end
 	end
 
+	def shop_fav
+		@shop = Shop.find(params[:id])
+		@user = @shop.favorite_users
+	end
+
 	private
 
 	 def shop_params

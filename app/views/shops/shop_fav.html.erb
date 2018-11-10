@@ -1,0 +1,3 @@
+<% @user.each do |u| %>
+<%= link_to u.name, user_path(u.id) %>
+<% end %>

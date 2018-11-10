@@ -1,14 +1,24 @@
 <%= stylesheet_link_tag "nomiya/show", :media => "all" %>
 <%= render 'shared/side_bar' %>
-	<div class="media">
-		<p><%= attachment_image_tag @shop, :shop_image, :fill, 300, 300,  class: "shopa"%></p>
+
+
+<div class="media">
+	<div class="shop_image">
+		<%= attachment_image_tag @shop, :shop_image,
+		 fallback: "no_image.jpg" %>
+	</div>
+	<div class="shop_jouhou">
+		<div class="shop_name">
 	    <p><%= @shop.shop_name %></p>
-		<p><%= @shop.shop_info %></p>
+		</div>
+		<div class="shop_info">
+		  <p><%= @shop.shop_info %></p>
+	  </div>
+	</div>
         <%= render 'favorites/favorite' %>
-		<% @user.each do |u| %>
-		<%= link_to u.name, user_path(u.id) %>
-		<% end %>
-    </div>
+</div>
+
+<%= link_to "行きたい人",  fav_user_path %>
 
 
 <%= link_to "Back", shops_path %>
