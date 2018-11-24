@@ -2,12 +2,14 @@
 <%= render 'shared/side_bar' %>
 <div class="profile">
 <%= attachment_image_tag @user, :profile_image, :fill, 300, 300 %>
+<div class="profile_info">
 <%= @user.name %>
-<%= @user.email %>
 <%= link_to "Back", :back %>
 <% if @user.id == current_user.id %>
 	<%= link_to "edit", edit_user_path(@user) %>
+	<%= link_to "マッチング", match_user_path(@user) %>
 	<%= render 'stats' %>
 <% end %>
 <%= render 'follow_form' %>
-<div>
+</div>
+</div>

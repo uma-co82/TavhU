@@ -8,5 +8,19 @@ body {
 }
 
 .profile {
-	display: block;
+	margin: 50px auto;
+	width: 800px;
+}
+.attachment {
+	margin-left: 100px;
+	box-shadow: 20px 20px 20px -8px;
+	position:absolute;
+}
+.profile_info {
+	width: 500px;
+	height: 200px;
+	background: #fff;
+	margin-left: 200px;
+	padding-top: 314px;
+	border-radius: 6%;
 }

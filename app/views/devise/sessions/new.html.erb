@@ -1,9 +1,10 @@
 <%= stylesheet_link_tag "form/signup", :media => "all" %>
 
+
   <div class="overlay">
-    <p class="screen">aaa</p>
+    <!-- <div class="logo"><img src="/assets/logo.png" height="500px" width="500px"/></div> -->
     <div class="intro">
-      <button class="myBtn" onclick="fadeOut()">NOMIIKU</button>
+      <button class="myBtn" onclick="fadeOut()">NOMINIIKU</button>
     </div>
   </div>
 
@@ -29,7 +30,7 @@
   </div>
 
   <% if devise_mapping.rememberable? -%>
-    <div class="field">
+    <div class="check">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>

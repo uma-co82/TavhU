@@ -1,0 +1,26 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: Impact Sans Pro;
+  background-image: image-url('back.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.users {
+  margin: 50px auto;
+  width: 300px;
+}
+.user {
+  border: 1px solid #fff;
+}
+.user_image {
+  width: 100px;
+}
+.attachment {
+  width: 100px;
+  height: 100px;
+}
+.user_name {
+  text-align: center;
+}

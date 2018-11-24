@@ -7,7 +7,11 @@ class ShopsController < ApplicationController
 	def create
 		@shop = Shop.new(shop_params)
 		@shop.save
-		redirect_to root_path
+		if @shop.save
+			redirect_to root_path
+		else
+			render "new"
+		end
 	end
 
 	def index

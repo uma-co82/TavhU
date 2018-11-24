@@ -11,6 +11,12 @@ class User < ApplicationRecord
   has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :follower_relationships
   has_many :notifications, dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
+  has_many :active_relationships, class_name: "Relationship", foreign_key:
+  "follower_id", dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :follower
+  has_many :following, through: :active_relationships
+
 
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)
@@ -22,5 +28,9 @@ class User < ApplicationRecord
 
   def unfollow!(other_user)
     following_relationships.find_by(following_id: other_user.id).destroy
+  end
+
+  def matchers
+    User.where(id: passive_relationships.select(:follower_id)).where(id: active_relationships.select(:following_id))
   end
 end

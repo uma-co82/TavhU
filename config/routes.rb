@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   end
   get 'notifications/:id/link_through', to: 'notifications#link_through',
   as: :link_through
+  get 'notifications', to: 'notifications#index'
   get 'shops/:id/fav' => 'shops#shop_fav', as: "fav_user"
+  get 'users/:id/matching' => 'users#match', as: "match_user"
 end

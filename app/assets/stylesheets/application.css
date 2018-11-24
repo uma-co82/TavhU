@@ -19,6 +19,8 @@
 @import "bootstrap";
 @import "font-awesome";
 
+
+/* side_bar */
 #MenuIcon {
 	height: 25px;
 	width: 50px;
@@ -122,4 +124,31 @@
 }
 #close:hover {
 	cursor: pointer;
+}
+
+.notfall {
+	width: 300px;
+	text-align: center;
+}
+.notification {
+	color: #fff;
+	font-size: 10px;
+}
+.notifbutton {
+	width: 100px;
+}
+.nofificon {
+	color: red;
+}
+
+/* error_message */
+.alert-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
+.alert {
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }

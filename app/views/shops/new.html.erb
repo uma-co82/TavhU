@@ -1,3 +1,15 @@
+<% if @shop.errors.any? %>
+  <div id="error_esplanation" class="alert alert-danger">
+    <ul>
+      <p style="font-size: 20px;">You have
+      <%= @shop.errors.full_messages.count %>errors.</p>
+      <% @shop.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for(@shop, url: shops_path) do |f| %>
 <p>image</p>
 <%= f.attachment_field :shop_image %>

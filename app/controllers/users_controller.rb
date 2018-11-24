@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     @relationship = Relationship.new
   end
 
+  def match
+    @user = current_user
+    @users = @user.matchers
+  end
+
   def edit
   	@user = User.find(params[:id])
   end
@@ -32,4 +37,3 @@ class UsersController < ApplicationController
     	params.require(:user).permit(:name, :profile_image)
     end
 end
-

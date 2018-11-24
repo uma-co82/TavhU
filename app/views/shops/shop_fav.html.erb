@@ -1,3 +1,19 @@
-<% @user.each do |u| %>
-<%= link_to u.name, user_path(u.id) %>
-<% end %>
+<%= stylesheet_link_tag "nomiya/members", :media => "all" %>
+<%= render 'shared/side_bar' %>
+    <table class="users">
+      <tr>
+        <th> image </th><th> name </th>
+      </tr>
+    <% @user.each do |user| %>
+    <tr class="user">
+      <td class="user_image">
+        <%= link_to (user_path(user.id)) do %>
+        <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+        <% end %>
+      </td>
+      <td class="user_name">
+        <%= user.name %>
+      </td>
+    </tr>
+    <% end %>
+    </table>
