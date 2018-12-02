@@ -13,7 +13,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery
-//= require bootstrap-sprockets
+//= require turbolinks
 //= require_tree .
 //= require_self
 
@@ -29,7 +29,7 @@ $(function() {
   })
 
 //sidebar
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   $('#MenuIcon').click(function(){
     $('#MainMenu').css("left","0px");
     function showMenu(){
