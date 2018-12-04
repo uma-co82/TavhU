@@ -1,4 +1,5 @@
 class ShopsController < ApplicationController
+	before_action :authenticate_author!, only:[:new, :create, :destroy]
 
 	def new
 		@shop = Shop.new

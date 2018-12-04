@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :authors, controllers: {
+    sessions:      'authors/sessions',
+    passwords:     'authors/passwords',
+    registrations: 'authors/registrations'
+  }
+  # chat
+  mount ActionCable.server => '/cable'
   get 'notifications/link_through'
   devise_for :users
   root 'shops#index'

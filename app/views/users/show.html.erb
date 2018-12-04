@@ -4,6 +4,7 @@
 <%= attachment_image_tag @user, :profile_image, :fill, 300, 300 %>
 <div class="profile_info">
 <%= @user.name %>
+<%= @user.introduce %>
 <%= link_to "Back", :back %>
 <% if @user.id == current_user.id %>
 	<%= link_to "edit", edit_user_path(@user) %>
@@ -12,4 +13,22 @@
 <% end %>
 <%= render 'follow_form' %>
 </div>
+</div>
+<div>
+    <section class="message_box">
+      <div id="messages">
+        <%= render @messages %>
+      </div>
+    </section>
+    <script type="text/javascript">
+      var height = 0;
+      $("div.message").each( function() {
+        height += ($(this).height());
+      });
+      $('section.message_box').scrollTop(height);
+    </script>
+    <div class="message_form">
+     <%= render 'messages/message_form',
+       {from_user: current_user, to_user: @user, room_id: @room_id} %>
+    </div>
 </div>
