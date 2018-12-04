@@ -53,3 +53,12 @@ $(document).on('turbolinks:load', function(){
     setTimeout(originalLayout,600);
   });
 });
+
+//shop_destroy
+(function() {
+  $(function() {
+    $(document).on('ajax:complete', '.shop_delete', function(event, ajax, status) {
+      $('#shop_'+shop.id).fadeOut();
+    });
+  });
+}).call(this);

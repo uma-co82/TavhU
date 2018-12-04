@@ -14,12 +14,12 @@
 		<div class="shop_info">
 		  <p><%= @shop.shop_info %></p>
 	  </div>
+			<%= @shop.genre.genre_name %>
+			<%= @shop.station.station_name %>
 	</div>
         <%= render 'favorites/favorite' %>
 </div>
 
 <%= link_to "行きたい人",  fav_user_path %>
-
-
 <%= link_to "Back", shops_path %>
-<%= link_to "Destory", shop_path(@shop), method: :delete %>
+<%= link_to "予約", new_reservation_path(@shop.id) %>

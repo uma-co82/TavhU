@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 	def after_sign_in_path_for(resource)
 		case resource
 		when Author
-			new_shop_path
+			author_path(current_author.id)
 		when User
 			root_path
 		end

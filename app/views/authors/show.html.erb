@@ -1,0 +1,14 @@
+<%= @author.email %>
+<% @shops.each do |shop| %>
+<div id="shop_#{shop.id}">
+<%= shop.shop_name %>
+<%= shop.shop_info %>
+<%= shop.genre.genre_name %>
+<%= shop.station.station_name %>
+<%= shop.favorites.count %>
+<%= link_to "予約一覧", shop_show_path(shop.id) %>
+<%= link_to "destory", shop_path(shop.id), method: :delete, data: { confirm: "本当に削除してもよろしいですか" }, class: "shop_delete", remote: true %>
+</div>
+<% end %>
+<%= link_to "Logout", destroy_author_session_path, method: :delete %>
+<%= link_to "新規", new_shop_path %>

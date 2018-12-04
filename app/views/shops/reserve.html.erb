@@ -1,0 +1,7 @@
+<%= form_for @reservation, url: post_reservation_path do |f| %>
+<p>日時</p>
+<%= f.datetime_select :start_time, :use_month_numbers => true %>
+<p>人数</p>
+<%= f.number_field :member_count %>
+<%= f.submit "save"%>
+<% end %>

@@ -16,6 +16,7 @@ class User < ApplicationRecord
   "follower_id", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :following, through: :active_relationships
+  has_many :reservations
 
   #dm
   has_many :from_messages, class_name: "Message",

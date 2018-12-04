@@ -18,5 +18,8 @@
 <p>info</p>
 <%= f.text_area :shop_info %>
 <%= f.submit "create" %>
+<p>genre</p>
+<%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {:prompt => "選択してください"} %>
+<p>station</p>
+<%= f.collection_select :station_id, Station.all, :id, :station_name, {:prompt => "選択してください"} %>
 <% end %>
-<%= link_to "Logout", destroy_author_session_path, method: :delete %>
