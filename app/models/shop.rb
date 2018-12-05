@@ -3,6 +3,7 @@ class Shop < ApplicationRecord
 	has_many :favorites, dependent: :destroy
 	has_many :favorite_users, through: :favorites, source: :user
 	has_many :reservations
+	has_many :seats
 	belongs_to :genre
 	belongs_to :station
 	belongs_to :author

@@ -31,4 +31,6 @@ Rails.application.routes.draw do
   get 'users/:id/matching' => 'users#match', as: "match_user"
   get 'shops/:id/reservation' => 'shops#reserve', as: "new_reservation"
   post 'shops/:id/reservation/post' => 'shops#reserve_create', as: "post_reservation"
+  get 'chat/:id' => 'users#chat', as: "user_chat"
+  resources :seats, only: [:new, :create, :destroy]
 end

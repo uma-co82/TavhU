@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_052850) do
+ActiveRecord::Schema.define(version: 2018_12_05_071916) do
 
   create_table "authors", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 2018_12_03_052850) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
+  create_table "quicks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+    t.integer "shop_id"
+    t.boolean "request"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "following_id"
@@ -77,12 +86,21 @@ ActiveRecord::Schema.define(version: 2018_12_03_052850) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "seats", force: :cascade do |t|
+    t.datetime "time"
+    t.integer "count"
+    t.boolean "fill", default: false
+    t.integer "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shops", force: :cascade do |t|
     t.text "shop_name"
     t.text "shop_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "shop_image_id"
+    t.text "shop_image_id"
     t.integer "favorites_count", default: 0, null: false
     t.string "author_id"
     t.string "genre_id"

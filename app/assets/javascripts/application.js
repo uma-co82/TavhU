@@ -62,3 +62,57 @@ $(document).on('turbolinks:load', function(){
     });
   });
 }).call(this);
+
+//reservation
+$(document).on('turbolinks:load', function(){
+  $('#open').on('click', function() {
+    $('#overlay, #modalWindow').fadeIn();
+  });
+  
+  $('#clo').on('click', function() {
+    $('#overlay, #modalWindow').fadeOut();
+  });
+  
+  locateCenter();
+  $(window).resize(locateCenter);
+
+  function locateCenter() {
+    let w = $(window).width();
+    let h = $(window).height();
+    
+    let cw = $('#modalWindow').outerWidth();
+    let ch = $('#modalWindow').outerHeight();
+   
+    $('#modalWindow').css({
+      'left': ((w - cw) / 2) + 'px',
+      'top': ((h - ch) / 2) + 'px'
+    });
+  }
+});
+
+// chat
+$(document).on('turbolinks:load', function(){
+  $('#chat_open').on('click', function() {
+    $('#overlay, #chat').fadeIn();
+  });
+  
+  $('#chat_close').on('click', function() {
+    $('#overlay, #chat').fadeOut();
+  });
+  
+  locateCenter();
+  $(window).resize(locateCenter);
+
+  function locateCenter() {
+    let w = $(window).width();
+    let h = $(window).height();
+    
+    let cw = $('#chat').outerWidth();
+    let ch = $('#chat').outerHeight();
+   
+    $('#chat').css({
+      'left': ((w - cw) / 2) + 'px',
+      'top': ((h - ch) / 2) + 'px'
+    });
+  }
+});
