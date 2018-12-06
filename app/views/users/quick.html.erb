@@ -1,0 +1,11 @@
+<ul>
+  <% @quicks.each do |quick| %>
+  <li><%= User.find(quick.friend_id).name %>さんへのリクエスト。</li>
+  <% if quick.request == false %>
+    <p>承認されていません</p>
+  <% else %>
+    <p>承認済み</p>
+    <p>詳細</p>
+  <% end %>
+  <% end %>
+</ul>

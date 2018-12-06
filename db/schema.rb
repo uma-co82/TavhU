@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_05_071916) do
+ActiveRecord::Schema.define(version: 2018_12_05_111242) do
 
   create_table "authors", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 2018_12_05_071916) do
 
   create_table "genres", force: :cascade do |t|
     t.string "genre_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "seat_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,8 +67,8 @@ ActiveRecord::Schema.define(version: 2018_12_05_071916) do
   create_table "quicks", force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
-    t.integer "shop_id"
-    t.boolean "request"
+    t.integer "seat_id"
+    t.boolean "request", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

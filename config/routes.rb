@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get 'author/:id/shops/:id' =>  'authors#shop_show', as: "shop_show"
   patch 'author/:id/shops/:id/reservations/:id' => 'authors#reservation_update', as: "reserve_update"
   delete 'author/:id/shops/:id/reservations/:id' => 'authors#reservation_delete', as: "reserve_delete"
+  get 'shops/:id/seat/new' => 'seats#new', as: "new_seat"
+  post 'shops/:id/seat/post' => 'seats#create', as: "post_seat"
+  get 'shops/:id/seats' => 'seats#index', as: "seats"
   # chat
   mount ActionCable.server => '/cable'
   get 'notifications/link_through'
@@ -15,12 +18,15 @@ Rails.application.routes.draw do
   root 'shops#index'
   resources :users, only: [:show, :edit, :update] do
     member do
+      get 'rikuesuto'
+      get 'quick'
       get :following, :followers
     end
   end
   resources :relationships, only: [:create, :destroy]
   resources :shops, only: [:new, :create, :index, :show, :destroy]
   get 'shops/fav/:id' => 'shops#fav', as: "fav_shops"
+  get 'seats/fav/:id' => 'seats#fav', as: "fav_seats"
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
@@ -28,9 +34,14 @@ Rails.application.routes.draw do
   as: :link_through
   get 'notifications', to: 'notifications#index'
   get 'shops/:id/fav' => 'shops#shop_fav', as: "fav_user"
+  get 'seats/:id/fav' => 'seats#seat_like', as: "like_user"
+  get 'shops/:id/user/seats' => 'seats#index_user', as: "seats_user"
   get 'users/:id/matching' => 'users#match', as: "match_user"
   get 'shops/:id/reservation' => 'shops#reserve', as: "new_reservation"
   post 'shops/:id/reservation/post' => 'shops#reserve_create', as: "post_reservation"
-  get 'chat/:id' => 'users#chat', as: "user_chat"
-  resources :seats, only: [:new, :create, :destroy]
+  get 'shops/:id/user/seat/:id/quick' => 'seats#seat_reserve', as: "new_quick"
+  post 'shops/:id/user/seat/:id/quick/post' => 'seats#seat_reserve_create', as: "post_quick"
+  get 'chat/:room_id' => 'users#chat', as: "user_chat"
+  delete 'users/:id/request/destroy' => 'users#request_reject', as: "request_reject"
+  patch 'users/:id/request/approval' => 'users#request_approval', as: "request_approval"
 end

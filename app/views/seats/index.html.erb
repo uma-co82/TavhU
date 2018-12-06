@@ -1,0 +1,11 @@
+<% @seats.each do |seat| %>
+<%= link_to "この時間に行きたい人", like_user_path(seat.id) %>
+<%= seat.time %>
+<%= seat.count %>
+<%= seat.shop.shop_name %>
+<% if seat.fill == false %>
+<p>まだ空いてる</p>
+<% else %>
+<p>埋まりました</p>
+<% end %>
+<% end %>

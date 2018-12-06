@@ -13,7 +13,8 @@
     <li>HOME<div class="line"></div></li>
     <li><%= link_to "Myprofile", user_path(current_user.id) %><div class="line"></div></li>
     <li><%= link_to "NOMIYA", shops_path %><div class="line"></div></li>
-    <li>HOME<div class="line"></div></li>
+    <li><%= link_to "REQUEST", rikuesuto_user_path(current_user.id) %><div class="line"></div></li>
+    <li><%= link_to "QUICK", quick_user_path(current_user.id) %><div class="line"></div></li>
     <li><%= link_to "Logout", destroy_user_session_path, method: :delete %><div class="line"></div></li>
   </ul>
   <div id="close">

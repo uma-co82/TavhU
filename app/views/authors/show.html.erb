@@ -1,14 +1,28 @@
 <%= @author.email %>
-<% @shops.each do |shop| %>
-<div id="shop_#{shop.id}">
-<%= shop.shop_name %>
-<%= shop.shop_info %>
-<%= shop.genre.genre_name %>
-<%= shop.station.station_name %>
-<%= shop.favorites.count %>
-<%= link_to "予約一覧", shop_show_path(shop.id) %>
-<%= link_to "destory", shop_path(shop.id), method: :delete, data: { confirm: "本当に削除してもよろしいですか" }, class: "shop_delete", remote: true %>
-</div>
-<% end %>
+<table border="1">
+  <tr>
+    <th>店名</th>
+    <th>ジャンル</th>
+    <th>最寄駅</th>
+    <th>いいね数</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+    <% @shops.each do |shop| %>
+  <tr>
+    <td><%= shop.shop_name %></td>
+    <td><%= shop.genre.genre_name %></td>
+    <td><%= shop.station.station_name %></td>
+    <td><%= shop.favorites.count %></td>
+    <td><a>編集</a></td>
+    <td><%= link_to "予約一覧", shop_show_path(shop.id) %></td>
+    <td><%= link_to "destory", shop_path(shop.id), method: :delete, data: { confirm: "本当に削除してもよろしいですか" }, class: "shop_delete", remote: true %></td>
+    <td><%= link_to "空席登録", new_seat_path(shop.id) %></td>
+    <td><%= link_to "空席一覧", seats_path(shop.id) %></td>
+  </tr>
+    <% end %>
 <%= link_to "Logout", destroy_author_session_path, method: :delete %>
 <%= link_to "新規", new_shop_path %>

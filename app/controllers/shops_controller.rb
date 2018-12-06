@@ -36,7 +36,7 @@ class ShopsController < ApplicationController
 	end
 
 	def reserve
-		@shp = Shop.find(params[:id])
+		@shop = Shop.find(params[:id])
 		@reservation = Reservation.new
 	end
 

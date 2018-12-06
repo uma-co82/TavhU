@@ -28,6 +28,8 @@ $(function() {
     })
   })
 
+
+
 //sidebar
 $(document).on('turbolinks:load', function(){
   $('#MenuIcon').click(function(){

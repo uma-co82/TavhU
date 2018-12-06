@@ -1,0 +1,12 @@
+<ul>
+  <% @quicks.each do |quick| %>
+  <li><%= User.find(quick.user_id).name %>さんからお誘いが来ています。</li>
+  <% if quick.request == false %>
+    <%= link_to "承認", request_approval_path(user_id: current_user.id, quick_id: quick.id), method: :patch%>
+    <%= link_to "断る", request_reject_path(user_id: current_user.id, quick_id: quick.id), method: :delete%>
+  <% else %>
+    <p>承認済み</p>
+    <p>詳細</p>
+  <% end %>
+  <% end %>
+</ul>
