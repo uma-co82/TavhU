@@ -1,33 +1,55 @@
-body {
-	margin: 0px;
-	padding: 0px;
-	font-family: Impact Sans Pro;
-	background-image: image-url('back.jpg');
-	background-attachment: fixed;
-	background-repeat: no-repeat;
+// body {
+// 	margin: 0px;
+// 	padding: 0px;
+// 	font-family: Impact Sans Pro;
+// 	background-color: #a29f7e;
+// }
+
+// .shop {
+// 	width: 700px;
+// 	margin: 50px auto;
+// }
+
+// .shop_image {
+// 	width: 100%;
+// }
+
+// .shop_table {
+// 	width: 405px;
+// 	margin: 0 auto;
+// 	border: 1px solid #dbdbdb;
+// 	table-layout: fixed;
+// 	word-break: break-all;
+// }
+
+// .shop_table th {
+// 	text-align: left;
+// 	width: 130px;
+// 	background: #e4e2e2;
+// 	border: 1px solid #f5df61;
+// 	border-width: 1px 0 0 1px;
+// 	padding: 10px 12px;
+// }
+
+// .shop_table td {
+// 	background: #efefef;
+// 	border: 1px solid #dbdbdb;
+// 	border-width: 1px 0 0 1px;
+// 	padding: 10px 12px;
+
+// }
+
+i {
+	font-family: "Font Awesome 5 Free";
+	font-weight:900;
 }
 
-.media {
-	border: 1px solid #fff;
-	margin: 0 auto;
-	margin-top: 50px;
-	margin-bottom: 30px;
-	width: 700px;
+.fa-heart {
+	color: red;
+}
+.fa-heart-o:before {
+	content: "\f004";
 }
 
-.shop_image {
-	width: 100%;
-}
 
-.shop_jouhou {
-	display: block;
-}
-.shop_name {
-	text-align: center;
-}
-.shop_name p {
-	color: #ffffff;
-	font-family: Impact Sans Pro;
-	font-weight: lighter;
-	font-size: 20px;
-}
+

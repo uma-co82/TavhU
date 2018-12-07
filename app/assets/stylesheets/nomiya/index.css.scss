@@ -2,9 +2,7 @@ body {
 	margin: 0px;
 	padding: 0px;
 	font-family: Impact Sans Pro;
-	background-image: image-url('back.jpg');
-	background-attachment: fixed;
-	background-repeat: no-repeat;
+	background-color: #a29f7e;
 }
 
 
@@ -25,44 +23,65 @@ h1 {
 	text-align: center;
 }
 
+.top_image {
+	background-image: image-url('Top.jpg');
+	background-position: center center;
+	height: 600px;
+	margin-bottom: 50px;
+}
+.scalton {
+	height: 100%;
+  background: rgba(255,255,255,0.2);
+}
 .shop_all {
 	margin: 0 auto;
-	width: 90%;
+	width: 960px;
+	display: block;
 }
 
 .shop_box  {
-	border: 1px solid #fff;
 	margin: 0 auto;
 	margin-bottom: 30px;
-	width: 32%;
+	border-top-style: solid;
+	border-top-color: #f25713;
+	background-color: #fff;
+	box-shadow: 0 0 4px 0 rgba(0,0,0,.2);
+	position: relative;
 	height: 450px;
-	display: inline-block;
 }
+
 .shop_box:hover {
-	color: #292929;
-	border: 1px solid #292929;
-	transition: .5s;
+	border-top-style: solid;
+	border-top-color: rgb(234, 238, 17);
+	box-shadow: 0 0 4px 0 rgba(0,0,0,.2);
+}
+.shop_head {
+	padding: 24px 10px;
+	height: 200px;
+	display: block;
 }
 .shop_image {
 	height: 200px;
-	width: 100%
+	width: 514px;
+	float: right;
 }
+.shop_name_station {
+	display: block;
+	width: 400px;
+}
+
 .shop_jouhou {
 	display: block;
 }
-.shop_name {
-	height: 20px;
-	text-align: center;
-}
 .shop_name p {
-	color: #ffffff;
 	font-family: Impact Sans Pro;
 	font-weight: lighter;
 	font-size: 20px;
-	text-align: center;
 }
 .shop_info {
+	margin: 24px 10px;
 	height: 164px;
+	background-color: rgb(245, 245, 245);
 }
 
 i {

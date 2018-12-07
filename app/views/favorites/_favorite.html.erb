@@ -1,15 +1,9 @@
 <% if @shop.favorite_by?(current_user) %>
-<td>
   <%= link_to fav_shops_path(@shop), class: "fav", remote: true do %>
-    <i class="fa fa-heart" id="<%= @shop.id %>"></i>
+    <i class="fa fa-kiss-wink-heart" id="<%= @shop.id %>"></i>
   <% end %>
-</td>
-  <p><%= @shop.favorites.count %></p>
 <% else %>
-<td>
   <%= link_to fav_shops_path(@shop), class: "fav", remote: true do %>
-    <i class="fa fa-heart-o" id="<%= @shop.id %>"></i>
+    <i class="fa fa-kiss-wink-heart out" id="<%= @shop.id %>"></i>
   <% end %>
-</td>
-  <p><%= @shop.favorites.count %></p>
 <% end %>

@@ -2,40 +2,59 @@
 <%= render 'shared/side_bar' %>
 
 
-	<div class="container">
-		<div class="row">
 		<div>
-			<h1>aaaaaa</h1>
-			<p class="hitokoto">ああああああああああ</p>
+			<h1>TaverN</h1>
+			<p class="hitokoto">行きたいところを探そう</p>
+		</div>
+		<div class="top_image">
+			<div class="scalton">
+				<h2>Meeting lots of different people will make you grow.</h2>
+				<p>There is more to life than increasing its speed.<br>
+						My life didn’t please me, so I created my life.<br>
+						The future starts today, not tomorrow.Life is like riding a bicycle. To keep your<br> balance you must keep moving.
+						Happiness depends upon ourselves.The most important thing in communication is hearing what isn't said.<br>
+						Experience is not what happens to you. It is what you do with what happens to you.<br>
+						Darkness cannot drive out darkness; only light can do that. Hate cannot drive out hate; only love can do that.
+				</p>
+			</div>
 		</div>
 		<div class="shop_all">
 					<% @shops.each do |shop| %>
-				<div class="shop_box md-2">
-					<div class="shop_image">
-					 <%= link_to (shop_path(shop.id)) do %>
-				   <%= attachment_image_tag shop, :shop_image, fallback: "no_image.jpg" %>
-					 <% end %>
-			    </div>
-					<div class="shop_jouhou">
-					<div class="shop_name">
-				   <p><%= shop.shop_name %></p>
-				  </div>
+				<div class="shop_box">
+					<div class="shop_head">
+						<div class="shop_image">
+								<%= attachment_image_tag shop, :shop_image, fallback: "no_image.jpg" %>
+						</div>
+						<div class="shop_name_station">
+							<div class="shop_name">
+							<%= link_to (shop_path(shop.id)) do %>
+								<p><%= shop.shop_name %></p>
+							<% end %>
+							</div>
+							<div class="station">
+								<p><%= shop.station.station_name %></p>
+							</div>
+							<div class="genre">
+								<p><%= shop.genre.genre_name %></p>
+							</div>
+							<div class="address">
+								<p>〒<%= shop.postcode %> <%= shop.address %><%= shop.address_street %></p>
+							</div>
+								<% if shop.favorite_by?(current_user) %>
+										<%= link_to fav_shops_path(shop), class: "fav", remote: true do %>
+										<i class="fa-heart" id="<%= shop.id %>"></i>
+									<% end %>
+								<% else %>
+										<%= link_to fav_shops_path(shop), class: "fav", remote: true do %>
+										<i class="fa-heart-o" id="<%= shop.id %>"></i>
+									<% end %>
+								<% end %>
+								<%= shop.favorites.count %>
+						</div>
+					</div>
 					<div class="shop_info">
 				   <p><%= shop.shop_info %></p>
 				  </div>
-					<% if shop.favorite_by?(current_user) %>
-					<%= link_to fav_shops_path(shop), class: "fav", remote: true do %>
-					<i class="fa-heart" id="<%= shop.id %>"></i>
-					<% end %>
-					<% else %>
-					<%= link_to fav_shops_path(shop), class: "fav", remote: true do %>
-					<i class="fa-heart-o" id="<%= shop.id %>"></i>
-					<% end %>
-					<% end %>
-					<%= shop.favorites.count %>
-				</div>
-			</div>
+			  </div>
 				<% end %>
-		    </div>
-			</div>
 		</div>

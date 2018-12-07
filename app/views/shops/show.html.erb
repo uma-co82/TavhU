@@ -1,25 +1,58 @@
 <%= stylesheet_link_tag "nomiya/show", :media => "all" %>
 <%= render 'shared/side_bar' %>
-
-
-<div class="media">
+<div class="shop">
 	<div class="shop_image">
 		<%= attachment_image_tag @shop, :shop_image,
 		 fallback: "no_image.jpg" %>
 	</div>
-	<div class="shop_jouhou">
-		<div class="shop_name">
-	    <p><%= @shop.shop_name %></p>
-		</div>
-		<div class="shop_info">
-		  <p><%= @shop.shop_info %></p>
-	  </div>
-			<%= @shop.genre.genre_name %>
-			<%= @shop.station.station_name %>
-	</div>
-        <%= render 'favorites/favorite' %>
+								<% if @shop.favorite_by?(current_user) %>
+										<%= link_to (fav_shops_path(@shop)), class: "fav", remote: true do %>
+										<i class="fas fa-heart" id="<%= @shop.id %>"></i>
+									<% end %>
+								<% else %>
+										<%= link_to (fav_shops_path(@shop)), class: "fav", remote: true do %>
+										<i class="far fa-heart-o" id="<%= @shop.id %>"></i>
+									<% end %>
+								<% end %>
+	<table class="shop_table">
+		<tbody>
+		<tr>
+			<th>店名</th>
+			<td><%= @shop.shop_name %></td>
+		</tr>
+		<tr>
+			<th>住所</th>
+			<td>〒<%= @shop.postcode %> <%= @shop.address %><%= @shop.address_street %><%= @shop.address_building %></td>
+		</tr>
+		<tr>
+			<th>最寄駅</th>
+			<td><%= @shop.station.station_name %></td>
+		</tr>
+		<tr>
+			<th>店舗紹介</th>
+			<td><%= @shop.shop_info %></td>
+		</tr>
+		<tr>
+			<th>ジャンル</th>
+			<td><%= @shop.genre.genre_name %></td>
+		</tr>
+	
+		<tr>
+			<th></th>
+			<td><%= link_to "行きたい人",  fav_user_path %></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><%= link_to "クイック予約", seats_user_path(@shop.id) %></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><%= link_to "予約", new_reservation_path(@shop.id) %></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><%= link_to "Back", shops_path %></td>
+		</tr>
+		</tbody>
+	</table>
 </div>
-<%= link_to "クイック予約", seats_user_path(@shop.id) %>
-<%= link_to "行きたい人",  fav_user_path %>
-<%= link_to "Back", shops_path %>
-<%= link_to "予約", new_reservation_path(@shop.id) %>

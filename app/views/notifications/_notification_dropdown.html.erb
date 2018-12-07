@@ -1,14 +1,7 @@
 <div class="notfall">
   <p class="notification">Notification</p>
-  <!-- <ul style="list-style-type: none;"> -->
-    <%= render current_user.notifications.where(read: false).order('created_at DESC').last(2) %>
-    <!-- <li class="notification"></li>
-    <! <li class="notification"></li> -->
-<!-- </ul> -->
-  <%= link_to (notifications_path) do %>
-  <button class="notifbutton">
+  <%= link_to (notifications_path), class: "notifbutton" do %>
     <%= current_user.notifications.where(read: false).count %>
     <span><i class="fa fa-exclamation nofificon" aria-hidden="true"></i></span>
-  </button>
   <% end %>
 </div>

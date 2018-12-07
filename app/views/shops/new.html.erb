@@ -11,15 +11,26 @@
 <% end %>
 
 <%= form_for(@shop, url: shops_path) do |f| %>
-<p>image</p>
+<h3>image</h3>
 <%= f.attachment_field :shop_image %>
-<p>name</p>
+<h3>name</h3>
 <%= f.text_field :shop_name %>
-<p>info</p>
+<h3>info</h3>
 <%= f.text_area :shop_info %>
-<%= f.submit "create" %>
-<p>genre</p>
+<h3>address</h3>
+  <p>郵便番号</p><br>
+  <%= f.number_field :postcode %>
+  <p>都道府県</p><br>
+  <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_blank: true  %>
+  <p>市町村</p><br>
+  <%= f.text_field :address %>
+  <p>番地</p><br>
+  <%= f.text_field :address_street %>
+  <p>建物</p><br>
+  <%= f.text_field :address_building %>
+<h3>genre</h3>
 <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {:prompt => "選択してください"} %>
-<p>station</p>
+<h3>station</h3>
 <%= f.collection_select :station_id, Station.all, :id, :station_name, {:prompt => "選択してください"} %>
+<%= f.submit "create" %>
 <% end %>
