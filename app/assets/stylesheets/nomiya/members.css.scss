@@ -24,3 +24,32 @@ body {
 .user_name {
   text-align: center;
 }
+
+section.message_box {
+  padding: 10px;
+  overflow: scroll;
+  #messages {
+    height: 400px;
+  }
+}
+
+div.message_form {
+  padding-top: 10px;
+}
+
+#message_sender {
+  font-size: 1.1em;
+}
+
+#message_content {
+  font-size: 1.0em;
+}
+
+#chat {
+	width: 17%;
+  text-align: center;
+  background-color: rgb(192, 247, 185);
+  display: none;
+  z-index: 2;
+  position: relative;
+}

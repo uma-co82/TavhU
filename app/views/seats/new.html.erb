@@ -1,0 +1,7 @@
+<%= form_for @seat, url: post_seat_path do |f| %>
+<p>日時</p>
+<%= f.datetime_select :time, :use_month_numbers => true %>
+<p>人数</p>
+<%= f.number_field :count %>
+<%= f.submit "save"%>
+<% end %>
