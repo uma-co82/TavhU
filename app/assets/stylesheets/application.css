@@ -69,7 +69,7 @@
 #MainMenu{
 	height: 100vh;
 	width: 300px;
-	background-color: #181818;
+	background-color: #d4c2c2;
 	-webkit-clip-path:polygon(0 0, 100% 0, 0% 100%, 0% 100%);
 	position: fixed;
 	top: 0;
@@ -132,8 +132,28 @@
 	font-size: 10px;
 }
 .notifbutton {
-	width: 100px;
+	display: inline-block;
+	text-decoration: none;
+	width: 50px;
+margin:2px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 23px;
+color:white;
+	border-radius: 12px;
+	text-align: center;
+	vertical-align: middle;
+	overflow: hidden;
+	font-weight: bold;
+	transition: .3s;
+	background: #fd6969;
 }
+.notifbutton:hover{
+	-webkit-transform: translateY(-5px);
+	-ms-transform: translateY(-5px);
+	transform: translateY(-5px);
+} 
+
 .nofificon {
 	color: red;
 }

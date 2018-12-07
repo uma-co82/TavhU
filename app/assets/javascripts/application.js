@@ -28,6 +28,15 @@ $(function() {
     })
   })
 
+// $(function() {
+//     $(document).on("ajax:success", ".fav_show", function(e) {
+//       if ($('#' + e.detail[0]).hasClass('fa fa-kiss-wink-heart')) {
+//         $('#' + e.detail[0]).removeClass('fa fa-kiss-wink-heart').addClass('fa fa-kiss-wink-heart out');
+//       } else {
+//     $('#' + e.detail[0]).removeClass('fa fa-kiss-wink-heart out').addClass('fa fa-kiss-wink-heart');
+//       }
+//     })
+//   })
 
 
 //sidebar

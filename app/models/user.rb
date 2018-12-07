@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships
   has_many :reservations
 
-  #dm
+  #chat
   has_many :from_messages, class_name: "Message",
             foreign_key: "from_id", dependent: :destroy
   has_many :to_messages, class_name: "Message",
