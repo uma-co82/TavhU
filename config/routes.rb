@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     passwords:     'authors/passwords',
     registrations: 'authors/registrations'
   }
+  resources :authors, only: [:show]
+  get 'author/:id/shops/:id' =>  'authors#shop_show', as: "shop_show"
+  patch 'author/:id/shops/:id/reservations/:id' => 'authors#reservation_update', as: "reserve_update"
+  delete 'author/:id/shops/:id/reservations/:id' => 'authors#reservation_delete', as: "reserve_delete"
   # chat
   mount ActionCable.server => '/cable'
   get 'notifications/link_through'
@@ -25,4 +29,6 @@ Rails.application.routes.draw do
   get 'notifications', to: 'notifications#index'
   get 'shops/:id/fav' => 'shops#shop_fav', as: "fav_user"
   get 'users/:id/matching' => 'users#match', as: "match_user"
+  get 'shops/:id/reservation' => 'shops#reserve', as: "new_reservation"
+  post 'shops/:id/reservation/post' => 'shops#reserve_create', as: "post_reservation"
 end

@@ -2,6 +2,10 @@ class Shop < ApplicationRecord
 	attachment :shop_image
 	has_many :favorites, dependent: :destroy
 	has_many :favorite_users, through: :favorites, source: :user
+	has_many :reservations
+	belongs_to :genre
+	belongs_to :station
+	belongs_to :author
 	validates :shop_info, length: { in: 20..76}
 	validates :shop_name, presence: true
 	validates :shop_info, presence: true

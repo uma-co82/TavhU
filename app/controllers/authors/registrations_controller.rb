@@ -51,14 +51,14 @@ class Authors::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-   def after_sign_up_path_for(resource)
-      case resource
-      when Author
-        new_shop_path
-      when User
-        root_path
-      end
-   end
+  #  def after_sign_up_path_for(resource)
+      # case resource
+      # when Author
+        # author_path(current_author.id)
+      # when User
+        # root_path
+      # end
+  #  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

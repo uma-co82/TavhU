@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_02_081543) do
+ActiveRecord::Schema.define(version: 2018_12_03_052850) do
 
   create_table "authors", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 2018_12_02_081543) do
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "genre_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -61,6 +67,16 @@ ActiveRecord::Schema.define(version: 2018_12_02_081543) do
     t.index ["following_id"], name: "index_relationships_on_following_id"
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "shop_id"
+    t.datetime "start_time"
+    t.integer "member_count"
+    t.boolean "approval", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shops", force: :cascade do |t|
     t.text "shop_name"
     t.text "shop_info"
@@ -68,6 +84,15 @@ ActiveRecord::Schema.define(version: 2018_12_02_081543) do
     t.datetime "updated_at", null: false
     t.string "shop_image_id"
     t.integer "favorites_count", default: 0, null: false
+    t.string "author_id"
+    t.string "genre_id"
+    t.string "station_id"
+  end
+
+  create_table "stations", force: :cascade do |t|
+    t.string "station_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
