@@ -1,11 +1,25 @@
-<ul>
+<%= stylesheet_link_tag "users/quick", :media => "all" %>
+<%= render 'shared/side_bar' %>
+
+<table class="quick_table">
   <% @quicks.each do |quick| %>
-  <li><%= User.find(quick.friend_id).name %>さんへのリクエスト。</li>
-  <% if quick.request == false %>
-    <p>承認されていません</p>
-  <% else %>
-    <p>承認済み</p>
-    <p>詳細</p>
+  <tr class="quick">
+    <td class="quick_shop">
+      <%= quick.seat.shop.shop_name %>
+    </td>
+    <td>
+      <%= User.find(quick.friend_id).name %>さんへのリクエスト。
+    </td>
+    <td>
+    <% if quick.request == false %>
+      承認されていません
+    <% else %>
+      承認済み
+    <% end %>
+    </td>
+    <td>
+      <%= link_to "詳細", quick_show_path(id: current_user.id, quick_id: quick.id)%>
+    </td>
+  </tr>
   <% end %>
-  <% end %>
-</ul>
+</table>

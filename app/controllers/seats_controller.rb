@@ -46,16 +46,16 @@ class SeatsController < ApplicationController
 
   def seat_like
     seat = Seat.find(params[:id])
-    @users = seat.like_users
+    @users = seat.like_users.shuffle
   end
 
   def seat_reserve
-    seat = Seat.find(params[:id])
+    seat = Seat.find(params[:seat_id])
     @quick = Quick.new
   end
 
   def seat_reserve_create
-    seat = Seat.find(params[:id])
+    seat = Seat.find(params[:seat_id])
     shop = seat.shop
     if seat.fill == true
       flash[:notice] = "もう埋まっています。"

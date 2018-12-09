@@ -1,4 +1,13 @@
-<%= form_for @quick, url: post_quick_path do |f| %>
-<%= f.collection_select :friend_id, current_user.matchers, :id, :name, {:prompt => "選択してください"} %>
-<%= f.submit "save"%>
+<%= stylesheet_link_tag "form/reserve"%>
+<%= render 'shared/side_bar'%>
+
+<div class="select_form">
+  <%= form_for @quick, url: post_quick_path do |f| %>
+  <%= f.collection_select :friend_id, current_user.matchers, :id, :name, {:prompt => "Choose"}, {class: "form_user"} %>
+  <div class="submit">
+  <%= f.submit "save"%>
+  </div>
 <% end %>
+<span class="form_user_highlight"></span>
+<span class="form_user_selectbar"></span>
+</div>

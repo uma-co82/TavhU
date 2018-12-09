@@ -1,26 +1,43 @@
-<% @seats.each do |seat| %>
-<%= seat.time %>
-<%= seat.count %>
-<%= seat.shop.shop_name %>
-<% if seat.fill == false %>
-<p>まだ空いてる</p>
-<%= link_to "この時間に行きたい人", like_user_path(seat.id) %>
-<%= link_to "リクエストを送る", new_quick_path(seat.id) %>
-<% if seat.liked_by?(current_user) %>
-    <td>
-      <%= link_to fav_seats_path(seat), class: "fav", remote: true do %>
-        <i class="fa fa-heart" id="<%= seat.id %>"></i>
-      <% end %>
-    </td>
-  <% else %>
-    <td>
-      <%= link_to fav_seats_path(seat), class: "fav", remote: true do %>
-        <i class="fa fa-heart-o" id="<%= seat.id %>"></i>
-      <% end %>
-    </td>
-  <% end %>
-<% else %>
-<p>埋まりました</p>
-<% end %>
+<%= stylesheet_link_tag "users/quick", :media => "all" %>
+<%= render 'shared/side_bar' %>
 
-<% end %>
+<table class="quick_table">
+  <% @seats.each do |seat| %>
+  <tr class="quick">
+    <td>
+      <%= seat.time.strftime("%Y年%m月%d日 %H時%M分") %>
+    </td>
+    <td>
+      <%= seat.count %>名様
+    </td>
+      <% if seat.fill == false %>
+        <td>
+          <p>まだ空いてる</p>
+        </td>
+        <td>
+          <%= link_to "この時間に行きたい人", like_user_path(seat.id) %>
+        </td>
+        <td>
+          <%= link_to "リクエストを送る", new_quick_path(id: seat.shop.id, seat_id: seat.id) %>
+        </td>
+      <% if seat.liked_by?(current_user) %>
+        <td>
+          <%= link_to fav_seats_path(seat), class: "fav", remote: true do %>
+            <i class="fa fa-heart" id="<%= seat.id %>"></i>
+          <% end %>
+        </td>
+        <% else %>
+        <td>
+          <%= link_to fav_seats_path(seat), class: "fav", remote: true do %>
+            <i class="fa fa-heart-o" id="<%= seat.id %>"></i>
+          <% end %>
+        </td>
+        <% end %>
+        <% else %>
+        <td>
+          <p>埋まりました</p>
+        </td>
+      <% end %>
+  </tr>
+  <% end %>
+</table>

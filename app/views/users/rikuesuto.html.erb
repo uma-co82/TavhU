@@ -1,12 +1,26 @@
-<ul>
+<%= stylesheet_link_tag "users/quick", :media => "all" %>
+<%= render 'shared/side_bar' %>
+
+<table class="quick_table">
   <% @quicks.each do |quick| %>
-  <li><%= User.find(quick.user_id).name %>さんからお誘いが来ています。</li>
-  <% if quick.request == false %>
-    <%= link_to "承認", request_approval_path(user_id: current_user.id, quick_id: quick.id), method: :patch%>
-    <%= link_to "断る", request_reject_path(user_id: current_user.id, quick_id: quick.id), method: :delete%>
-  <% else %>
-    <p>承認済み</p>
-    <p>詳細</p>
+  <tr class="quick">
+    <td class="quick_shop">
+      <%= quick.seat.shop.shop_name %>
+    </td>
+    <td>
+      <%= User.find(quick.user_id).name %>さんからお誘いが来ています。
+    </td>
+    <td>
+      <% if quick.request == false %>
+        <%= link_to "承認", request_approval_path(user_id: current_user.id, quick_id: quick.id), method: :patch%>
+        <%= link_to "断る", request_reject_path(user_id: current_user.id, quick_id: quick.id), method: :delete%>
+      <% else %>
+        <p>承認済み</p>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to "詳細", rikuesuto_show_path(id: current_user.id, request_id: quick.id) %>
+    </td>
+  </tr>
   <% end %>
-  <% end %>
-</ul>
+  </table>

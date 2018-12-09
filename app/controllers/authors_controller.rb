@@ -7,11 +7,15 @@ class AuthorsController < ApplicationController
   end
 
   def shop_show
-    @shop = Shop.find(params[:id])
+    params[:id]
+    params[:shop_id]
+    @shop = Shop.find(params[:shop_id])
     @reservations = @shop.reservations
   end
 
   def reservation_update
+    params[:shop_id]
+    params[:reserve_id]
     @shop = Shop.find(params[:shop_id])
     reservation = Reservation.find(params[:reserve_id])
     reservation.approval = true
@@ -20,6 +24,8 @@ class AuthorsController < ApplicationController
   end
 
   def reservation_delete
+    params[:shop_id]
+    params[:reserve_id]
     @shop = Shop.find(params[:shop_id])
     reservation = Reservation.find(params[:reserve_id])
     reservation.destroy

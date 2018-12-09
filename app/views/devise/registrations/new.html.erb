@@ -9,17 +9,36 @@
 
   <h2>Signup</h2>
 
+  <%= f.label :email, "Email"%>
   <div class="field">
     <%= f.email_field :email, autofocus: true, autocomplete: "email"%>
   </div>
 
+  <%= f.label :password, "Password"%>
   <div class="field">
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
+  <%= f.label :password_confirmation, "Password確認"%>
   <div class="field">
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+
+  <%= f.label :name, "UserName"%>
+  <div class="field">
+    <%= f.text_field :name, autocomplete: "name", placeholder: "アプリ上で使用されます" %>
+  </div>
+
+  <%= f.label :introduce, "Introduce" %>
+  <div class="field">
+    <%= f.text_area :introduce, autocomplete: "introduce", placeholder: "自己紹介"%>
+  </div>
+
+  <%= f.label :profile_image, "プロフィール画像" %>
+  <div class="field">
+    <%= f.attachment_field :profile_image %>
+  </div>
+
 
   <div>
     <%= f.submit "Sign up" %>

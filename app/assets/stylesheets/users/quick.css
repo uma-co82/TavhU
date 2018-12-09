@@ -1,0 +1,22 @@
+body {
+	margin: 0px;
+	padding: 0px;
+  font-family: Impact Sans Pro;
+	background-color: #a29f7e;
+}
+
+.quick_table {
+  width: 800px;
+  margin: 30px auto;
+  background-color: #dedede;
+}
+
+.quick {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.quick_shop {
+  background-color:#e4e2e2;
+	border: 1px solid #f5df61;
+}

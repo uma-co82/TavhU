@@ -1,0 +1,62 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: Impact Sans Pro;
+	background-color: #a29f7e;
+}
+
+.edit_form {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 3em;
+  background-color: rgba(145, 201, 228, 0.5);
+  width: 400px;
+  margin: 50px auto;
+}
+
+form {
+  margin: 0 auto;
+  width: 84%;
+  text-align: center;
+}
+input {
+  display: block;
+  margin: 0 auto;
+	width: 320px;
+	height: 50px;
+	background: rgb(230, 236, 140);
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.5);
+	font-family: Source Sans Pro;
+	font-weight: lighter;
+	font-size: 14px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+  border-radius: 5px;
+  margin-top: 29px;
+}
+.attachment {
+  border-radius: 50%;
+}
+.save {
+  background: black;
+  color: #fff;
+}
+
+textarea {
+  display: block;
+	width: 320px;
+	height: 100px;
+	background: rgb(230, 236, 140);
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.5);
+	font-family: Source Sans Pro;
+	font-weight: lighter;
+	font-size: 14px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+	border-radius: 5px;
+}
+.edit p {
+ color: #fff;
+}

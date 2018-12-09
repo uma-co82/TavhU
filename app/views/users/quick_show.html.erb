@@ -1,0 +1,31 @@
+<%= stylesheet_link_tag "users/quick_show", :media => "all" %>
+<%= render 'shared/side_bar' %>
+
+<table class="shop_table">
+  <tbody>
+    <tr>
+      <th>一緒に行く人</th>
+      <td><%= User.find(@quick.friend_id).name %></td>
+    </tr>
+    <tr>
+      <th>店名</th>
+      <td>
+         <%= link_to (shop_path(@quick.seat.shop.id)) do %>
+          <%= @quick.seat.shop.shop_name %>
+         <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td>〒<%= @quick.seat.shop.postcode %> <%= @quick.seat.shop.address %><%= @quick.seat.shop.address_street %><%= @quick.seat.shop.address_building %></td>
+    </tr>
+    <tr>
+      <th>最寄駅</th>
+      <td><%= @quick.seat.shop.station.station_name %></td>
+    </tr>
+    <tr>
+      <th>時間</th>
+      <td><%= @quick.seat.time.strftime("%Y年%m月%d日 %H時%M分") %></td>
+    </tr>
+  </tbody>
+</table>

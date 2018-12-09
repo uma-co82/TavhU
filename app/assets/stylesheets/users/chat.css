@@ -1,0 +1,47 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: Impact Sans Pro;
+	background-color: #a29f7e;
+}
+
+#chat {
+  width: 800px;
+  margin: 50px auto;
+  border: 1px solid #fff;
+  background-color: rgba(145, 201, 228, 0.5);
+}
+
+#message_sender {
+  color: #fff;
+}
+
+#message_content {
+  background-color:rgb(230, 236, 140);
+  width: auto;
+  padding: 0 10px;
+}
+form {
+  margin: 0 auto;
+  width: 84%;
+  text-align: center;
+}
+input {
+  display: block;
+  margin: 0 auto;
+	width: 320px;
+	height: 50px;
+	background: rgb(230, 236, 140);
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.5);
+	font-family: Source Sans Pro;
+	font-weight: lighter;
+	font-size: 14px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+  border-radius: 5px;
+  margin-top: 29px;
+}
+label {
+  color: #fff;
+}

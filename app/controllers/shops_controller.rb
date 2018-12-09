@@ -62,7 +62,7 @@ class ShopsController < ApplicationController
 
 	def shop_fav
 		@shop = Shop.find(params[:id])
-		@user = @shop.favorite_users
+		@user = @shop.favorite_users.shuffle
 	end
 
 	private
