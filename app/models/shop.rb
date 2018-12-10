@@ -13,7 +13,7 @@ class Shop < ApplicationRecord
 
 	include JpPrefecture
   jp_prefecture :prefecture_code
-  
+	
   def prefecture_name
     JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
   end

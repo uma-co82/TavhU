@@ -1,43 +1,53 @@
-<%= stylesheet_link_tag "users/quick", :media => "all" %>
+<%= stylesheet_link_tag "users/seat", :media => "all" %>
 <%= render 'shared/side_bar' %>
 
-<table class="quick_table">
+<div id="overlay"></div>
+
+<h1>TavhU Events</h1>
+  <%= month_calendar(attribute: :time, events: @seats) do |date, seats| %>
+    <%= date.strftime("%Y年%m月%d日") %>
+    <% seats.each do |seat|%>
+    <% if seat.present? %>
+      <button class="open" id="<%= date %>">open</button>
+    <% end %>
+    <% end %>
+  <% end %>
+
+<% @seat_time.each do |seat_t|%>
+<div id="modalWindow<%= seat_t %>" class="modal">
+  <h3><%= seat_t.strftime("%Y年%m月%d日") %></h3>
+  <table class="quick_table">
+    <tr class="quick">
+      <th><button class="close" id="<%= seat_t %>">close</button></th>
+    </tr>
   <% @seats.each do |seat| %>
-  <tr class="quick">
-    <td>
-      <%= seat.time.strftime("%Y年%m月%d日 %H時%M分") %>
-    </td>
-    <td>
-      <%= seat.count %>名様
-    </td>
+    <tr class="quick">
+    <% if seat.time.to_date == seat_t %>
+      <td><%= seat.time.strftime("%H時%M分") %></td>
+      <td><%= seat.count %>名様</td>
       <% if seat.fill == false %>
+        <td>予約可</td>
+        <td><%= link_to "この時間に行きたい人", like_user_path(seat.id) %></td>
+        <td><%= link_to "リクエストを送る", new_quick_path(id: seat.shop.id, seat_id: seat.id) %></td>
+        <% if seat.liked_by?(current_user) %>
         <td>
-          <p>まだ空いてる</p>
-        </td>
-        <td>
-          <%= link_to "この時間に行きたい人", like_user_path(seat.id) %>
-        </td>
-        <td>
-          <%= link_to "リクエストを送る", new_quick_path(id: seat.shop.id, seat_id: seat.id) %>
-        </td>
-      <% if seat.liked_by?(current_user) %>
-        <td>
-          <%= link_to fav_seats_path(seat), class: "fav", remote: true do %>
+          <%= link_to fav_seats_path(seat), class: "fav", remote: true do%>
             <i class="fa fa-heart" id="<%= seat.id %>"></i>
           <% end %>
         </td>
         <% else %>
         <td>
-          <%= link_to fav_seats_path(seat), class: "fav", remote: true do %>
+          <%= link_to fav_seats_path(seat), class: "fav", remote: true do%>
             <i class="fa fa-heart-o" id="<%= seat.id %>"></i>
           <% end %>
         </td>
         <% end %>
-        <% else %>
-        <td>
-          <p>埋まりました</p>
-        </td>
+      <% else %>
+        <td>満席</td>
       <% end %>
-  </tr>
+    <% end %>
   <% end %>
-</table>
+    </tr>
+  </table>
+</div>
+<% end %>

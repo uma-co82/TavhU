@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
   resources :shops, only: [:new, :create, :index, :show, :destroy]
+  get 'shops/prefecture/:id' => 'shops#index_prefecture', as: "prefecture"
+  get 'shops/genre/:id' => 'shops#index_genre', as: "genre"
   get 'shops/fav/:id' => 'shops#fav', as: "fav_shops"
   get 'seats/fav/:id' => 'seats#fav', as: "fav_seats"
   devise_scope :user do

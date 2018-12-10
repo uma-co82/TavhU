@@ -28,6 +28,12 @@ class SeatsController < ApplicationController
   def index_user
     @shop = Shop.find(params[:id])
     @seats = @shop.seats
+    @seat_time = Array.new
+    @seats.each do |seat|
+      seat_t = seat.time.to_date
+      @seat_time.push(seat_t)
+    end
+    @seat_time = @seat_time.uniq
   end
 
 

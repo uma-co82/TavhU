@@ -1,7 +1,102 @@
 <%= stylesheet_link_tag "nomiya/index", :media => "all" %>
 <%= render 'shared/side_bar' %>
 
-
+<ul class="nav">
+<li><a href="#">Home</a>
+</li>
+<li><a href="#">Prefecture</a>
+<ul>
+<li><a>北海道,東北</a>
+	<ul>
+	<% @tohokus.each do |prefecture| %>
+		<li><%= link_to (prefecture_path(id: prefecture.code)) do %><%= prefecture.name %><% end %></li>
+	<% end %>
+	</ul>
+</li>
+<li><a>関東</a>
+	<ul>
+	<% @kantous.each do |prefecture| %>
+		<li><%= link_to (prefecture_path(id: prefecture.code)) do %><%= prefecture.name %><% end %></li>
+	<% end %>
+	</ul>
+</li>
+<li><a>中部</a>
+	<ul>
+	<% @tyubus.each do |prefecture| %>
+		<li><%= link_to (prefecture_path(id: prefecture.code)) do %><%= prefecture.name %><% end %></li>
+	<% end %>
+	</ul>
+</li>
+<li><a>関西</a>
+	<ul>
+	<% @kansais.each do |prefecture| %>
+		<li><%= link_to (prefecture_path(id: prefecture.code)) do %><%= prefecture.name %><% end %></li>
+	<% end %>
+	</ul>
+</li>
+<li><a>中国</a>
+	<ul>
+	<% @tyugokus.each do |prefecture| %>
+		<li><%= link_to (prefecture_path(id: prefecture.code)) do %><%= prefecture.name %><% end %></li>
+	<% end %>
+	</ul>
+</li>
+<li><a>四国</a>
+	<ul>
+	<% @sikokus.each do |prefecture| %>
+		<li><%= link_to (prefecture_path(id: prefecture.code)) do %><%= prefecture.name %><% end %></li>
+	<% end %>
+	</ul>
+</li>
+<li><a>九州</a>
+	<ul>
+	<% @kyusyus.each do |prefecture| %>
+		<li><%= link_to (prefecture_path(id: prefecture.code)) do %><%= prefecture.name %><% end %></li>
+	<% end %>
+	</ul>
+</li>
+</ul>
+</li>
+<li><a>Genres</a>
+<ul>
+<% @genres.each do |genre| %>
+<li><%= link_to (genre_path(id: genre.id)) do %><%= genre.genre_name %><% end %></li>
+<% end %>
+</ul>
+</li>
+<li><a>Stations</a>
+<ul>
+<li><a href="#">d1</a></li>
+<li><a href="#">d1</a>
+<ul>
+<li><a href="#">d2</a></li>
+<li><a href="#">d2</a>
+<ul class="left">
+<li><a href="#">d3</a></li>
+<li><a href="#">d3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#">Contact</a>
+<ul>
+<li><a href="#">e1</a>
+<ul class="left">
+<li><a href="#">e2-1</a></li>
+<li><a href="#">e2-1</a></li>
+</ul>
+</li>
+<li><a href="#">e1</a>
+<ul class="left">
+<li><a href="#">e2-2</a></li>
+<li><a href="#">e2-2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 		<div>
 			<h1>TaverN</h1>
 			<p class="hitokoto">行きたいところを探そう</p>
@@ -32,13 +127,13 @@
 							<% end %>
 							</div>
 							<div class="station">
-								<p><%= shop.station.station_name %></p>
+								<p>最寄駅： <%= shop.station.station_name %></p>
 							</div>
 							<div class="genre">
-								<p><%= shop.genre.genre_name %></p>
+								<p>ジャンル： <%= shop.genre.genre_name %></p>
 							</div>
 							<div class="address">
-								<p>〒<%= shop.postcode %> <%= shop.address %><%= shop.address_street %></p>
+								<p>〒<%= shop.postcode %> <%= shop.prefecture.name %><%= shop.address %><%= shop.address_street %></p>
 							</div>
 								<% if shop.favorite_by?(current_user) %>
 										<%= link_to fav_shops_path(shop), class: "fav", remote: true do %>
@@ -58,3 +153,5 @@
 			  </div>
 				<% end %>
 		</div>
+
+<%= paginate @shops, class: "pagenate" %>
