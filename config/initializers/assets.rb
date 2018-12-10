@@ -12,6 +12,12 @@ Rails.application.config.assets.precompile << 'nomiya/index'
 Rails.application.config.assets.precompile << 'nomiya/show'
 Rails.application.config.assets.precompile << 'nomiya/members'
 Rails.application.config.assets.precompile << 'users/show'
+Rails.application.config.assets.precompile << 'users/quick'
+Rails.application.config.assets.precompile << 'users/quick_show'
+Rails.application.config.assets.precompile << 'users/chat'
+Rails.application.config.assets.precompile << 'users/seat'
+Rails.application.config.assets.precompile << 'form/reserve'
+Rails.application.config.assets.precompile << 'form/edit'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets

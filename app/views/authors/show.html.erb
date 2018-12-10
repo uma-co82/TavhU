@@ -18,7 +18,7 @@
     <td><%= shop.station.station_name %></td>
     <td><%= shop.favorites.count %></td>
     <td><a>編集</a></td>
-    <td><%= link_to "予約一覧", shop_show_path(shop.id) %></td>
+    <td><%= link_to "予約一覧", shop_show_path(shop_id: shop.id, id: current_author.id) %></td>
     <td><%= link_to "destory", shop_path(shop.id), method: :delete, data: { confirm: "本当に削除してもよろしいですか" }, class: "shop_delete", remote: true %></td>
     <td><%= link_to "空席登録", new_seat_path(shop.id) %></td>
     <td><%= link_to "空席一覧", seats_path(shop.id) %></td>

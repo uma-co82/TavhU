@@ -1,10 +1,17 @@
-<%= form_for(@user) do |f| %>
-<p>Name</p>
-<%= f.text_field :name, autofocus: true %>
-<p>Introduce</p>
-<%= f.text_area :introduce%>
-<p>ProfileImage</p>
-<%= attachment_image_tag @user, :profile_image, :fill, 300, 300 %>
-<%= f.attachment_field :profile_image %>
-<%= f.submit "Save" %>
-<% end %>
+<%= stylesheet_link_tag "form/edit", :media => "all" %>
+<%= render 'shared/side_bar' %>
+
+<div class="edit_form">
+  <div class="edit">
+    <%= form_for(@user) do |f| %>
+      <p>Name</p>
+      <%= f.text_field :name, autofocus: true %>
+      <p>Introduce</p>
+      <%= f.text_area :introduce%>
+      <p>ProfileImage</p>
+      <%= attachment_image_tag @user, :profile_image, :fill, 300, 300 %>
+      <%= f.attachment_field :profile_image %>
+      <%= f.submit "Save", class: "save" %>
+    <% end %>
+  </div>
+</div>

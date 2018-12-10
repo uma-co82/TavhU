@@ -6,21 +6,47 @@ body {
 }
 
 .profile {
-	margin: 50px auto;
+  margin: 50px auto;
+  background-color: rgba(255,255,255,0.4);
 	width: 800px;
 }
-.attachment {
-	margin-left: 100px;
-	box-shadow: 20px 20px 20px -8px;
-	position:absolute;
+
+.profile_image {
+  border-radius: 50%;
+  height: 300px;
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px 0;
 }
+.stats {
+  text-align: center;
+}
+
 .profile_info {
-	width: 500px;
-	height: 200px;
-	background: #fff;
-	margin-left: 200px;
-	padding-top: 314px;
-	border-radius: 6%;
+  width: 100%;
+}
+.edit {
+  margin: 20px 0;
+}
+.name {
+  text-align: center;
+  font-size: 30px;
+}
+.editandmatching {
+  width: 400px;
+  margin: 0 auto;
+}
+.editbutton {
+  float: left;
+}
+.matching {
+  float: right;
+}
+.introduction {
+  text-align: center;
+  margin-top: 70px;
+  padding-bottom: 10px;
+  background-color: #fff;
 }
 
 #overlay {
@@ -43,31 +69,42 @@ body {
   z-index: 2
 }
 
-section.message_box {
-  padding: 10px;
-  overflow: scroll;
-  #messages {
-    height: 400px;
-  }
-}
-
-div.message_form {
-  padding-top: 10px;
-}
-
-#message_sender {
-  font-size: 1.1em;
-}
-
-#message_content {
-  font-size: 1.0em;
-}
-
-#chat {
-	width: 17%;
+.btn{
+  display: inline-block;
+  text-decoration: none;
+  color: #a29f7e;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 40px;
+  border-radius: 50%;
   text-align: center;
-  background-color: rgb(192, 247, 185);
-  display: none;
-  z-index: 2;
-  position: relative;
+  vertical-align: middle;
+  overflow: hidden;
+  font-weight: bold;
+  background-image: -webkit-linear-gradient(#e8e8e8 0%, #d6d6d6 100%);
+  background-image: linear-gradient(#e8e8e8 0%, #d6d6d6 100%);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+  border-bottom: solid 2px #b5b5b5;
+}
+.match {
+  color: #58bb29;
+}
+.btn:active {
+  background-image: -webkit-linear-gradient(#efefef 0%, #d6d6d6 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+  border-bottom: none;
+}
+
+#follow_form {
+  text-align: center;
+  padding-top: 23px;
+}
+.follow-btn {
+  font-size: 16px;
+  color: red;
+}
+.btn-primary {
+  color: blue;
 }

@@ -28,15 +28,6 @@ $(function() {
     })
   })
 
-// $(function() {
-//     $(document).on("ajax:success", ".fav_show", function(e) {
-//       if ($('#' + e.detail[0]).hasClass('fa fa-kiss-wink-heart')) {
-//         $('#' + e.detail[0]).removeClass('fa fa-kiss-wink-heart').addClass('fa fa-kiss-wink-heart out');
-//       } else {
-//     $('#' + e.detail[0]).removeClass('fa fa-kiss-wink-heart out').addClass('fa fa-kiss-wink-heart');
-//       }
-//     })
-//   })
 
 
 //sidebar
@@ -101,29 +92,18 @@ $(document).on('turbolinks:load', function(){
   }
 });
 
-// chat
-$(document).on('turbolinks:load', function(){
-  $('#chat_open').on('click', function() {
-    $('#overlay, #chat').fadeIn();
-  });
-  
-  $('#chat_close').on('click', function() {
-    $('#overlay, #chat').fadeOut();
-  });
-  
-  locateCenter();
-  $(window).resize(locateCenter);
 
-  function locateCenter() {
-    let w = $(window).width();
-    let h = $(window).height();
-    
-    let cw = $('#chat').outerWidth();
-    let ch = $('#chat').outerHeight();
-   
-    $('#chat').css({
-      'left': ((w - cw) / 2) + 'px',
-      'top': ((h - ch) / 2) + 'px'
-    });
-  }
+$(document).on('turbolinks:load', function(){
+  $('.open').on('click', function() {
+    var id= $(this).attr("id");
+    $('#overlay').fadeIn();
+    $('#modalWindow' + id ).fadeIn();
+  });
+  
+  $('.close').on('click', function() {
+    var se= $(this).attr("id");
+    $('#overlay').fadeOut();
+    $('#modalWindow' + se ).fadeOut();
+  });
+  
 });

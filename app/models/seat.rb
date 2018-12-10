@@ -4,7 +4,11 @@ class Seat < ApplicationRecord
   has_many :likes, dependent: :destroy
 	has_many :like_users, through: :likes, source: :user
 
-  def liked_by?(user) #いいねしているかどうか
+
+  scope :ok, -> { where("time >= ?", Time.now) }
+  scope :fill, -> { where("fill = ?", false)}
+
+  def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
 end

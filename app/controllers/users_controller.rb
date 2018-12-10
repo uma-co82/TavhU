@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   after_action :create_notifications, only: [:request_approval]
   helper_method :message_room_id
+  before_action :chat_before, only: [:chat]
 
 
   def show
@@ -13,6 +14,10 @@ class UsersController < ApplicationController
   def rikuesuto
     @user = User.find(params[:id])
     @quicks = Quick.where(friend_id: @user.id)
+  end
+
+  def rikuesuto_show
+    @quick = Quick.find(params[:request_id])
   end
 
   def request_reject
@@ -38,24 +43,24 @@ class UsersController < ApplicationController
     @quicks = Quick.where(user_id: @user.id)
   end
 
+  def quick_show
+    @quick = Quick.find(params[:quick_id])
+  end
+
+
   def chat
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
     @room_id = message_room_id(current_user, @user)
     @messages = Message.recent_in_room(@room_id)
   end
 
+  def chat_before
+    session[:user_id] = current_user.id
+  end
+
   def match
     @user = current_user
-    @users = @user.matchers
-    @rooms = Array.new
-    @all_messages = Array.new
-    for user in @users
-      @room_id = message_room_id(current_user, user)
-      @messages = Message.recent_in_room(@room_id)
-      @rooms.push(@room_id)
-      @all_messages.push(@messages)
-    end
-    @all_messages = @all_messages.flatten
+    @users = @user.matchers.order(created_at: :desc)
   end
 
   def edit
@@ -70,13 +75,13 @@ class UsersController < ApplicationController
 
   def following
     @user = User.find(params[:id])
-    @users = @user.followings
+    @users = @user.followings.order(created_at: :desc)
     render 'show_follow'
   end
 
   def followers
     @user = User.find(params[:id])
-    @users = @user.followers
+    @users = @user.followers.order(created_at: :desc)
     render 'show_follower'
   end
 

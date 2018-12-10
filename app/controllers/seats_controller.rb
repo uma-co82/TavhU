@@ -28,6 +28,12 @@ class SeatsController < ApplicationController
   def index_user
     @shop = Shop.find(params[:id])
     @seats = @shop.seats
+    @seat_time = Array.new
+    @seats.each do |seat|
+      seat_t = seat.time.to_date
+      @seat_time.push(seat_t)
+    end
+    @seat_time = @seat_time.uniq
   end
 
 
@@ -46,16 +52,16 @@ class SeatsController < ApplicationController
 
   def seat_like
     seat = Seat.find(params[:id])
-    @users = seat.like_users
+    @users = seat.like_users.shuffle
   end
 
   def seat_reserve
-    seat = Seat.find(params[:id])
+    seat = Seat.find(params[:seat_id])
     @quick = Quick.new
   end
 
   def seat_reserve_create
-    seat = Seat.find(params[:id])
+    seat = Seat.find(params[:seat_id])
     shop = seat.shop
     if seat.fill == true
       flash[:notice] = "もう埋まっています。"

@@ -1,7 +1,9 @@
 <div class="message" data-session="<%= session[:user_id] %>">
   <% user = User.find_by(id: message.from_id) %>
   <p class="<%= message.id %>" id="message_sender"><%= user.name %></p>
+  <div class="<%= message.id %>">
   <p class="<%= message.id %>" id="message_content"><%= message.content %></p>
+  </div>
   <script type="text/javascript">
     var from_id = <%= message.from_id %>;
     var current_user_id = $('.message').data('session');

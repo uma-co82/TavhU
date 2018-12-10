@@ -20,9 +20,44 @@ class ShopsController < ApplicationController
 	end
 
 	def index
-		@shops = Shop.all
+		@shops = Shop.page(params[:page])
+		@jp_prefectures = JpPrefecture::Prefecture.all
+		@tohokus = Array.new
+		@kantous = Array.new
+		@tyubus = Array.new
+		@kansais = Array.new
+		@tyugokus = Array.new
+		@sikokus = Array.new
+		@kyusyus = Array.new
+		for prefecture in @jp_prefectures
+			if prefecture.area == "北海道"
+				@tohokus.push(prefecture)
+			elsif prefecture.area == "東北"
+				@tohokus.push(prefecture)
+			elsif prefecture.area == "関東"
+				@kantous.push(prefecture)
+			elsif prefecture.area == "中部"
+				@tyubus.push(prefecture)
+			elsif prefecture.area == "関西"
+				@kansais.push(prefecture)
+			elsif prefecture.area == "中国"
+				@tyugokus.push(prefecture)
+			elsif prefecture.area == "四国"
+				@sikokus.push(prefecture)
+			else
+				@kyusyus.push(prefecture)
+			end
+		end
+		@genres = Genre.all
 	end
 
+	def index_prefecture
+		@shops = Shop.where(prefecture_code: params[:id]).page(params[:page])
+	end
+
+	def index_genre
+		@shops = Shop.where(genre_id: params[:id]).page(params[:page])
+	end
 	def show
 		@shop = Shop.find(params[:id])
 		@user = @shop.favorite_users
@@ -62,7 +97,7 @@ class ShopsController < ApplicationController
 
 	def shop_fav
 		@shop = Shop.find(params[:id])
-		@user = @shop.favorite_users
+		@user = @shop.favorite_users.shuffle
 	end
 
 	private

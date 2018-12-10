@@ -1,6 +1,5 @@
 <%= stylesheet_link_tag "nomiya/members", :media => "all" %>
 <%= render 'shared/side_bar/' %>
-<%= link_to "Back", :back %>
 <table class="users">
   <tr>
     <th> image </th><th> name </th>
@@ -17,7 +16,7 @@
   </td>
   <td>
     <% @room_id = message_room_id(current_user, user) %>
-    <%= link_to (user_chat_path(user_id: user.id, room_id: @room_id )), class: "btn" do %>
+    <%= link_to (user_chat_path(id: user.id, room_id: @room_id )), class: "btn" do %>
       <i class="fab fa-facebook-messenger face" ></i>
     <% end %>
   </td>
