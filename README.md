@@ -1,24 +1,9 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+HI everyone!
 
-Things you may want to cover:
+This is NOMITARINAI!
 
-* Ruby version
+飲食店、一般ユーザーの両方をターゲットとしたマッチングアプリです。
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+飲食店は空席を登録することができます。
+ユーザーは飲食店から空席を調べる事ができ、その空席に興味がある人同士でマッチングする事ができます。
