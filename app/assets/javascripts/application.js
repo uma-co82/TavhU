@@ -92,7 +92,7 @@ $(document).on('turbolinks:load', function(){
   }
 });
 
-
+// calendar
 $(document).on('turbolinks:load', function(){
   $('.open').on('click', function() {
     var id= $(this).attr("id");
@@ -104,6 +104,21 @@ $(document).on('turbolinks:load', function(){
     var se= $(this).attr("id");
     $('#overlay').fadeOut();
     $('#modalWindow' + se ).fadeOut();
+  });
+  
+});
+
+$(document).on('turbolinks:load', function(){
+  $('.open_new').on('click', function() {
+    var id= $(this).attr("id");
+    $('#overlay').fadeIn();
+    $('#new' + id ).fadeIn();
+  });
+  
+  $('.close_new').on('click', function() {
+    var se= $(this).attr("id");
+    $('#overlay').fadeOut();
+    $('#new' + se ).fadeOut();
   });
   
 });

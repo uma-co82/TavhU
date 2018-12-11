@@ -1,10 +1,6 @@
 class SeatsController < ApplicationController
   after_action :create_notifications, only: [:seat_reserve_create]
 
-  def new
-    @shop = Shop.find(params[:id])
-    @seat = Seat.new
-  end
 
   def create
     @shop = Shop.find(params[:id])
@@ -22,12 +18,19 @@ class SeatsController < ApplicationController
 
   def index
     @shop = Shop.find(params[:id])
-    @seats = @shop.seats
+    @seat = Seat.new
+    @seats = @shop.seats.fill
+    @seat_times = Array.new
+    @seats.each do |seat|
+      seat_time = seat.time.to_date
+      @seat_times.push(seat_time)
+    end
+    @seat_times = @seat_times.uniq
   end
 
   def index_user
     @shop = Shop.find(params[:id])
-    @seats = @shop.seats
+    @seats = @shop.seats.fill.ok
     @seat_time = Array.new
     @seats.each do |seat|
       seat_t = seat.time.to_date
@@ -77,7 +80,7 @@ class SeatsController < ApplicationController
   private
 
     def seat_params
-      params.require(:seat).permit(:time, :count, :fill, :shop_id)
+      params.require(:seat).permit(:time, :count, :fill, :shop_id, :privilege_id, :privilege_secound_id, :privilege_third_id)
     end
 
     def create_notifications

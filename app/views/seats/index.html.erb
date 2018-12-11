@@ -1,11 +1,46 @@
-<% @seats.each do |seat| %>
-<%= link_to "この時間に行きたい人", like_user_path(seat.id) %>
-<%= seat.time %>
-<%= seat.count %>
-<%= seat.shop.shop_name %>
-<% if seat.fill == false %>
-<p>まだ空いてる</p>
-<% else %>
-<p>埋まりました</p>
-<% end %>
+<%= stylesheet_link_tag "users/seat", :media => "all"%>
+
+<div id="overlay"></div>
+
+<h1>TavhU Events</h1>
+  <%= month_calendar(attribute: :time, eventes: @seats) do |date, seats| %>
+    <%= date.strftime("%Y年%m月%d日")%>
+    <div class="button">
+      <button class="open_new" id="<%= date %>">登録</button>
+      <% @date = date %>
+      <%= render 'new'%>
+    <% @seat_times.each do |seat|%>
+    <% if seat == date%>
+      <button class="open" id="<%= date %>">一覧</button>
+    <% end %>
+    <% end %>
+    </div>
+  <% end %>
+
+<% @seat_times.each do |seat_time| %>
+<div id="modalWindow<%= seat_time %>" class="modal">
+  <h3><%= seat_time.strftime("%Y年%m月%d日") %></h3>
+  <table border="1">
+    <tr>
+      <th><button class="close" id="<%= seat_time %>">close</button></th>
+    </tr>
+  <% @seats.each do |seat| %>
+    <tr>
+    <% if seat.time.to_date == seat_time %>
+      <td><%= seat.time.strftime("%H時%M分") %></td>
+      <td><%= seat.count %>名様</td>
+      <td><%= seat.likes.count %></td>
+      <td>
+        <%= Privilege.find(seat.privilege_id).content %><%= Privilege.find(seat.privilege_secound_id).content %><%= Privilege.find(seat.privilege_third_id).content %>
+      </td>
+      <% if seat.fill == false %>
+      <td>空席</td>
+      <% else %>
+      <td>詳細</td>
+      <% end %>
+      <% end %>
+    <% end %>
+    </tr>
+  </table>
+</div>
 <% end %>

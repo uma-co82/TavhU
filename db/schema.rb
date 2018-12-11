@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_083125) do
+ActiveRecord::Schema.define(version: 2018_12_11_115203) do
 
   create_table "authors", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -64,6 +64,13 @@ ActiveRecord::Schema.define(version: 2018_12_06_083125) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
+  create_table "privileges", force: :cascade do |t|
+    t.integer "shop_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "quicks", force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
@@ -100,6 +107,9 @@ ActiveRecord::Schema.define(version: 2018_12_06_083125) do
     t.integer "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "privilege_id"
+    t.integer "privilege_secound_id"
+    t.integer "privilege_third_id"
   end
 
   create_table "shops", force: :cascade do |t|
