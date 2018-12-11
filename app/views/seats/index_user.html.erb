@@ -6,8 +6,8 @@
 <h1>TavhU Events</h1>
   <%= month_calendar(attribute: :time, events: @seats) do |date, seats| %>
     <%= date.strftime("%Y年%m月%d日") %>
-    <% seats.each do |seat|%>
-    <% if seat.present? %>
+    <% @seat_time.each do |seat|%>
+    <% if seat == date %>
       <button class="open" id="<%= date %>">open</button>
     <% end %>
     <% end %>
@@ -46,8 +46,11 @@
         <td>満席</td>
       <% end %>
     <% end %>
-  <% end %>
     </tr>
+    <tr>
+        <td><ul><li><%= Privilege.find(seat.privilege_id).content %></li><li><%= Privilege.find(seat.privilege_secound_id).content %></li><li><%= Privilege.find(seat.privilege_third_id).content %></li></ul></td>
+    </tr>
+  <% end %>
   </table>
 </div>
 <% end %>

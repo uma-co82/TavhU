@@ -1,7 +1,11 @@
 <%= stylesheet_link_tag "form/signup", :media => "all" %>
-<h2>authors Log in</h2>
 
+<div class="signup">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <h2>authors Log in</h2>
+  
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -23,5 +27,5 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-
 <%= render "authors/shared/links" %>
+</div>

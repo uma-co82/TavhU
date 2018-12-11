@@ -10,25 +10,21 @@ class AuthorsController < ApplicationController
     params[:id]
     params[:shop_id]
     @shop = Shop.find(params[:shop_id])
-    @reservations = @shop.reservations
+    @privileges = @shop.privileges
+    @privilege = Privilege.new
   end
 
-  def reservation_update
-    params[:shop_id]
-    params[:reserve_id]
-    @shop = Shop.find(params[:shop_id])
-    reservation = Reservation.find(params[:reserve_id])
-    reservation.approval = true
-    reservation.save
-    redirect_to shop_show_path(@shop.id)
+  def privilege_create
+    @privilege = Privilege.new(shop_id: params[:id], content: params[:privilege][:content])
+    @privilege.save
+    redirect_to author_path(current_author)
   end
 
-  def reservation_delete
-    params[:shop_id]
-    params[:reserve_id]
-    @shop = Shop.find(params[:shop_id])
-    reservation = Reservation.find(params[:reserve_id])
-    reservation.destroy
-    redirect_to shop_show_path(@shop.id)
+  def privilege_destroy
+    @privilege = Privilege.find(params[:id])
+    @privilege.destroy
+    redirect_to author_path(current_author)
   end
+
+
 end

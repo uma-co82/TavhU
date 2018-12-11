@@ -10,7 +10,7 @@ class ShopsController < ApplicationController
 		@shop.author_id = current_author.id
 		@shop.genre_id = params[:shop][:genre_id]
 		@shop.station_id = params[:shop][:station_id]
-		@shop.save!
+		@shop.save
 		if @shop.save
 			redirect_to author_path(current_author.id)
 		else
@@ -68,18 +68,6 @@ class ShopsController < ApplicationController
 		@shop.destroy
 		render json: @shop.id
 		redirect_to author_path(current_author.id)
-	end
-
-	def reserve
-		@shop = Shop.find(params[:id])
-		@reservation = Reservation.new
-	end
-
-	def reserve_create
-		@shop = Shop.find(params[:id])
-		@reservation = Reservation.new(user_id: current_user.id, shop_id: @shop.id, start_time: DateTime.new(params[:reservation]["start_time(1i)"].to_i, params[:reservation]["start_time(2i)"].to_i, params[:reservation]["start_time(3i)"].to_i, params[:reservation]["start_time(4i)"].to_i, params[:reservation]["start_time(5i)"].to_i), member_count: params[:reservation][:member_count])
-		@reservation.save
-		redirect_to shops_path
 	end
 
 	def fav

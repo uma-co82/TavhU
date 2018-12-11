@@ -1,12 +1,10 @@
 <h1><%= @shop.shop_name %></h1>
-<% @reservations.each do |reservation| %>
-<%= reservation.start_time %>
-<%= reservation.member_count %>
-<%= reservation.user.name %>
-<% if reservation.approval == false %>
-<%= link_to "承認", reserve_update_path(shop_id: @shop.id, reserve_id: reservation.id), method: :patch %>
-<%= link_to "非承認", reserve_delete_path(shop_id: @shop.id, reserve_id: reservation.id), method: :delete %>
-<% else %>
-<p>承認済み</p>
+<% @privileges.each do |privilege| %>
+<%= privilege.content %>
 <% end %>
-<% end %>
+<h2>特典追加</h2>
+    <%= form_for @privilege, url: create_privilege_path(id: @shop.id) do |f| %>
+    <%= f.label :content, "特典"%>
+    <%= f.text_area :content %>
+    <%= f.submit "追加"%>
+    <% end %>

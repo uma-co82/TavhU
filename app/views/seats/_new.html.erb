@@ -1,0 +1,17 @@
+<div class="new_modal" id="new<%= @date %>">
+    <button class="close_new" id="<%= @date %>">close</button>
+    <%= form_for @seat, url: post_seat_path do |f| %>
+    <%= f.date_select :time, :default => @date %>
+    <%= f.label :time, "時間"%>
+    <%= f.time_select :time, :ignore_date => true, :default => Time.now %>
+    <%= f.label :count, "人数"%>
+    <%= f.number_field :count %>
+    <%= f.label :privilege_id, "特典1"%>
+    <%= f.collection_select :privilege_id, @shop.privileges, :id, :content, {:prompt => "Choose"} %>
+    <%= f.label :privilege_id, "特典2"%>
+    <%= f.collection_select :privilege_secound_id, @shop.privileges, :id, :content, {:prompt => "Choose"} %>
+    <%= f.label :privilege_id, "特典3"%>
+    <%= f.collection_select :privilege_third_id, @shop.privileges, :id, :content, {:prompt => "Choose"} %>
+    <%= f.submit "save"%>
+    <% end %>
+</div>
