@@ -6,7 +6,11 @@ body {
 }
 
 .shop {
-	width: 700px;
+	width: 800px;
+	margin: 50px auto;
+}
+.image {
+	width: 100%;
 	margin: 50px auto;
 }
 
@@ -15,7 +19,7 @@ body {
 }
 
 .shop_table {
-	width: 405px;
+	width: 555px;
 	margin: 0 auto;
 	border: 1px solid #dbdbdb;
 	table-layout: fixed;
@@ -43,12 +47,143 @@ i {
 	font-weight:900;
 }
 
-.fa-heart {
-	color: red;
-}
-.fa-heart-o:before {
-	content: "\f004";
+.fa-thumbs-up {
+	color: blue;
 }
 
+.fav{
+  display: inline-block;
+  text-decoration: none;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 29px;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  font-weight: bold;
+  background-image: -webkit-linear-gradient(#e8e8e8 0%, #d6d6d6 100%);
+  background-image: linear-gradient(#e8e8e8 0%, #d6d6d6 100%);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+  border-bottom: solid 2px #b5b5b5;
+}
+.fav:active {
+  background-image: -webkit-linear-gradient(#efefef 0%, #d6d6d6 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+  border-bottom: none;
+}
+
+form {
+	margin-bottom: 50px;
+}
+textarea {
+	display: block;
+	width: 320px;
+	height: 50px;
+	background: rgb(230, 236, 140);
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.5);
+	font-family: Source Sans Pro;
+	font-weight: lighter;
+  font-size: 14px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+	padding-left: 10px;
+	border-radius: 5px;
+}
+
+input[type="submit" i] {
+	width: 332px;
+	height: 50px;
+	font-size: 16px;
+	background: #000;
+	font-weight: lighter;
+	color: #fff;
+	border: 0px;
+	border-radius: 5px;
+}
+
+label {
+  color: #fff;
+  text-align: center;
+}
+
+form {
+  text-align: center;
+}
+
+.btn{
+  display: inline-block;
+  text-decoration: none;
+  color: #a29f7e;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 40px;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  font-weight: bold;
+  background-image: -webkit-linear-gradient(#e8e8e8 0%, #d6d6d6 100%);
+  background-image: linear-gradient(#e8e8e8 0%, #d6d6d6 100%);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+  border-bottom: solid 2px #b5b5b5;
+}
 
 
+.btn:active {
+  background-image: -webkit-linear-gradient(#efefef 0%, #d6d6d6 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+  border-bottom: none;
+}
+
+.delete_btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px #fa3b2d;
+  border-radius: 3px;
+  transition: .4s;
+  height: 40px;
+}
+
+.delete_btn:hover {
+  background: #fa3b2d;
+  color: white;
+}
+
+.favuser_btn {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  border: solid 2px #111742;
+  border-radius: 3px;
+  transition: .4s;
+  height: 30px;
+}
+.favuser_btn:hover {
+  background: red;
+  color: white;
+}
+
+.tavhu_btn {
+	float: right;
+	font-size: 23px;
+}
+
+.swiper-container {
+	width: 100%;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.swiper-slide {
+	background-position: center;
+	background-size: cover;
+	width: 300px;
+	height: 300px;
+}

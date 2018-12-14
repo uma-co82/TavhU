@@ -1,11 +1,21 @@
-<%= @author.email %>
-<table border="1">
+<%= stylesheet_link_tag "users/author", :media => "all" %>
+
+<h2><%= @author.email %>さんこんにちは</h2>
+
+<div class="link">
+  <%= link_to (new_shop_path) do %>
+    <button class="square_btn">新規出店</button>
+  <% end %>
+  <%= link_to (destroy_author_session_path), method: :delete do %>
+    <button class="logout_btn">Logout</button>
+  <% end %>
+</div>
+<table class="shop_table">
   <tr>
     <th>店名</th>
     <th>ジャンル</th>
     <th>最寄駅</th>
     <th>いいね数</th>
-    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,12 +26,21 @@
     <td><%= shop.genre.genre_name %></td>
     <td><%= shop.station.station_name %></td>
     <td><%= shop.favorites.count %></td>
-    <td><a>編集</a></td>
-    <td><%= link_to "予約一覧", shop_show_path(shop_id: shop.id, id: current_author.id) %></td>
-    <td><%= link_to "destory", shop_path(shop.id), method: :delete, data: { confirm: "本当に削除してもよろしいですか" }, class: "shop_delete", remote: true %></td>
-    <td><%= link_to "予約状況", seats_path(shop.id) %></td>
+    <td>
+      <%= link_to (shop_show_path(shop_id: shop.id, id: current_author.id)) do %>
+        <button class="show_btn">詳細</button>
+      <% end %>
+     </td>
+    <td>
+      <%= link_to (shop_path(shop.id)), method: :delete, data: { confirm: "本当に削除してもよろしいですか" }  do %>
+        <button class="delete_btn">削除</button>
+      <% end%>
+    </td>
+    <td>
+      <%= link_to (seats_path(shop.id)) do %>
+        <button class="quick_btn">予約状況</button>
+      <% end %>
+    </td>
   </tr>
     <% end %>
-<%= link_to "Logout", destroy_author_session_path, method: :delete %>
-<%= link_to "新規", new_shop_path %>
 </table>

@@ -27,28 +27,46 @@
       <td><%= seat.count %>名様</td>
       <% if seat.fill == false %>
         <td>予約可</td>
-        <td><%= link_to "この時間に行きたい人", like_user_path(seat.id) %></td>
-        <td><%= link_to "リクエストを送る", new_quick_path(id: seat.shop.id, seat_id: seat.id) %></td>
+        <td>
+          <%= link_to (like_user_path(seat.id)) do %>
+            <button class="favuser_btn">FavUser</button>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to (new_quick_path(id: seat.shop.id, seat_id: seat.id)) do %>
+            <button class="tavhu_btn">TabhU!!</button>
+          <% end %>
+        </td>
         <% if seat.liked_by?(current_user) %>
         <td>
           <%= link_to fav_seats_path(seat), class: "fav", remote: true do%>
-            <i class="fa fa-heart" id="<%= seat.id %>"></i>
+            <i class="fa-thumbs-up" id="<%= seat.id %>"></i>
           <% end %>
         </td>
         <% else %>
         <td>
           <%= link_to fav_seats_path(seat), class: "fav", remote: true do%>
-            <i class="fa fa-heart-o" id="<%= seat.id %>"></i>
+            <i class="far fa-thumbs-up" id="<%= seat.id %>"></i>
           <% end %>
         </td>
         <% end %>
       <% else %>
         <td>満席</td>
       <% end %>
+        <td>
+          <ul>
+          <% if seat.privilege_id.present?%>
+          <li><%= Privilege.find(seat.privilege_id).content %></li>
+          <% end %>
+          <% if seat.privilege_secound_id.present?%>
+          <li><%= Privilege.find(seat.privilege_secound_id).content %></li>
+          <% end %>
+          <% if seat.privilege_third_id.present?%>
+          <li><%= Privilege.find(seat.privilege_third_id).content %></li>
+          <% end %>
+          </ul>
+        </td>
     <% end %>
-    </tr>
-    <tr>
-        <td><ul><li><%= Privilege.find(seat.privilege_id).content %></li><li><%= Privilege.find(seat.privilege_secound_id).content %></li><li><%= Privilege.find(seat.privilege_third_id).content %></li></ul></td>
     </tr>
   <% end %>
   </table>

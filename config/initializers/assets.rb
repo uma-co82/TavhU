@@ -16,9 +16,11 @@ Rails.application.config.assets.precompile << 'users/quick'
 Rails.application.config.assets.precompile << 'users/quick_show'
 Rails.application.config.assets.precompile << 'users/chat'
 Rails.application.config.assets.precompile << 'users/seat'
+Rails.application.config.assets.precompile << 'users/notification'
+Rails.application.config.assets.precompile << 'users/author'
 Rails.application.config.assets.precompile << 'form/reserve'
 Rails.application.config.assets.precompile << 'form/edit'
-
+Rails.application.config.assets.precompile << 'swiper.css'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.

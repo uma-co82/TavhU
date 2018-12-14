@@ -1,1 +1,7 @@
+<%= stylesheet_link_tag "users/notification", :media => "all"%>
+<%= render 'shared/side_bar'%>
+
+<% if @notifications.count == 0%>
+  <li class="notification_table" style="list-style: none;">通知はありません</li>
+<% end %>
 <%= render @notifications.where(read: false) %>

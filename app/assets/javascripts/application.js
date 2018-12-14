@@ -20,10 +20,10 @@
 //top_page
 $(function() {
     $(document).on("ajax:success", ".fav", function(e) {
-      if ($('#' + e.detail[0]).hasClass('fa-heart')) {
-        $('#' + e.detail[0]).removeClass('fa-heart').addClass('fa-heart-o');
+      if ($('#' + e.detail[0]).hasClass('far fa-thumbs-up')) {
+        $('#' + e.detail[0]).removeClass('far fa-thumbs-up').addClass('fa-thumbs-up');
       } else {
-    $('#' + e.detail[0]).removeClass('fa-heart-o').addClass('fa-heart');
+    $('#' + e.detail[0]).removeClass('fa-thumbs-up').addClass('far fa-thumbs-up');
       }
     })
   })
@@ -60,37 +60,10 @@ $(document).on('turbolinks:load', function(){
 (function() {
   $(function() {
     $(document).on('ajax:complete', '.shop_delete', function(event, ajax, status) {
-      $('#shop_'+shop.id).fadeOut();
+      $('#shop_'+ shop.id).fadeOut();
     });
   });
 }).call(this);
-
-//reservation
-$(document).on('turbolinks:load', function(){
-  $('#open').on('click', function() {
-    $('#overlay, #modalWindow').fadeIn();
-  });
-  
-  $('#clo').on('click', function() {
-    $('#overlay, #modalWindow').fadeOut();
-  });
-  
-  locateCenter();
-  $(window).resize(locateCenter);
-
-  function locateCenter() {
-    let w = $(window).width();
-    let h = $(window).height();
-    
-    let cw = $('#modalWindow').outerWidth();
-    let ch = $('#modalWindow').outerHeight();
-   
-    $('#modalWindow').css({
-      'left': ((w - cw) / 2) + 'px',
-      'top': ((h - ch) / 2) + 'px'
-    });
-  }
-});
 
 // calendar
 $(document).on('turbolinks:load', function(){
@@ -119,6 +92,21 @@ $(document).on('turbolinks:load', function(){
     var se= $(this).attr("id");
     $('#overlay').fadeOut();
     $('#new' + se ).fadeOut();
+  });
+  
+});
+
+$(document).on('turbolinks:load', function(){
+  $('.open_fill').on('click', function() {
+    var id= $(this).attr("id");
+    $('#overlay').fadeIn();
+    $('#fill' + id ).fadeIn();
+  });
+  
+  $('.close_fill').on('click', function() {
+    var se= $(this).attr("id");
+    $('#overlay').fadeOut();
+    $('#fill' + se ).fadeOut();
   });
   
 });

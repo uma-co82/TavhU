@@ -1,4 +1,15 @@
 <%= stylesheet_link_tag "users/seat", :media => "all"%>
+<% if @seat.errors.any? %>
+  <div id="error_esplanation" class="alert alert-danger">
+    <ul>
+      <p style="font-size: 20px">You have
+      <%= @seat.errors.full_messages.count %>errors.</p>
+      <% @seat.errors.full_messages.each do |message|%>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <div id="overlay"></div>
 
@@ -12,6 +23,7 @@
     <% @seat_times.each do |seat|%>
     <% if seat == date%>
       <button class="open" id="<%= date %>">一覧</button>
+      <button class="open_fill" id="<%= date %>">fill</button>
     <% end %>
     <% end %>
     </div>
@@ -20,27 +32,74 @@
 <% @seat_times.each do |seat_time| %>
 <div id="modalWindow<%= seat_time %>" class="modal">
   <h3><%= seat_time.strftime("%Y年%m月%d日") %></h3>
-  <table border="1">
-    <tr>
-      <th><button class="close" id="<%= seat_time %>">close</button></th>
+  <button class="close" id="<%= seat_time %>">close</button>
+  <table class="quick_table">
+  <% @seats.where(fill: false).each do |seat| %>
+    <tr class="quick">
+    <% if seat.time.to_date == seat_time %>
+      <td><%= seat.time.strftime("%H時%M分") %></td>
+      <td><%= seat.count %>名様</td>
+      <td><%= seat.likes.count %></td>
+      <td>空席</td>
+      <td>
+        <%= link_to (seat_destroy_path(seat.id)), method: :delete do %>
+          <button class="delete_btn">削除</button>
+        <% end %>
+      </td>
+      <td>
+        <ul>
+        <% if seat.privilege_id.present? %>
+          <li><%= Privilege.find(seat.privilege_id).content %></li>
+        <% end %>
+        <% if seat.privilege_secound_id.present? %>
+          <li><%= Privilege.find(seat.privilege_secound_id).content %></li>
+        <% end %>
+        <% if seat.privilege_third_id.present? %>
+          <li><%= Privilege.find(seat.privilege_third_id).content %></li>
+        <% end %>
+        </ul>
+      </td>
+      <% end %>
     </tr>
-  <% @seats.each do |seat| %>
-    <tr>
+    <% end %>
+  </table>
+</div>
+<% end %>
+
+
+
+<% @seat_times.each do |seat_time| %>
+<div id="fill<%= seat_time %>" class="modal">
+  <h3><%= seat_time.strftime("%Y年%m月%d日") %></h3>
+  <button class="close_fill" id="<%= seat_time %>">close</button>
+  <table class="quick_table">
+  <% @seats.where(fill: true).each do |seat| %>
+    <tr class="quick">
     <% if seat.time.to_date == seat_time %>
       <td><%= seat.time.strftime("%H時%M分") %></td>
       <td><%= seat.count %>名様</td>
       <td><%= seat.likes.count %></td>
       <td>
-        <%= Privilege.find(seat.privilege_id).content %><%= Privilege.find(seat.privilege_secound_id).content %><%= Privilege.find(seat.privilege_third_id).content %>
+        <%= link_to (approval_seat_path(id: @shop.id, seat_id: seat.id)) do %>
+          <button class="show_btn">詳細</button>
+        <% end %>
       </td>
-      <% if seat.fill == false %>
-      <td>空席</td>
-      <% else %>
-      <td>詳細</td>
+      <td>
+        <ul>
+        <% if seat.privilege_id.present? %>
+          <li><%= Privilege.find(seat.privilege_id).content %></li>
+        <% end %>
+        <% if seat.privilege_secound_id.present? %>
+          <li><%= Privilege.find(seat.privilege_secound_id).content %></li>
+        <% end %>
+        <% if seat.privilege_third_id.present? %>
+          <li><%= Privilege.find(seat.privilege_third_id).content %></li>
+        <% end %>
+        </ul>
+      </td>
       <% end %>
-      <% end %>
-    <% end %>
     </tr>
+    <% end %>
   </table>
 </div>
 <% end %>

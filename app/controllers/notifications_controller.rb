@@ -5,12 +5,6 @@ class NotificationsController < ApplicationController
     @notifications = current_user.notifications
  end
 
-  def link_through
-    @notification = Notification.find(params[:id])
-    @notification.destroy
-    redirect_to user_path @notification.user
-  end
-
   def index_read
     for @notification in @notifications do
      @notification.destroy

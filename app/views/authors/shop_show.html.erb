@@ -1,10 +1,65 @@
-<h1><%= @shop.shop_name %></h1>
-<% @privileges.each do |privilege| %>
-<%= privilege.content %>
+<%= stylesheet_link_tag "swiper"%>
+<%= stylesheet_link_tag "nomiya/show", :media => "all"%>
+
+<% if flash.present?%>
+  <div id="error_esplanation" class="alert alert-danger">
+    <ul>
+      <li><%= flash[:notice] %></li>
+    </ul>
+  </div>
 <% end %>
-<h2>特典追加</h2>
-    <%= form_for @privilege, url: create_privilege_path(id: @shop.id) do |f| %>
-    <%= f.label :content, "特典"%>
-    <%= f.text_area :content %>
-    <%= f.submit "追加"%>
-    <% end %>
+
+<div class="shop">
+  <div class="shop_image">
+    <%= render "shops/swiper"%>
+  </div>
+
+  <%= link_to (edit_shop_path(@shop.id)), class: "btn" do %>
+    <i class="fa fa-edit"></i>    
+  <% end %>
+  
+  <table class="shop_table">
+    <tbody>
+      <tr>
+        <th>店名</th> <td><%= @shop.shop_name%></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td>〒<%= @shop.postcode %> <%= @shop.prefecture.name %><%= @shop.address %><%= @shop.address_street %><%= @shop.address_building%></td>
+      </tr>
+      <tr>
+        <th>最寄駅</th>
+        <td><%= @shop.station.station_name %></td>
+      </tr>
+      <tr>
+        <th>店舗紹介</th>
+        <td><%= @shop.shop_info %></td>
+      </tr>
+      <tr>
+        <th>ジャンル</th>
+        <td><%= @shop.genre.genre_name %></td>
+      </tr>
+      <tr>
+        <th>特典</th>
+        <td>
+          <ul>
+            <% @privileges.each do |privilege| %>
+              <li><%= privilege.content %>
+                <%= link_to (destroy_privilege_path(shop_id: @shop.id, privilege_id: privilege.id)), method: :delete do %>
+                  <button class="delete_btn">削除</button>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<%= form_for @privilege, url: create_privilege_path(id: @shop.id) do |f| %>
+  <%= f.label :content, "特典"%>
+  <%= f.text_area :content %>
+  <%= f.submit "追加"%>
+<% end %>
+    

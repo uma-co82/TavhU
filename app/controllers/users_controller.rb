@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   after_action :create_notifications, only: [:request_approval]
   helper_method :message_room_id
   before_action :chat_before, only: [:chat]
@@ -99,7 +100,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-    	params.require(:user).permit(:name, :profile_image, :introduce)
+    	params.require(:user).permit(:name, :profile_image, :introduce, :phone_number, photos_photos: [])
     end
 
     def create_notifications

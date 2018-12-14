@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'author/:id/shops/:shop_id' =>  'authors#shop_show', as: "shop_show"
   post 'shops/:id/seat/post' => 'seats#create', as: "post_seat"
   get 'shops/:id/seats' => 'seats#index', as: "seats"
+  get 'shops/:id/seats/:seat_id' => 'authors#approval_seat' , as: "approval_seat"
   # chat
   mount ActionCable.server => '/cable'
   get 'notifications/link_through'
@@ -21,18 +22,17 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
-  resources :shops, only: [:new, :create, :index, :show, :destroy]
+  resources :shops
   post 'shops/:id/privilege/post' => "authors#privilege_create", as: "create_privilege"
-  delete 'shops/:id/privilege/:privilege_id' => "authors#privilege_destroy", as: "destroy_privilege"
+  delete 'shops/:shop_id/privileges/:privilege_id' => "authors#privilege_destroy", as: "destroy_privilege"
   get 'shops/prefecture/:id' => 'shops#index_prefecture', as: "prefecture"
   get 'shops/genre/:id' => 'shops#index_genre', as: "genre"
   get 'shops/fav/:id' => 'shops#fav', as: "fav_shops"
   get 'seats/fav/:id' => 'seats#fav', as: "fav_seats"
+  delete 'seats/:id' => 'seats#destroy', as: "seat_destroy"
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-  get 'notifications/:id/link_through', to: 'notifications#link_through',
-  as: :link_through
   get 'notifications', to: 'notifications#index'
   get 'shops/:id/fav' => 'shops#shop_fav', as: "fav_user"
   get 'seats/:id/fav' => 'seats#seat_like', as: "like_user"
@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get 'users/:id/matching' => 'users#match', as: "match_user"
   get 'shops/:id/user/seat/:seat_id/quick' => 'seats#seat_reserve', as: "new_quick"
   post 'shops/:id/user/seat/:seat_id/quick/post' => 'seats#seat_reserve_create', as: "post_quick"
+  delete 'quick/:id' => 'seats#quick_delete', as: "quick_delete"
   get 'users/:id/chat/:room_id' => 'users#chat', as: "user_chat"
   delete 'users/:id/request/destroy' => 'users#request_reject', as: "request_reject"
   patch 'users/:id/request/approval' => 'users#request_approval', as: "request_approval"

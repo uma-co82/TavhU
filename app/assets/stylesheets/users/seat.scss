@@ -1,81 +1,81 @@
-.simple-calendar {
-  table {
-    -webkit-border-horizontal-spacing: 0px;
-    -webkit-border-vertical-spacing: 0px;
-    background-color: rgba(0, 0, 0, 0);
-    border: 1px solid rgb(221, 221, 221);
-    border-collapse: collapse;
-    box-sizing: border-box;
-    max-width: 100%;
-    width: 100%;
-  }
+// .simple-calendar {
+//   table {
+//     -webkit-border-horizontal-spacing: 0px;
+//     -webkit-border-vertical-spacing: 0px;
+//     background-color: rgba(0, 0, 0, 0);
+//     border: 1px solid rgb(221, 221, 221);
+//     border-collapse: collapse;
+//     box-sizing: border-box;
+//     max-width: 100%;
+//     width: 100%;
+//   }
 
-  tr {
-    border-collapse: collapse;
-  }
+//   tr {
+//     border-collapse: collapse;
+//   }
 
-  th {
-    padding: 6px;
-    border-bottom: 2px solid rgb(221, 221, 221);
-    border-collapse: collapse;
-    border-left: 1px solid rgb(221, 221, 221);
-    border-right: 1px solid rgb(221, 221, 221);
-    border-top: 0px none rgb(51, 51, 51);
-    box-sizing: border-box;
-    text-align: left;
-  }
+//   th {
+//     padding: 6px;
+//     border-bottom: 2px solid rgb(221, 221, 221);
+//     border-collapse: collapse;
+//     border-left: 1px solid rgb(221, 221, 221);
+//     border-right: 1px solid rgb(221, 221, 221);
+//     border-top: 0px none rgb(51, 51, 51);
+//     box-sizing: border-box;
+//     text-align: left;
+//   }
 
-  td {
-    padding: 6px;
-    vertical-align: top;
-    width: 14%;
+//   td {
+//     padding: 6px;
+//     vertical-align: top;
+//     width: 14%;
 
-    border: 1px solid #ddd;
-    border-top-color: rgb(221, 221, 221);
-    border-top-style: solid;
-    border-top-width: 1px;
-    border-right-color: rgb(221, 221, 221);
-    border-right-style: solid;
-    border-right-width: 1px;
-    border-bottom-color: rgb(221, 221, 221);
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-left-color: rgb(221, 221, 221);
-    border-left-style: solid;
-    border-left-width: 1px;
-  }
+//     border: 1px solid #ddd;
+//     border-top-color: rgb(221, 221, 221);
+//     border-top-style: solid;
+//     border-top-width: 1px;
+//     border-right-color: rgb(221, 221, 221);
+//     border-right-style: solid;
+//     border-right-width: 1px;
+//     border-bottom-color: rgb(221, 221, 221);
+//     border-bottom-style: solid;
+//     border-bottom-width: 1px;
+//     border-left-color: rgb(221, 221, 221);
+//     border-left-style: solid;
+//     border-left-width: 1px;
+//   }
 
-  .day {
-    height: 80px;
-  }
+//   .day {
+//     height: 80px;
+//   }
 
-  .wday-0 {}
-  .wday-1 {}
-  .wday-2 {}
-  .wday-3 {}
-  .wday-4 {}
-  .wday-5 {}
-  .wday-6 {}
+//   .wday-0 {}
+//   .wday-1 {}
+//   .wday-2 {}
+//   .wday-3 {}
+//   .wday-4 {}
+//   .wday-5 {}
+//   .wday-6 {}
 
-  .today {
-    background: #FFFFC0
-  }
+//   .today {
+//     background: #FFFFC0
+//   }
 
-  .past {}
-  .future {}
+//   .past {}
+//   .future {}
 
-  .start-date {}
+//   .start-date {}
 
-  .prev-month {
-    background: #DDD;
-  }
-  .next-month {
-    background: #DDD;
-  }
-  .current-month {}
+//   .prev-month {
+//     background: #DDD;
+//   }
+//   .next-month {
+//     background: #DDD;
+//   }
+//   .current-month {}
 
-  .has-events {}
-}
+//   .has-events {}
+// }
 body {
 	margin: 0px;
 	padding: 0px;
@@ -104,6 +104,8 @@ h1 {
 }
 .quick_table {
   background-color: #dedede;
+  width: -webkit-fill-available;
+  text-align: center;
 }
 
 .modal {
@@ -112,11 +114,13 @@ h1 {
   z-index: 2;
   top: 50%;
   left: 50%;
-  width: 30%;
+  width: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(210, 243, 238);
   height: 500px;
   padding: 3em;
+  border: solid 5px white;
+  border-radius: 10px;
 }
 
 .quick {
@@ -137,20 +141,18 @@ h1 {
   text-align: center;
 }
 
-
 .open_new {
   width: 84px;
   display: inline-block;
   padding: 0.3em 1em;
   text-decoration: none;
-  color: #f7ff00;
   background-color: #a29f7e;
   border: solid 2px #f7ff00;
   border-radius: 3px;
   transition: .4s;
 }
 .open_new:hover {
-  background: #67c5ff;
+  background: #f5df61;
   color: black;
 }
 .open {
@@ -158,7 +160,7 @@ h1 {
   display: inline-block;
   padding: 0.3em 1em;
   text-decoration: none;
-  color: #03ffe0;
+  color: black;
   background-color: #a29f7e;
   border: solid 2px #03ffe0;
   border-radius: 3px;
@@ -166,6 +168,21 @@ h1 {
 }
 .open:hover {
   background: #67c5ff;
+  color: black;
+}
+.open_fill {
+  width: 84px;
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  background-color: #a29f7e;
+  border: solid 2px red;
+  border-radius: 3px;
+  transition: .4s;
+}
+.open_fill:hover {
+  background: rgb(236, 108, 108);
   color: black;
 }
 
@@ -229,4 +246,85 @@ label {
 
 form {
   text-align: center;
+}
+
+select {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.delete_btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px #fa3b2d;
+  border-radius: 3px;
+  transition: .4s;
+  height: 40px;
+}
+
+.delete_btn:hover {
+  background: #fa3b2d;
+  color: white;
+}
+
+.close, .close_fill, .close_new {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  border: solid 2px #111742;
+  border-radius: 3px;
+  transition: .4s;
+  height: 30px; 
+}
+.close:hover, .close_fill:hover, .close_new:hover {
+  background: #111742;
+  color: white;
+}
+
+.fa-thumbs-up {
+  color: blue;
+}
+
+i {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+   font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+text-align: center;
+font-size: 30px;
+}
+
+.favuser_btn {
+  width: 84px;
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  background-color: #65e4e9;
+  border: solid 2px red;
+  border-radius: 3px;
+  transition: .4s;
+}
+.favuser_btn:hover {
+  background: rgb(236, 108, 108);
+  color: #fff;
+}
+.tavhu_btn {
+  width: 84px;
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  background-color: #dbff3a;
+  border: solid 2px red;
+  border-radius: 3px;
+  transition: .4s;
+}
+.tavhu_btn:hover {
+  background: rgb(236, 108, 108);
+  color: #fff;
 }

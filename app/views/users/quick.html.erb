@@ -14,12 +14,21 @@
     <% if quick.request == false %>
       承認されていません
     <% else %>
-      承認済み
+      承認されました。 当日は楽しんでください！
     <% end %>
     </td>
     <td>
-      <%= link_to "詳細", quick_show_path(id: current_user.id, quick_id: quick.id)%>
+      <%= link_to (quick_show_path(id: current_user.id, quick_id: quick.id)) do%>
+        <button class="show_btn">詳細</button>
+      <% end %>
     </td>
+    <% if quick.seat.time < Time.zone.now %>
+    <td>
+      <%= link_to (quick_delete_path(id: quick.id)), method: :delete do %>
+        <button class="delete_btn">削除</button>
+      <% end %>
+    </td>
+    <% end %>
   </tr>
   <% end %>
 </table>

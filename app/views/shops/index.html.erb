@@ -1,86 +1,7 @@
 <%= stylesheet_link_tag "nomiya/index", :media => "all" %>
 <%= render 'shared/side_bar' %>
 
-<ul class="nav">
-<li><a href="#">Home</a>
-</li>
-<li><a href="#">Prefecture</a>
-<ul>
-<li><a>北海道,東北</a>
-	<ul>
-	<% @tohokus.each do |prefecture| %>
-		<li><%= link_to (prefecture_path(id: prefecture.code)) do %><%= prefecture.name %><% end %></li>
-	<% end %>
-	</ul>
-</li>
-<li><a>関東</a>
-	<ul>
-	<% @kantous.each do |prefecture| %>
-		<li><%= link_to (prefecture_path(id: prefecture.code)) do %><%= prefecture.name %><% end %></li>
-	<% end %>
-	</ul>
-</li>
-<li><a>中部</a>
-	<ul>
-	<% @tyubus.each do |prefecture| %>
-		<li><%= link_to (prefecture_path(id: prefecture.code)) do %><%= prefecture.name %><% end %></li>
-	<% end %>
-	</ul>
-</li>
-<li><a>関西</a>
-	<ul>
-	<% @kansais.each do |prefecture| %>
-		<li><%= link_to (prefecture_path(id: prefecture.code)) do %><%= prefecture.name %><% end %></li>
-	<% end %>
-	</ul>
-</li>
-<li><a>中国</a>
-	<ul>
-	<% @tyugokus.each do |prefecture| %>
-		<li><%= link_to (prefecture_path(id: prefecture.code)) do %><%= prefecture.name %><% end %></li>
-	<% end %>
-	</ul>
-</li>
-<li><a>四国</a>
-	<ul>
-	<% @sikokus.each do |prefecture| %>
-		<li><%= link_to (prefecture_path(id: prefecture.code)) do %><%= prefecture.name %><% end %></li>
-	<% end %>
-	</ul>
-</li>
-<li><a>九州</a>
-	<ul>
-	<% @kyusyus.each do |prefecture| %>
-		<li><%= link_to (prefecture_path(id: prefecture.code)) do %><%= prefecture.name %><% end %></li>
-	<% end %>
-	</ul>
-</li>
-</ul>
-</li>
-<li><a>Genres</a>
-<ul>
-<% @genres.each do |genre| %>
-<li><%= link_to (genre_path(id: genre.id)) do %><%= genre.genre_name %><% end %></li>
-<% end %>
-</ul>
-</li>
-<li><a>Stations</a>
-<ul>
-<li><a href="#">d1</a></li>
-<li><a href="#">d1</a>
-<ul>
-<li><a href="#">d2</a></li>
-<li><a href="#">d2</a>
-<ul class="left">
-<li><a href="#">d3</a></li>
-<li><a href="#">d3</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<%= render 'prefecture'%>
 		<div>
 			<h1>TaverN</h1>
 			<p class="hitokoto">行きたいところを探そう</p>
@@ -121,14 +42,15 @@
 							</div>
 								<% if shop.favorite_by?(current_user) %>
 										<%= link_to fav_shops_path(shop), class: "fav", remote: true do %>
-										<i class="fa-heart" id="<%= shop.id %>"></i>
+										<i class="fa-thumbs-up" id="<%= shop.id %>"></i>
 									<% end %>
+										<%= shop.favorites.count%>
 								<% else %>
 										<%= link_to fav_shops_path(shop), class: "fav", remote: true do %>
-										<i class="fa-heart-o" id="<%= shop.id %>"></i>
+										<i class="far fa-thumbs-up" id="<%= shop.id %>"></i>
 									<% end %>
+										<%= shop.favorites.count %>
 								<% end %>
-								<%= shop.favorites.count %>
 						</div>
 					</div>
 					<div class="shop_info">

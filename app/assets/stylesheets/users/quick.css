@@ -9,6 +9,7 @@ body {
   width: 800px;
   margin: 30px auto;
   background-color: #dedede;
+  text-align: center;
 }
 
 .quick {
@@ -19,4 +20,33 @@ body {
 .quick_shop {
   background-color:#e4e2e2;
 	border: 1px solid #f5df61;
+}
+
+.show_btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px green;
+  border-radius: 3px;
+  transition: .4s;
+  height: 40px;
+}
+.show_btn:hover {
+  background: rgb(84, 187, 115);
+  color: white;
+}
+.delete_btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px #fa3b2b;
+  border-radius: 3px;
+  transition: .4s;
+  height: 40px;
+}
+.delete_btn:hover {
+  background: #fd756b;
+  color: #fff;
 }
