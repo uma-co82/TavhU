@@ -1,0 +1,46 @@
+<div class="mainvisual">
+  <div class="mainvisual-inner container">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: "noimage.png"%>
+        </div>
+            <% @user.photos.each do |photo|%>
+        <div class="swiper-slide"><%= attachment_image_tag photo, :photo, :fill, 300, 300 %></div>
+        <% end %>
+      </div><!-- .swiper-wrapper -->
+
+      <div class="swiper-pagination"></div>
+
+      <%# <div class="swiper-button-prev">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44">
+          <path class="arrow arrow-left" d="M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z" />
+        </svg>
+      </div><!-- .swiper-button-prev --> %>
+
+      <%# <div class="swiper-button-next">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44">
+          <path class="arrow arrow-right" d="M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z" />
+        </svg>
+      </div><!-- .swiper-button-next --> %>
+    </div><!-- .swiper-container -->
+  </div><!-- .mainvisual-inner -->
+</div>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows : true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+  </script>

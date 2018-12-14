@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :quicks, dependent: :destroy
+  #follow
   has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
   has_many :followings, through: :following_relationships
   has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
@@ -18,7 +19,12 @@ class User < ApplicationRecord
   "follower_id", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :following, through: :active_relationships
-  has_many :reservations
+  #phone_number
+  VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
+  validates :phone_number, presence: true, format: { with: VALID_PHONE_REGEX }
+  #photo
+  has_many :photos, dependent: :destroy
+  accepts_attachments_for :photos, attachment: :photo
 
   #chat
   has_many :from_messages, class_name: "Message",

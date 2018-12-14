@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_11_115203) do
+ActiveRecord::Schema.define(version: 2018_12_14_021843) do
 
   create_table "authors", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 2018_12_11_115203) do
 
   create_table "genres", force: :cascade do |t|
     t.string "genre_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.text "image_id"
+    t.integer "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,6 +71,13 @@ ActiveRecord::Schema.define(version: 2018_12_11_115203) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.text "photo_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "privileges", force: :cascade do |t|
     t.integer "shop_id"
     t.text "content"
@@ -88,16 +102,6 @@ ActiveRecord::Schema.define(version: 2018_12_11_115203) do
     t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
     t.index ["following_id"], name: "index_relationships_on_following_id"
-  end
-
-  create_table "reservations", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "shop_id"
-    t.datetime "start_time"
-    t.integer "member_count"
-    t.boolean "approval", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "seats", force: :cascade do |t|
@@ -154,6 +158,7 @@ ActiveRecord::Schema.define(version: 2018_12_11_115203) do
     t.string "profile_image_id"
     t.boolean "author"
     t.text "introduce"
+    t.integer "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,0 +1,128 @@
+body {
+	margin: 0px;
+	padding: 0px;
+  font-family: Impact Sans Pro;
+	background-color: #a29f7e;
+}
+
+h2 {
+  text-align: center;
+}
+
+.link {
+  width: 20%;
+  margin: 20px auto;
+}
+
+.square_btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px #07fd30;
+  border-radius: 3px;
+  transition: .4s;
+  height: 60px;
+}
+
+.square_btn:hover {
+  background: #5a8ea7;
+  color: white;
+}
+
+.logout_btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px #d61c89;
+  border-radius: 3px;
+  transition: .4s;
+  float: right;
+  height: 60px;
+}
+
+.logout_btn:hover {
+  background: #011522;
+  color: white;
+}
+
+.shop_table {
+  width: 50%;
+  margin: 50px auto;
+  text-align: center;
+}
+p {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin: 60px auto 40px;
+}
+th {
+  background: #5a8ea7;
+  border: solid 1px #ccc;
+  color: #fff;
+  padding: 10px;
+}
+td {
+  border: solid 1px #ccc;
+  padding: 10px;
+  background: #d4e6f9;
+}
+
+.delete_btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px #fa3b2d;
+  border-radius: 3px;
+  transition: .4s;
+  height: 40px;
+}
+.delete_btn:hover {
+  background: #fd756b;
+  color: white;
+}
+.show_btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px green;
+  border-radius: 3px;
+  transition: .4s;
+  height: 40px;
+}
+.show_btn:hover {
+  background: rgb(84, 187, 115);
+  color: white;
+}
+.quick_btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px blue;
+  border-radius: 3px;
+  transition: .4s;
+  height: 40px;
+}
+.quick_btn:hover {
+  background: rgb(0, 153, 255);
+  color: white;
+}
+.approval_btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px yellow;
+  border-radius: 3px;
+  transition: .4s;
+  height: 40px;
+}
+.approval_btn:hover {
+  background: yellow;
+  color: white;
+}

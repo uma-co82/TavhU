@@ -1,0 +1,43 @@
+<%= stylesheet_link_tag "users/quick_show", :media => "all" %>
+
+<table class="shop_table">
+  <tbody>
+    <tr>
+      <th>お名前</th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th>連絡先</th>
+      <td>
+        <ul>
+          <li>Phone: 0<%= @user.phone_number %></li>
+          <li>Email: <%= @user.email %></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>人数</th>
+      <td><%= @seat.count %>名様</td>
+    </tr>
+    <tr>
+      <th>時間</th>
+      <td><%= @seat.time.strftime("%Y年%m月%d日 %H時%M分") %></td>
+    </tr>
+    <tr>
+      <th>特典</th>
+      <td>
+        <ul>
+          <% if @seat.privilege_id.present?%>
+            <li><%= Privilege.find(@seat.privilege_id).content %></li>
+          <% end %>
+          <% if @seat.privilege_secound_id.present?%>
+            <li><%= Privilege.find(@seat.privilege_id).content %></li>
+          <% end %>
+          <% if @seat.privilege_third_id.present?%>
+            <li><%= Privilege.find(@seat.privilege_third_id).content %></li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>

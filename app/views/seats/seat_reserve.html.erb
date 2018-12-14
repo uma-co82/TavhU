@@ -1,6 +1,16 @@
 <%= stylesheet_link_tag "form/reserve"%>
 <%= render 'shared/side_bar'%>
 
+<% if @quick.errors.any?%>
+  <div id="error_esplanation" class="alert alert-danger">
+    <ul>
+      <%= @quick.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="select_form">
   <%= form_for @quick, url: post_quick_path do |f| %>
   <%= f.collection_select :friend_id, current_user.matchers, :id, :name, {:prompt => "Choose"}, {class: "form_user"} %>

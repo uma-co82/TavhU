@@ -27,5 +27,15 @@
       <th>時間</th>
       <td><%= @quick.seat.time.strftime("%Y年%m月%d日 %H時%M分") %></td>
     </tr>
+    <tr>
+      <th>ステータス</th>
+      <td>
+      <% if @quick.request == false %>
+          承認されていません
+        <% else %>
+          承認されました。 当日は楽しんでください！
+        <% end %>
+      </td>
+    </tr>
   </tbody>
 </table>

@@ -3,15 +3,15 @@
     <%= form_for @seat, url: post_seat_path do |f| %>
     <%= f.date_select :time, :default => @date %>
     <%= f.label :time, "時間"%>
-    <%= f.time_select :time, :ignore_date => true, :default => Time.now %>
+    <%= f.time_select :time, :ignore_date => true, :default => Time.zone.now %><br>
     <%= f.label :count, "人数"%>
-    <%= f.number_field :count %>
+    <%= f.select :count, [["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]]%><br>
     <%= f.label :privilege_id, "特典1"%>
-    <%= f.collection_select :privilege_id, @shop.privileges, :id, :content, {:prompt => "Choose"} %>
+    <%= f.collection_select :privilege_id, @shop.privileges, :id, :content, {:prompt => "Choose"} %><br>
     <%= f.label :privilege_id, "特典2"%>
-    <%= f.collection_select :privilege_secound_id, @shop.privileges, :id, :content, {:prompt => "Choose"} %>
+    <%= f.collection_select :privilege_secound_id, @shop.privileges, :id, :content, {:prompt => "Choose"} %><br>
     <%= f.label :privilege_id, "特典3"%>
-    <%= f.collection_select :privilege_third_id, @shop.privileges, :id, :content, {:prompt => "Choose"} %>
+    <%= f.collection_select :privilege_third_id, @shop.privileges, :id, :content, {:prompt => "Choose"} %><br>
     <%= f.submit "save"%>
     <% end %>
 </div>

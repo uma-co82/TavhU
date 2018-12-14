@@ -1,11 +1,11 @@
+<%= stylesheet_link_tag "swiper"%>
 <%= stylesheet_link_tag "users/show", :media => "all" %>
 <%= render 'shared/side_bar' %>
 
-<div id="overlay"></div>
 
 <div class="profile">
   <div class="profile_image">
-    <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: "noimage.png"%>
+    <%= render 'swiper'%>
   </div>
   <div class="profile_info">
     <div class="edit">
@@ -32,23 +32,5 @@
       <p><%= @user.introduce %></p>
     </div>
     </div>
-  </div>
-  <button id="open">予約一覧</button>
-  <div id="modalWindow">
-    <button id="clo">close</button>
-    <table>
-      <tr>
-        <th>店名</th>
-        <th>日時</th>
-        <th>人数</th>
-      </tr>
-      <% @user.reservations.each do |r| %>
-      <tr>
-          <td><%= r.shop.shop_name%></td>
-          <td><%= r.start_time %></td>
-          <td><%= r.member_count%></td>
-      </tr>
-      <% end %>
-    </table>
   </div>
 </div>

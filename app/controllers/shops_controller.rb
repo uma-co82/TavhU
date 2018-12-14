@@ -3,6 +3,7 @@ class ShopsController < ApplicationController
 
 	def new
 		@shop = Shop.new
+		@shop.images.build
 	end
 
 	def create
@@ -14,8 +15,21 @@ class ShopsController < ApplicationController
 		if @shop.save
 			redirect_to author_path(current_author.id)
 		else
-			@shop = Shop.new
 			render "new"
+		end
+	end
+
+	def edit
+		@shop = Shop.find(params[:id])
+	end
+
+	def update
+		@shop = Shop.find(params[:id])
+		@shop.update(shop_params)
+		if @shop.save
+			redirect_to author_url(current_author)
+		else
+			render 'edit'
 		end
 	end
 
@@ -66,7 +80,6 @@ class ShopsController < ApplicationController
 	def destroy
 		@shop = Shop.find(params[:id])
 		@shop.destroy
-		render json: @shop.id
 		redirect_to author_path(current_author.id)
 	end
 
@@ -91,7 +104,7 @@ class ShopsController < ApplicationController
 	private
 
 	 def shop_params
-	 	params.require(:shop).permit(:shop_name, :shop_image, :shop_info, :genre_id, :station_id, :postcode, :prefecture_code, :address, :address_street, :address_building)
+	 	params.require(:shop).permit(:shop_name, :shop_image, :shop_info, :genre_id, :station_id, :postcode, :prefecture_code, :address, :address_street, :address_building, images_images: [])
 	 end
 
 end
