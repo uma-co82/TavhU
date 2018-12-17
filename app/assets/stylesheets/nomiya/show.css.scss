@@ -10,7 +10,8 @@ body {
 	margin: 50px auto;
 }
 .image {
-	width: 100%;
+  width: 100%;
+  height: 200px;
 	margin: 50px auto;
 }
 
@@ -20,7 +21,7 @@ body {
 
 .shop_table {
 	width: 555px;
-	margin: 0 auto;
+	margin: 50px auto;
 	border: 1px solid #dbdbdb;
 	table-layout: fixed;
 	word-break: break-all;
@@ -186,4 +187,86 @@ form {
 	background-size: cover;
 	width: 300px;
 	height: 300px;
+}
+#modalWindowreview {
+  position: fixed;
+  display: none;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 25%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(210, 243, 238);
+  height: 500px;
+  padding: 3em;
+  border: solid 5px white;
+  border-radius: 10px;
+  overflow-y: auto;
+  max-height: 90%;
+}
+
+#overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: none;
+  z-index: 1;
+}
+
+.review_table ul {
+  list-style: none;
+  padding-left: 0;
+}
+.review_list {
+  border-top: 1px solid #ccc;
+  padding: 15px 0;
+}
+
+.content {
+  font-size: 12px;
+}
+
+.open {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px green;
+  border-radius: 3px;
+  transition: .4s;
+  height: 30px;
+}
+.open:hover {
+  background: rgb(84, 187, 115);
+  color: white;
+}
+
+#modalWindow_newreview {
+  position: fixed;
+  display: none;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  height: 500px;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 3em;
+  transform: translate(-50%, -50%);
+  background-color: rgba(145, 201, 228, 0.5);
+}
+
+.new_reviewform {
+  margin-top: 70px;
+}
+
+.field {
+  margin-bottom: 50px;
+}
+
+.review_form {
+  height: 170px;
 }

@@ -5,14 +5,21 @@ class Shop < ApplicationRecord
 	has_many :seats, dependent: :destroy
 	has_many :privileges, dependent: :destroy
 	has_many :images, dependent: :destroy
+	has_many :reviews, dependent: :destroy
 	accepts_attachments_for :images, attachment: :image
 	belongs_to :genre
 	belongs_to :station
 	belongs_to :author
-	validates :shop_info, length: { in: 20..76}
+	validates :shop_info, length: { maximum: 600 }
 	validates :shop_name, presence: true
 	validates :shop_info, presence: true
-
+	validates :genre_id, presence: true
+	validates :station_id, presence: true
+	validates :address, presence: true
+	validates :postcode, presence: true
+	validates :prefecture_code, presence: true
+	validates :address_street, presence: true 
+	
 	validate :check_shop_count
 
 
@@ -37,4 +44,13 @@ class Shop < ApplicationRecord
 	def favorite_by?(user)
 		favorites.where(user_id: user.id).exists?
 	end
+
+	def self.search(search)
+		if search
+			joins(:station).includes(:station).where("stations.station_name LIKE ?", "%#{search}%")
+		else
+			all
+		end
+	end
+
 end

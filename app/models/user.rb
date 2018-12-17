@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   attachment :profile_image
   has_many :favorites, dependent: :destroy
+  has_many :shops, through: :favorites
+  has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :quicks, dependent: :destroy
   #follow
@@ -22,6 +24,9 @@ class User < ApplicationRecord
   #phone_number
   VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
   validates :phone_number, presence: true, format: { with: VALID_PHONE_REGEX }
+  validates :email, presence: true
+  validates :introduce, presence: true, length: { maximum: 300 }
+  validates :name, presence: true
   #photo
   has_many :photos, dependent: :destroy
   accepts_attachments_for :photos, attachment: :photo

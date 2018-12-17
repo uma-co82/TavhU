@@ -21,6 +21,7 @@ Rails.application.config.assets.precompile << 'users/author'
 Rails.application.config.assets.precompile << 'form/reserve'
 Rails.application.config.assets.precompile << 'form/edit'
 Rails.application.config.assets.precompile << 'swiper.css'
+Rails.application.config.assets.precompile += %w( jquery.raty.js )
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.

@@ -33,7 +33,7 @@ class AuthorsController < ApplicationController
     else
       @shop = Shop.find(params[:id])
       @privileges = @shop.privileges
-      flash[:notice] = "特典の登録は5件まで可能です。"
+      flash[:sign] = "特典の登録は5件まで可能です。"
       render 'shop_show'
     end
   end

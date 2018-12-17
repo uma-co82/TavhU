@@ -1,5 +1,6 @@
 class ShopsController < ApplicationController
 	before_action :authenticate_author!, only:[:new, :create, :destroy]
+	before_action :authenticate_user!, only: [:index]
 
 	def new
 		@shop = Shop.new
@@ -34,7 +35,8 @@ class ShopsController < ApplicationController
 	end
 
 	def index
-		@shops = Shop.page(params[:page])
+		@shops = Shop.find(Favorite.group(:shop_id).order('count(shop_id) desc').pluck(:shop_id))
+		@shops = Kaminari.paginate_array(@shops).page(params[:page])
 		@jp_prefectures = JpPrefecture::Prefecture.all
 		@tohokus = Array.new
 		@kantous = Array.new
@@ -72,9 +74,30 @@ class ShopsController < ApplicationController
 	def index_genre
 		@shops = Shop.where(genre_id: params[:id]).page(params[:page])
 	end
+
+	def search_station
+		@shops = Shop.search(params[:search]).page(params[:page])
+	end
+
+	def search_station_genre
+		@shops = Shop.search(params[:search]).where(genre_id:params[:id]).page(params[:page])
+	end
+
 	def show
 		@shop = Shop.find(params[:id])
-		@user = @shop.favorite_users
+		@review = Review.new
+		@reviews = Review.where(shop_id: @shop.id).limit(5)
+		@average = @reviews.average(:star)
+	end
+
+	def review_create
+		@review = Review.new(user_id: current_user.id, shop_id: params[:id], content: params[:review][:content], star: params[:review][:star])
+		if @review.save
+			redirect_to shop_url(params[:id])
+		else
+			@shop = Shop.find(params[:id])
+			render 'show'
+		end
 	end
 
 	def destroy

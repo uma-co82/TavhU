@@ -23,7 +23,7 @@
     <% @seat_times.each do |seat|%>
     <% if seat == date%>
       <button class="open" id="<%= date %>">一覧</button>
-      <button class="open_fill" id="<%= date %>">fill</button>
+      <button class="open_fill" id="<%= date %>">確定</button>
     <% end %>
     <% end %>
     </div>
@@ -84,6 +84,13 @@
           <button class="show_btn">詳細</button>
         <% end %>
       </td>
+      <% if seat.time < Time.zone.now %>
+      <td>
+        <%= link_to (seat_destroy_path(seat.id)), method: :delete do %>
+          <button class="delete_btn">削除</button>
+        <% end %>
+      </td>
+      <% end %>
       <td>
         <ul>
         <% if seat.privilege_id.present? %>

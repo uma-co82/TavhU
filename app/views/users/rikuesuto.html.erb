@@ -1,25 +1,59 @@
 <%= stylesheet_link_tag "users/quick", :media => "all" %>
 <%= render 'shared/side_bar' %>
 
+<% if @quicks.count == 5%>
+  <div id="error_esplanation" class="alert alert-danger">
+    <ul>
+      <li>リクエストを削除しなければ、これ以上リクエストを受け付ける事ができません。</li>
+    </ul>
+  </div>
+<% end %>
+<% if flash[:sign].present?%>
+  <div id="error_esplanation" class="alert alert-danger">
+    <ul>
+      <li><%= flash[:sign] %></li>
+    </ul>
+  </div>
+<% end %>
 <table class="quick_table">
   <% @quicks.each do |quick| %>
   <tr class="quick">
     <td class="quick_shop">
       <%= quick.seat.shop.shop_name %>
     </td>
+    <td class="today">
+      <%= quick.seat.time.strftime("%m月%d日 %H時%M分") %>
+    </td>
     <td>
       <%= User.find(quick.user_id).name %>さんからお誘いが来ています。
     </td>
-    <td>
       <% if quick.request == false %>
-        <%= link_to "承認", request_approval_path(user_id: current_user.id, quick_id: quick.id), method: :patch%>
-        <%= link_to "断る", request_reject_path(user_id: current_user.id, quick_id: quick.id), method: :delete%>
+      <td>
+        <%= link_to (request_approval_path(user_id: current_user.id, quick_id: quick.id)), method: :patch do%>
+          <button class="approval_btn">承認</button>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to (request_reject_path(user_id: current_user.id, quick_id: quick.id)), method: :delete do%>
+          <button class="delete_btn">拒否</button>
+        <% end %>
+      </td>
       <% else %>
-        <p>承認済み</p>
+      <td>
+       <i class="fas fa-star" style="color: #ff0000;"></i>
+      </td>
+      <% if quick.seat.time < Time.zone.now %>
+      <td>
+        <%= link_to (request_reject_path(user_id: current_user.id, quick_id: quick.id)), method: :delete do%>
+          <button class="delete_btn">削除</button>
+        <% end %>
+      </td>
       <% end %>
-    </td>
+      <% end %>
     <td>
-      <%= link_to "詳細", rikuesuto_show_path(id: current_user.id, request_id: quick.id) %>
+      <%= link_to (rikuesuto_show_path(id: current_user.id, request_id: quick.id)) do %>
+        <button class="show_btn">詳細</button>
+      <% end %>
     </td>
   </tr>
   <% end %>

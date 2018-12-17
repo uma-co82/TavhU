@@ -18,11 +18,15 @@ Rails.application.routes.draw do
     member do
       get 'rikuesuto'
       get 'quick'
+      get 'favorite_shops'
       get :following, :followers
     end
   end
   resources :relationships, only: [:create, :destroy]
+  get 'shops/search' => 'shops#search_station', as: "search_station"
+  get 'shops/search/:search/genre/:id' => 'shops#search_station_genre', as: "search_station_genre"
   resources :shops
+  post 'shops/:id/review_create' => "shops#review_create", as: "shop_review_create"
   post 'shops/:id/privilege/post' => "authors#privilege_create", as: "create_privilege"
   delete 'shops/:shop_id/privileges/:privilege_id' => "authors#privilege_destroy", as: "destroy_privilege"
   get 'shops/prefecture/:id' => 'shops#index_prefecture', as: "prefecture"
@@ -40,7 +44,7 @@ Rails.application.routes.draw do
   get 'users/:id/matching' => 'users#match', as: "match_user"
   get 'shops/:id/user/seat/:seat_id/quick' => 'seats#seat_reserve', as: "new_quick"
   post 'shops/:id/user/seat/:seat_id/quick/post' => 'seats#seat_reserve_create', as: "post_quick"
-  delete 'quick/:id' => 'seats#quick_delete', as: "quick_delete"
+  delete 'quick/:quick_id' => 'seats#quick_delete', as: "quick_delete"
   get 'users/:id/chat/:room_id' => 'users#chat', as: "user_chat"
   delete 'users/:id/request/destroy' => 'users#request_reject', as: "request_reject"
   patch 'users/:id/request/approval' => 'users#request_approval', as: "request_approval"

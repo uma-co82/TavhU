@@ -79,17 +79,18 @@ class SeatsController < ApplicationController
     shop = seat.shop
     @quick = Quick.new(user_id: current_user.id, friend_id: params[:quick][:friend_id], seat_id: seat.id)
     if seat.fill == true
-      flash[:notice] = "もう埋まっています。"
+      flash[:sign] = "もう埋まっています。"
       render 'seat_reserve'
     elsif @quick.save
       redirect_to quick_user_path(current_user.id)
     else 
+      seat = Seat.find(params[:seat_id])
       render 'seat_reserve'
     end
   end
 
   def quick_delete
-    @quick = Quic.find(params[:id])
+    @quick = Quick.find(params[:quick_id])
     @quick.destroy
     redirect_to quick_user_url(current_user.id)
   end

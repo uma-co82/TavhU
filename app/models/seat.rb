@@ -3,6 +3,9 @@ class Seat < ApplicationRecord
   has_many :quicks, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
+  validates :time, presence: true
+  validates :count, presence: true
+  
   validate :check_seat_count
 
   scope :ok, -> { where("time >= ?", Time.now) }

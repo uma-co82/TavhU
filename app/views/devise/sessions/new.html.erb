@@ -4,7 +4,7 @@
   <div class="overlay">
     <!-- <div class="logo"><img src="/assets/logo.png" height="500px" width="500px"/></div> -->
     <div class="intro">
-      <button class="myBtn" onclick="fadeOut()">NOMINIIKU</button>
+      <button class="myBtn" onclick="fadeOut()">TavhU</button>
     </div>
   </div>
 
@@ -12,10 +12,7 @@
 
 
 
-<div class="container">
-  <div class="row">
-    <div>
-<div class="signup">
+<div class="signup signin">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
@@ -44,9 +41,6 @@
 <% end %>
 <%= render "devise/shared/links" %>
 <%= link_to "Authors Log In", new_author_session_path %>
-</div>
-  </div>
-</div>
 </div>
   <script>
 

@@ -1,7 +1,19 @@
 <%= stylesheet_link_tag "swiper"%>
 <%= stylesheet_link_tag "nomiya/show", :media => "all" %>
+<%= javascript_include_tag "jquery.raty" %>
 <%= render 'shared/side_bar' %>
 
+
+<% if @review.errors.any?%>
+	<div id="error_esplanation" class="alert alert-danger">
+		<ul>
+			<li>レビューは一度までです。</li>
+			<%= @review.errors.full_messages%>
+		<ul>
+	</div>
+<% end %>
+
+<div id="overlay"></div>
 <div class="shop">
 	<div class="shop_image">
 		<%= render 'swiper'%>
@@ -54,6 +66,10 @@
 			</td>
 		</tr>
 		<tr>
+			<th><button class="open" id="review">review</button></th>
+			<td><div id="star2"></div><button class="open_newreview">レビューする</button></td>
+		</tr>
+		<tr>
 			<th></th>
 			<td>
 				<%= link_to (fav_user_path) do %>
@@ -63,4 +79,67 @@
 		</tr>
 		</tbody>
 	</table>
+</div>
+	<iframe
+  width="100%"
+  height="450"
+  frameborder="0" style="border:0"
+  src=<%= "https://www.google.com/maps/embed/v1/search?key=AIzaSyCvuyEmVcre1biBXlp1WOxteGflk5TR_Kw&q=#{@shop.prefecture.name}+#{@shop.address}+#{@shop.address_street}"%> allowfullscreen>
+</iframe>
+
+<div id="modalWindow_newreview">
+	<button class="close_newreview">close</button>
+	<%= form_for @review, url: shop_review_create_path(id: @shop.id) do |f| %>
+	<div class="new_reviewform">
+		<div class="field" id="star">
+				<%= f.hidden_field :star, id: :review_star %>
+		</div>
+			<%= f.text_area :content, class: "review_form"  %><br>
+			<%= f.submit %>
+	</div>
+	<% end %>
+</div>
+
+<script>
+	$('#star').raty({
+		starOff:  '<%= asset_path('star-off-big.png') %>',
+		starOn : '<%= asset_path('star-on-big.png') %>',
+		scoreName: 'review[star]' ,
+	});
+
+	$('#star2').raty({
+		size     : 36,
+		starOff:  '<%= asset_path('star-off.png') %>',
+		starOn : '<%= asset_path('star-on.png') %>',
+		starHalf : '<%= asset_path('star-half.png') %>',
+		scoreName: 'review[star]' ,
+		readOnly: true,
+		score: '<%= @average %>',
+		half: true
+	});
+</script>
+
+<div id="modalWindowreview">
+	<button class="close" id="review">close</button>
+	<div class="review_table">
+		<ul>
+			<% @reviews.each do |review| %>
+				<li class="review_list">
+					<div><%= review.user.name %></div>
+					<div><div class="star3<%= review.id %>"></div></div>
+					<div><p class="content"><%= review.content %></p></div>
+					<script>
+						$('.star3<%= review.id %>').raty({
+						size     : 36,
+						starOff:  '<%= asset_path('star-off.png') %>',
+						starOn : '<%= asset_path('star-on.png') %>',
+						scoreName: 'review[star]' ,
+						readOnly: true,
+						score: '<%= review.star %>'
+					});
+					</script>
+				</li>
+			<% end %>
+		</ul>
+	</div>
 </div>

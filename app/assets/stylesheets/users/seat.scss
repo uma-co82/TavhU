@@ -121,6 +121,8 @@ h1 {
   padding: 3em;
   border: solid 5px white;
   border-radius: 10px;
+  overflow-y: auto;
+  max-height: 90%;
 }
 
 .quick {
@@ -327,4 +329,18 @@ font-size: 30px;
 .tavhu_btn:hover {
   background: rgb(236, 108, 108);
   color: #fff;
+}
+.show_btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px green;
+  border-radius: 3px;
+  transition: .4s;
+  height: 40px;
+}
+.show_btn:hover {
+  background: rgb(84, 187, 115);
+  color: white;
 }

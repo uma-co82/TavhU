@@ -2,11 +2,10 @@ body {
 	margin: 0px;
 	padding: 0px;
   font-family: Impact Sans Pro;
-	background-color: #a29f7e;
+  background-color: #a29f7e;
 }
 
 .quick_table {
-  width: 800px;
   margin: 30px auto;
   background-color: #dedede;
   text-align: center;
@@ -48,5 +47,20 @@ body {
 }
 .delete_btn:hover {
   background: #fd756b;
+  color: #fff;
+}
+
+.approval_btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px #50dfff;
+  border-radius: 3px;
+  transition: .4s;
+  height: 40px;
+}
+.approval_btn:hover {
+  background: #226cce;
   color: #fff;
 }

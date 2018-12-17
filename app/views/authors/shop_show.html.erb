@@ -1,10 +1,10 @@
 <%= stylesheet_link_tag "swiper"%>
 <%= stylesheet_link_tag "nomiya/show", :media => "all"%>
 
-<% if flash.present?%>
+<% if flash[:sign].present?%>
   <div id="error_esplanation" class="alert alert-danger">
     <ul>
-      <li><%= flash[:notice] %></li>
+      <li><%= flash[:sign] %></li>
     </ul>
   </div>
 <% end %>
