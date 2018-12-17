@@ -3,13 +3,11 @@
     <ul>
       <p style="font-size: 20px;">You have
       <%= @shop.errors.full_messages.count %>errors.</p>
-      <%= @shop.errors.full_messages.each do |message|%>
+      <% @shop.errors.full_messages.each do |message|%>
         <li><%= message %></li>
       <% end %>
     </ul>
   </div>
-<% end %>
-<% if @shop.images.errors.any?%>
 <% end %>
 
 <div class="edit_form">

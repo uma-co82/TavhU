@@ -7,6 +7,9 @@
     <td class="quick_shop">
       <%= quick.seat.shop.shop_name %>
     </td>
+    <td class="today">
+      <%= quick.seat.time.strftime("%m月%d日 %H時%M分") %>
+    </td>
     <td>
       <%= User.find(quick.friend_id).name %>さんへのリクエスト。
     </td>
@@ -14,7 +17,7 @@
     <% if quick.request == false %>
       承認されていません
     <% else %>
-      承認されました。 当日は楽しんでください！
+      <i class="fas fa-star" style="color: #ff0000;"></i>"当日は楽しんでください！
     <% end %>
     </td>
     <td>
@@ -24,7 +27,7 @@
     </td>
     <% if quick.seat.time < Time.zone.now %>
     <td>
-      <%= link_to (quick_delete_path(id: quick.id)), method: :delete do %>
+      <%= link_to (quick_delete_path(id: current_user.id, quick_id: quick.id)), method: :delete do %>
         <button class="delete_btn">削除</button>
       <% end %>
     </td>

@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery
+//= require jquery.raty
 //= require turbolinks
 //= require_tree .
 //= require_self
@@ -107,6 +108,34 @@ $(document).on('turbolinks:load', function(){
     var se= $(this).attr("id");
     $('#overlay').fadeOut();
     $('#fill' + se ).fadeOut();
+  });
+  
+});
+
+
+// review
+$(document).on('turbolinks:load', function(){
+  $('.openreview').on('click', function() {
+    $('#overlay').fadeIn();
+    $('#modalWindowreview').fadeIn();
+  });
+  
+  $('.closereview').on('click', function() {
+    $('#overlay').fadeOut();
+    $('#modalWindowreview').fadeOut();
+  });
+  
+});
+
+$(document).on('turbolinks:load', function(){
+  $('.open_newreview').on('click', function() {
+    $('#overlay').fadeIn();
+    $('#modalWindow_newreview').fadeIn();
+  });
+  
+  $('.close_newreview').on('click', function() {
+    $('#overlay').fadeOut();
+    $('#modalWindow_newreview').fadeOut();
   });
   
 });

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_14_021843) do
+ActiveRecord::Schema.define(version: 2018_12_16_115443) do
 
   create_table "authors", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -104,6 +104,15 @@ ActiveRecord::Schema.define(version: 2018_12_14_021843) do
     t.index ["following_id"], name: "index_relationships_on_following_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "shop_id"
+    t.integer "user_id"
+    t.text "content"
+    t.integer "star"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "seats", force: :cascade do |t|
     t.datetime "time"
     t.integer "count"
@@ -153,10 +162,8 @@ ActiveRecord::Schema.define(version: 2018_12_14_021843) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin", default: false
     t.string "profile_image"
     t.string "profile_image_id"
-    t.boolean "author"
     t.text "introduce"
     t.integer "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true

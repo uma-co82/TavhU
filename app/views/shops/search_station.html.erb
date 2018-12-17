@@ -1,0 +1,13 @@
+<%= stylesheet_link_tag "swiper"%>
+<%= stylesheet_link_tag "nomiya/index", :media => "all"%>
+<%= render 'shared/side_bar'%>
+<ul class="nav_genre">
+<li><a>Genres</a>
+<ul>
+<% Genre.all.each do |genre| %>
+<li><%= link_to (search_station_genre_path(id: genre.id, search: params[:search])) do %><%= genre.genre_name %><% end %></li>
+<% end %>
+</ul>
+</li>
+</ul>
+<%= render 'shop_all'%>

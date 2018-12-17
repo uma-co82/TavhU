@@ -63,17 +63,13 @@
 </li>
 <li><a>Stations</a>
 <ul>
-<li><a href="#">d1</a></li>
-<li><a href="#">d1</a>
-<ul>
-<li><a href="#">d2</a></li>
-<li><a href="#">d2</a>
-<ul class="left">
-<li><a href="#">d3</a></li>
-<li><a href="#">d3</a></li>
-</ul>
-</li>
-</ul>
+<li>
+	<a>
+		<%= form_tag(search_station_path, :method => 'get') do %>
+			<%= text_field_tag :search %>
+			<%= submit_tag 'Search', :station_name => nil %>
+		<% end %>
+	</a>
 </li>
 </ul>
 </li>

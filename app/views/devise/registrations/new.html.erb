@@ -3,10 +3,10 @@
 
 <div class="signup">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
 
   <h2>Signup</h2>
 
+  <%= devise_error_messages! %>
   <%= f.label :email, "Email"%>
   <div class="field">
     <%= f.email_field :email, autofocus: true, autocomplete: "email"%>

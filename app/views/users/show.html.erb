@@ -20,6 +20,11 @@
           <i class="fa fa-edit"></i>
           <% end %>
         </div>
+        <div style="float: right">
+          <%= link_to (favorite_shops_user_path(@user)), class: "btn shop" do%>
+            <i class="fa fa-star"></i>
+          <% end %>
+        </div>
         <div class="matching">
           <%= link_to (match_user_path(@user)), class: "btn match" do %>
           <i class="fa fa-users"></i>

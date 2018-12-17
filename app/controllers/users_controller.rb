@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def rikuesuto
     @user = User.find(params[:id])
-    @quicks = Quick.where(friend_id: @user.id)
+    @quicks = Quick.where(friend_id: @user.id).joins(:seat).includes(:seat).order("seats.time asc")
   end
 
   def rikuesuto_show
@@ -31,17 +31,27 @@ class UsersController < ApplicationController
   def request_approval
     @user = User.find(params[:user_id])
     @quick = Quick.find(params[:quick_id])
-    @quick.request = true
-    @quick.save
     @seat = @quick.seat
-    @seat.fill = true
-    @seat.save
-    redirect_to rikuesuto_user_path(@user.id)
+    if @seat.fill == true
+      @quick.destroy
+      flash[:sign] = "このご予約はすでに埋まっています。"
+      redirect_to rikuesuto_user_path(@user.id)
+    else 
+      @quick.request = true
+      @quick.save
+      @seat.fill = true
+      @seat.save
+      redirect_to rikuesuto_user_path(@user.id)
+    end
+  end
+
+  def favorite_shops
+    @shops = current_user.shops.page(params[:page])
   end
 
   def quick
     @user = User.find(params[:id])
-    @quicks = Quick.where(user_id: @user.id)
+    @quicks = Quick.where(user_id: @user.id).joins(:seat).includes(:seat).order("seats.time asc")
   end
 
   def quick_show

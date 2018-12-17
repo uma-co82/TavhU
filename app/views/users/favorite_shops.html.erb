@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag "users/quick", :media => "all"%>
+<%= render 'shared/side_bar'%>
+
+<table class="quick_table" style="width: 70%;">
+  <tr>
+    <th></th>
+    <th>店名</th>
+    <th>住所</th>
+    <th>いいね数</th>
+  </tr>
+<% @shops.each do |shop|%>
+  <tr class="quick">
+    <td>
+      <%= attachment_image_tag shop, :shop_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+    </td>
+    <td>
+      <%= link_to shop_path(shop.id) do%>
+      <%= shop.shop_name %>
+    </td>
+    <td>
+      <%= shop.prefecture.name %><%= shop.address%><%= shop.address_street%><%= shop.address_building %>
+    </td>
+    <td>
+      <%= shop.favorites.count %>
+    </td>
+  </tr>
+<% end %>
+</table>
