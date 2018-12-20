@@ -1,7 +1,7 @@
 <ul class="nav">
-<li><a href="#">Home</a>
+<li><a class="iphone_ver">Home</a>
 </li>
-<li><a href="#">Prefecture</a>
+<li><a class="iphone_ver">Prefecture</a>
 <ul>
 <li><a>北海道,東北</a>
 	<ul>
@@ -54,14 +54,14 @@
 </li>
 </ul>
 </li>
-<li><a>Genres</a>
+<li><a class="iphone_ver">Genres</a>
 <ul>
 <% @genres.each do |genre| %>
 <li><%= link_to (genre_path(id: genre.id)) do %><%= genre.genre_name %><% end %></li>
 <% end %>
 </ul>
 </li>
-<li><a>Stations</a>
+<li><a class="iphone_ver">Stations</a>
 <ul>
 <li>
 	<a>
@@ -73,7 +73,7 @@
 </li>
 </ul>
 </li>
-<li><a>NearShops</a>
+<li><a class="iphone_ver">NearShops</a>
 <ul>
 <li>
 	<a>

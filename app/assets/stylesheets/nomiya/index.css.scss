@@ -338,7 +338,15 @@ i {
     width: 20%;
   }
   .nav li a {
-    width: auto;
+    width: 75px;
+    font-size: 10px;
+    height: auto;
+  }
+  .nav li ul li ul {
+    left: 37px;
+  }
+  input {
+    width: 92%;
   }
    .shop_all {
      width: 100%;
@@ -376,5 +384,9 @@ i {
    .top_image {
      height: 405px;
      margin-bottom: 20px;
+   }
+   .nav_genre {
+     margin: 71px auto;
+     left: 60%;
    }
 }

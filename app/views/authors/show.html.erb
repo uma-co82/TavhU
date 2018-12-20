@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag "users/author", :media => "all" %>
+<%= render 'shared/author_iphone_menu'%>
 
 <h2><%= @author.email %>さんこんにちは</h2>
 
@@ -12,13 +13,13 @@
 </div>
 <table class="shop_table">
   <tr>
-    <th>店名</th>
-    <th>ジャンル</th>
-    <th>最寄駅</th>
-    <th>いいね数</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th class="iphone_add">店名</th>
+    <th class="iphone_add">ジャンル</th>
+    <th class="iphone_add">最寄駅</th>
+    <th class="iphone_add">いいね数</th>
+    <th class="iphone_none"></th>
+    <th class="iphone_none"></th>
+    <th class="iphone_none"></th>
   </tr>
     <% @shops.each do |shop| %>
   <tr>

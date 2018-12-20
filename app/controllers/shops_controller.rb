@@ -1,6 +1,8 @@
 class ShopsController < ApplicationController
-	before_action :authenticate_author!, only:[:new, :create, :destroy]
-	before_action :authenticate_user!, only: [:index]
+	before_action :authenticate_author!, only:[:new, :create, :destroy, :edit]
+	before_action :authenticate_user!, only: [:index, :index_genre, :index_prefecture,
+										:search_station, :search_station_genre, :search_location, :show,
+										:shop_fav]
 
 	def new
 		@shop = Shop.new

@@ -1,5 +1,6 @@
 class SeatsController < ApplicationController
   after_action :create_notifications, only: [:seat_reserve_create]
+  before_action :authenticate_author!, only: [:create, :destroy, :index]
 
 
   def create
@@ -48,10 +49,6 @@ class SeatsController < ApplicationController
       @seat_time.push(seat_t)
     end
     @seat_time = @seat_time.uniq
-  end
-
-  def imasugu
-    @quick
   end
 
   def fav

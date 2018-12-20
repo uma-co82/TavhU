@@ -126,3 +126,33 @@ td {
   background: yellow;
   color: white;
 }
+
+@media screen and (max-width: 425px) {
+  .iphone_all {
+    overflow: hidden;
+  }
+  h2 {
+    display: none;
+  }
+  .link {
+    display: none;
+  }
+  .shop_table {
+    width: 100%;
+    margin: 100px auto;
+  }
+  .shop_table td {
+    border-bottom: none;
+    display: block;
+    width: 100%;
+  }
+  .iphone_add {
+    display: block;
+  }
+  .iphone_none {
+    display: none;
+  }
+  .show_btn, .delete_btn, .quick_btn {
+    width: 70%;
+  }
+}
