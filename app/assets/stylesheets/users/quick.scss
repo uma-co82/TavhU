@@ -64,3 +64,18 @@ body {
   background: #226cce;
   color: #fff;
 }
+
+@media screen and (max-width: 425px) {
+  .iphone_all {
+    overflow: hidden;
+  }
+  .quick_table {
+    margin-top: 100px;
+    width: 100%;
+  }
+  .quick_table td {
+    display: block;
+    width: 100%;
+    border: 1px solid rgb(182, 181, 181);
+  }
+}

@@ -28,3 +28,15 @@ body {
 	border-width: 1px 0 0 1px;
 	padding: 10px 12px;
 }
+
+
+@media screen and (max-width: 425px) {
+	.iphone_all {
+		overflow: hidden;
+	}
+	.shop_table {
+		width: 100%;
+		margin-top: 100px;
+	}
+
+}

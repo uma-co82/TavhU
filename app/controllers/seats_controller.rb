@@ -50,6 +50,9 @@ class SeatsController < ApplicationController
     @seat_time = @seat_time.uniq
   end
 
+  def imasugu
+    @quick
+  end
 
   def fav
     seat = Seat.find(params[:id])

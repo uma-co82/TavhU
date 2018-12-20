@@ -2,10 +2,8 @@
   <div class="mainvisual-inner container">
     <div class="swiper-container">
       <div class="swiper-wrapper">
-      <% if @shop.shop_image.present?%>
         <div class="swiper-slide"><%= attachment_image_tag @shop, :shop_image,
           fallback: "no_image.jpg" %></div>
-      <% end %>
       <% if @shop.images.present?%>
         <% @shop.images.each do |image|%>
         <div class="swiper-slide"><%= attachment_image_tag image, :image %></div>

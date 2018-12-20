@@ -1,6 +1,7 @@
 <%= stylesheet_link_tag "swiper"%>
 <%= stylesheet_link_tag "users/show", :media => "all" %>
 <%= render 'shared/side_bar' %>
+<%= render 'shared/iphone_menu'%>
 
 
 <div class="profile">
@@ -20,6 +21,7 @@
           <i class="fa fa-edit"></i>
           <% end %>
         </div>
+        <button class="btn place" onclick="getPosition();"><i class="fa fa-map-pin"></i></button>
         <div style="float: right">
           <%= link_to (favorite_shops_user_path(@user)), class: "btn shop" do%>
             <i class="fa fa-star"></i>
@@ -33,9 +35,50 @@
       <%= render 'stats' %>
       </div>
       <% end %>
-    <div class="introduction">
-      <p><%= @user.introduce %></p>
-    </div>
+      <div class="introduction">
+        <p><%= @user.introduce %></p>
+      </div>
     </div>
   </div>
 </div>
+
+<% if @user.id == current_user.id%>
+<script>
+    if (navigator.geolocation) {
+      alert("この端末では位置情報が取得できます");
+    } else {
+      alert("この端末では位置情報が取得できません");
+    }
+
+    function getPosition() {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+            alert("Success!");
+            $.ajax({
+              url: "/location/post",
+              type: "POST",
+              data: {latitude : position.coords.latitude,
+                    longitude : position.coords.longitude},
+              dataType: 'json'
+            });
+        },
+        function(error) {
+          switch(error.code) {
+            case 1: //PERMISSION_DENIED
+              alert("位置情報の利用が許可されていません");
+              break;
+            case 2: //POSITION_UNAVAILABLE
+              alert("現在位置が取得できませんでした");
+              break;
+            case 3: //TIMEOUT
+              alert("タイムアウトになりました");
+              break;
+            default:
+              alert("その他のエラー(エラーコード:"+error.code+")");
+              break;
+          }
+        }
+      );
+    }
+</script>
+<% end %>

@@ -15,6 +15,7 @@
 //= require jquery
 //= require jquery.raty
 //= require turbolinks
+//= require jquery_ujs
 //= require_tree .
 //= require_self
 

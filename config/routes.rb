@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   get 'shops/search' => 'shops#search_station', as: "search_station"
   get 'shops/search/:search/genre/:id' => 'shops#search_station_genre', as: "search_station_genre"
+  get 'shops/search_location' => 'shops#search_location', as: "search_location"
+  get 'user_matching/shops' => 'users#search_matching_shop', as: "search_matching_shop"
   resources :shops
   post 'shops/:id/review_create' => "shops#review_create", as: "shop_review_create"
   post 'shops/:id/privilege/post' => "authors#privilege_create", as: "create_privilege"
@@ -50,4 +52,5 @@ Rails.application.routes.draw do
   patch 'users/:id/request/approval' => 'users#request_approval', as: "request_approval"
   get 'users/:id/quicks/:quick_id' => 'users#quick_show', as: "quick_show"
   get 'users/:id/requests/:request_id' => 'users#rikuesuto_show', as: "rikuesuto_show"
+  post 'location/post' => 'users#create_location', as: "location_create"
 end

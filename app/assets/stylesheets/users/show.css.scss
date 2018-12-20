@@ -74,6 +74,9 @@ body {
   color: #58bb29;
 }
 .shop {
+  color: rgb(255, 255, 59);
+}
+.place {
   color: red;
 }
 .btn:active {
@@ -106,3 +109,14 @@ body {
 	height: 300px;
 }
 
+@media screen and (max-width: 425px) {
+  .iphone_all {
+    overflow: hidden;
+  }
+  .profile {
+    width: 100%;
+  }
+  .editandmatching {
+    width: 100%;
+  }
+}

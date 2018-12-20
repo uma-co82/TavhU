@@ -1,11 +1,17 @@
 <%= stylesheet_link_tag "users/seat", :media => "all" %>
 <%= render 'shared/side_bar' %>
+<%= render 'shared/iphone_menu'%>
 
 <div id="overlay"></div>
 
 <h1>TavhU Events</h1>
   <%= month_calendar(attribute: :time, events: @seats) do |date, seats| %>
+    <div class="calendar">
     <%= date.strftime("%Y年%m月%d日") %>
+    </div>
+    <div class="calendar_iphone">
+    <%= date.strftime("%d日")%>
+    </div>
     <% @seat_time.each do |seat|%>
     <% if seat == date %>
       <button class="open" id="<%= date %>">open</button>

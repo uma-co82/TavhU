@@ -1,10 +1,13 @@
 <%= stylesheet_link_tag "users/quick_show", :media => "all" %>
+<%= link_to :back do %>
+  <button class="back_btn">Back</button>
+<% end %>
 
 <table class="shop_table">
   <tbody>
     <tr>
       <th>お名前</th>
-      <td><%= @user.name %></td>
+      <td><%= @user.name %> 様</td>
     </tr>
     <tr>
       <th>連絡先</th>

@@ -344,3 +344,33 @@ font-size: 30px;
   background: rgb(84, 187, 115);
   color: white;
 }
+.calendar_iphone {
+  display: none;
+}
+
+@media screen and (max-width: 425px) {
+  .iphone_all {
+    overflow: hidden;
+  }
+  .simple-calendar {
+    width: 100%;
+  }
+  .calendar {
+    display: none;
+  }
+  .calendar_iphone {
+    display: block;
+    font-size: 10px;
+  }
+  .open {
+    width: auto;
+  }
+  .modal {
+    width: 73%;
+  }
+  .quick_table td {
+    display: block;
+    border-bottom: 1px solid #dedede;
+  }
+
+}
