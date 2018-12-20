@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag "users/quick_show", :media => "all" %>
 <%= render 'shared/side_bar' %>
+<%= render 'shared/iphone_menu'%>
 
 <table class="shop_table">
   <tbody>
@@ -17,7 +18,7 @@
     </tr>
     <tr>
       <th>住所</th>
-      <td>〒<%= @quick.seat.shop.postcode %> <%=@quick.seat.shop.address %><%= @quick.seat.shop.address_street %><%= @quick.seat.shop.address_building %></td>
+      <td>〒<%= @quick.seat.shop.postcode %> <%=@quick.seat.shop.address_city %><%= @quick.seat.shop.address_street %><%= @quick.seat.shop.address_building %></td>
     </tr>
     <tr>
       <th>最寄駅</th>
@@ -26,6 +27,22 @@
     <tr>
       <th>時間</th>
       <td><%= @quick.seat.time.strftime("%Y年%m月%d日 %H時%M分") %></td>
+    </tr>
+    <tr>
+      <th>特典</th>
+      <td>
+        <ul>
+        <% if @quick.seat.privilege_id.present? %>
+          <li><%= Privilege.find(@quick.seat.privilege_id).content %></li>
+        <% end %>
+        <% if @quick.seat.privilege_secound_id.present? %>
+          <li><%= Privilege.find(@quick.seat.privilege_secound_id).content %></li>
+        <% end %>
+        <% if @quick.seat.privilege_third_id.present? %>
+          <li><%= Privilege.find(@quick.seat.privilege_third_id).content %></li>
+        <% end %>
+        </ul>
+    </td>
     </tr>
   </tbody>
 </table>

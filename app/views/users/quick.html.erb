@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag "users/quick", :media => "all" %>
 <%= render 'shared/side_bar' %>
+<%= render 'shared/iphone_menu'%>
 
 <table class="quick_table">
   <% @quicks.each do |quick| %>
@@ -17,7 +18,7 @@
     <% if quick.request == false %>
       承認されていません
     <% else %>
-      <i class="fas fa-star" style="color: #ff0000;"></i>"当日は楽しんでください！
+      <i class="fas fa-star" style="color: #ff0000;"></i>当日は楽しんでください！
     <% end %>
     </td>
     <td>

@@ -1,5 +1,8 @@
 <%= stylesheet_link_tag "swiper"%>
 <%= stylesheet_link_tag "nomiya/show", :media => "all"%>
+<%= link_to (author_path(current_author.id)) do %>
+  <button class="back_btn">Back</button>
+<% end %>
 
 <% if flash[:sign].present?%>
   <div id="error_esplanation" class="alert alert-danger">
@@ -25,7 +28,7 @@
       </tr>
       <tr>
         <th>住所</th>
-        <td>〒<%= @shop.postcode %> <%= @shop.prefecture.name %><%= @shop.address %><%= @shop.address_street %><%= @shop.address_building%></td>
+        <td>〒<%= @shop.postcode %> <%= @shop.prefecture.name %><%= @shop.address_city %><%= @shop.address_street %><%= @shop.address_building%></td>
       </tr>
       <tr>
         <th>最寄駅</th>

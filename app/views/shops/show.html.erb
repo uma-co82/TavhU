@@ -2,6 +2,7 @@
 <%= stylesheet_link_tag "nomiya/show", :media => "all" %>
 <%= javascript_include_tag "jquery.raty" %>
 <%= render 'shared/side_bar' %>
+<%= render 'shared/iphone_menu'%>
 
 
 <% if @review.errors.any?%>
@@ -41,7 +42,7 @@
 		</tr>
 		<tr>
 			<th>住所</th>
-			<td>〒<%= @shop.postcode %> <%= @shop.prefecture.name %><%= @shop.address %><%= @shop.address_street %><%= @shop.address_building %></td>
+			<td>〒<%= @shop.postcode %> <%= @shop.prefecture.name %><%= @shop.address_city %><%= @shop.address_street %><%= @shop.address_building %></td>
 		</tr>
 		<tr>
 			<th>最寄駅</th>
@@ -84,8 +85,8 @@
   width="100%"
   height="450"
   frameborder="0" style="border:0"
-  src=<%= "https://www.google.com/maps/embed/v1/search?key=AIzaSyCvuyEmVcre1biBXlp1WOxteGflk5TR_Kw&q=#{@shop.prefecture.name}+#{@shop.address}+#{@shop.address_street}"%> allowfullscreen>
-</iframe>
+  src=<%= "https://www.google.com/maps/embed/v1/search?key=AIzaSyCvuyEmVcre1biBXlp1WOxteGflk5TR_Kw&q=#{@shop.prefecture.name}+#{@shop.address_city}+#{@shop.address_street}"%> allowfullscreen>
+	</iframe>
 
 <div id="modalWindow_newreview">
 	<button class="close_newreview">close</button>

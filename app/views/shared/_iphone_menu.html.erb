@@ -1,0 +1,27 @@
+<nav class="iphone_nav">
+ <div class="drawer">
+    <%= image_tag "logo_transparent.png", :size => '80x80'%>
+  <div class="navbar_toggle">
+   <span class="navbar_toggle_icon"></span>
+   <span class="navbar_toggle_icon"></span>
+   <span class="navbar_toggle_icon"></span>
+  </div>
+ </div>
+ <div class="menu">
+  <ul style="list-style: none;">
+	 <li><%= link_to "MYPAGE", user_path(current_user) %></li>
+   <li><%= link_to "TAVERN", shops_path %></li>
+   <li><%= link_to "REQUEST", rikuesuto_user_path(current_user.id) %></li>
+   <li><%= link_to "QUICK", quick_user_path(current_user.id) %></li>
+   <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+  </ul>
+ </div>
+</nav>
+<script>
+$(function() {
+ $('.navbar_toggle').on('click', function () {
+  $(this).toggleClass('open_iphone');
+  $('.menu').toggleClass('open_iphone');
+ });
+});
+</script>

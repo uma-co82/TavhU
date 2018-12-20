@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   after_action :create_notifications, only: [:request_approval]
   helper_method :message_room_id
   before_action :chat_before, only: [:chat]
+  protect_from_forgery :except => [:create_location]
+
 
 
   def show
@@ -94,6 +96,27 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followers.order(created_at: :desc)
     render 'show_follower'
+  end
+
+  def create_location
+    @user = current_user
+    @user.latitude = params[:latitude].to_f
+    @user.longitude = params[:longitude].to_f
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user }
+        format.json { render json: @user, js: "alert('Success!')" }
+      else
+        redirect_to user_path(current_user.id)
+      end
+    end
+  end
+
+  def search_matching_shop
+    @user = User.find(params[:id])
+    latitude = (@user.latitude + current_user.latitude)/2
+    longitude = (@user.longitude + current_user.longitude)/2
+    @locations = Shop.within_box(0.310686, latitude, longitude).page(params[:page])
   end
 
   def message_room_id(first_user, second_user)

@@ -7,7 +7,7 @@ body {
 
 .users {
   margin: 50px auto;
-  width: 300px;
+  width: 600px;
 }
 .user {
   border: 1px solid #fff;
@@ -50,4 +50,17 @@ body {
   background-image: -webkit-linear-gradient(#efefef 0%, #d6d6d6 100%);
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
   border-bottom: none;
+}
+.place {
+  color: red;
+}
+
+@media screen and (max-width: 425px) {
+  .iphone_all {
+    overflow: hidden;
+  }
+  .users {
+    width: 100%;
+    margin-top: 100px;
+  }
 }

@@ -216,7 +216,7 @@ i {
   }
 
 .nav {
-  width: 600px;
+  width: 750px;
   height: 40px;
 	margin: 0 auto;
 	margin-top: 50px;
@@ -302,3 +302,79 @@ i {
     color: purple;
     background: #afc6e2;
   }
+
+.find_btn {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  border: solid 2px #111742;
+  border-radius: 3px;
+  transition: .4s;
+  height: 30px; 
+}
+.find_btn:hover {
+  background: #111742;
+  color: white;
+}
+
+// レスポンシブのため
+.iphone_shop_name {
+  display: none;
+}
+
+
+@media screen and (max-width: 425px) {
+  #MenuIcon {
+    display: none;
+  }
+  .iphone_all {
+    overflow: hidden;
+  }
+  .nav {
+    margin-top: 71px;
+    width: 100%;
+  }
+  .nav li {
+    width: 20%;
+  }
+  .nav li a {
+    width: auto;
+  }
+   .shop_all {
+     width: 100%;
+     margin-top: 100px;
+   }
+   .shop_box {
+     width: 40%;
+     float: left;
+     margin: 5%;
+   }
+   .shop_image, .image, .no_image {
+     width: 142.5px;
+     height: 142.5px;
+   }
+   .shop_name_station {
+     display: none;
+   }
+   .shop_images {
+     height: auto;
+     width: auto;
+     float: none;
+   }
+   .shop_head {
+     height: auto;
+   }
+   .shop_info {
+     margin: 0;
+   }
+   .iphone_shop_name {
+     display: block;
+   }
+   .shop_info {
+     display: none;
+   }
+   .top_image {
+     height: 405px;
+     margin-bottom: 20px;
+   }
+}

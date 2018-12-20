@@ -16,9 +16,10 @@
     <td>
       <%= link_to shop_path(shop.id) do%>
       <%= shop.shop_name %>
+      <% end %>
     </td>
     <td>
-      <%= shop.prefecture.name %><%= shop.address%><%= shop.address_street%><%= shop.address_building %>
+      <%= shop.prefecture.name %><%= shop.address_city%><%= shop.address_street%><%= shop.address_building %>
     </td>
     <td>
       <%= shop.favorites.count %>

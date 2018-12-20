@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_16_115443) do
+ActiveRecord::Schema.define(version: 2018_12_18_115619) do
 
   create_table "authors", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -135,11 +135,15 @@ ActiveRecord::Schema.define(version: 2018_12_16_115443) do
     t.string "author_id"
     t.string "genre_id"
     t.string "station_id"
-    t.string "address"
+    t.string "address_city"
     t.integer "postcode"
     t.integer "prefecture_code"
     t.string "address_street"
     t.string "address_building"
+    t.text "address_all"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "address"
   end
 
   create_table "stations", force: :cascade do |t|
@@ -166,6 +170,8 @@ ActiveRecord::Schema.define(version: 2018_12_16_115443) do
     t.string "profile_image_id"
     t.text "introduce"
     t.integer "phone_number"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

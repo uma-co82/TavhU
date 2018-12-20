@@ -9,6 +9,8 @@ class ShopsController < ApplicationController
 
 	def create
 		@shop = Shop.new(shop_params)
+		@shop.address = @shop.address_city
+		@shop.address = @shop.address.gsub(/\d+/, "").gsub(/\-+/, "")
 		@shop.author_id = current_author.id
 		@shop.genre_id = params[:shop][:genre_id]
 		@shop.station_id = params[:shop][:station_id]
@@ -83,6 +85,12 @@ class ShopsController < ApplicationController
 		@shops = Shop.search(params[:search]).where(genre_id:params[:id]).page(params[:page])
 	end
 
+	def search_location
+		latitude = params[:latitude].to_f
+		longitude = params[:longitude].to_f
+		@locations = Shop.within_box(0.310686, latitude, longitude).page(params[:page])
+	end
+
 	def show
 		@shop = Shop.find(params[:id])
 		@review = Review.new
@@ -127,7 +135,7 @@ class ShopsController < ApplicationController
 	private
 
 	 def shop_params
-	 	params.require(:shop).permit(:shop_name, :shop_image, :shop_info, :genre_id, :station_id, :postcode, :prefecture_code, :address, :address_street, :address_building, images_images: [])
+	 	params.require(:shop).permit(:shop_name, :shop_image, :shop_info, :genre_id, :station_id, :postcode, :prefecture_code, :address_city, :address_street, :address_building, images_images: [])
 	 end
 
 end
