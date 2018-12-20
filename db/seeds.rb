@@ -1,5 +1,42 @@
 User.create!(name: "Example User",
-	         email: "example@railstutorial.org",
-	         password: "foobar",
-	         password_confirmation: "foobar",
-	         )
+						email: "example@railstutorial.org",
+						password: "foobar",
+						password_confirmation: "foobar",
+						)
+
+Genre.create!(genre_name: "和食")
+Genre.create!(genre_name: "居酒屋")
+Genre.create!(genre_name: "洋食")
+Genre.create!(genre_name: "イタリアン")
+Genre.create!(genre_name: "焼肉")
+Genre.create!(genre_name: "韓国料理")
+Genre.create!(genre_name: "ダイニングバー")
+Genre.create!(genre_name: "中華")
+Genre.create!(genre_name: "創作料理")
+Genre.create!(genre_name: "各国料理")
+Genre.create!(genre_name: "その他")
+
+Station.create!(station_name: "渋谷駅")
+Station.create!(station_name: "代官山駅")
+Station.create!(station_name: "中目黒駅")
+Station.create!(station_name: "祐天寺駅")
+Station.create!(station_name: "学芸大学駅")
+Station.create!(station_name: "都立大学駅")
+Station.create!(station_name: "自由が丘駅")
+Station.create!(station_name: "田園調布駅")
+Station.create!(station_name: "多摩川駅")
+Station.create!(station_name: "新丸子駅")
+Station.create!(station_name: "武蔵小杉駅")
+Station.create!(station_name: "元住吉駅")
+Station.create!(station_name: "日吉駅")
+Station.create!(station_name: "綱島駅")
+Station.create!(station_name: "大倉山駅")
+Station.create!(station_name: "菊名駅")
+Station.create!(station_name: "妙蓮寺駅")
+Station.create!(station_name: "白楽駅")
+Station.create!(station_name: "東白楽駅")
+Station.create!(station_name: "反町駅")
+Station.create!(station_name: "横浜駅")
+Station.create!(station_name: "桜木町駅")
+Station.create!(station_name: "関内駅")
+Station.create!(station_name: "石川町駅")

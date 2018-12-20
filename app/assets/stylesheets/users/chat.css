@@ -45,3 +45,12 @@ input {
 label {
   color: #fff;
 }
+
+@media screen and (max-width: 425px) {
+  .iphone_all {
+    overflow: hidden;
+  }
+  #chat {
+    width: auto;
+  }
+}

@@ -78,4 +78,14 @@ body {
     width: 100%;
     border: 1px solid rgb(182, 181, 181);
   }
+  .show_btn, .delete_btn, .approval_btn {
+    width: 70%;
+  }
+  .attachment {
+    width: 100px;
+    height: 100px;
+  }
+  .iphone_none {
+    display: none;
+  }
 }
