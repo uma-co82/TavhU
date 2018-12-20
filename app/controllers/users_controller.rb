@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_user, only: [:rikuesuto, :request_reject, :request_approval,
+                          :quick, :edit, :update,
+                          :following, :followers]
   after_action :create_notifications, only: [:request_approval]
   helper_method :message_room_id
   before_action :chat_before, only: [:chat]
@@ -140,6 +143,11 @@ class UsersController < ApplicationController
       Notification.create(user_id: @quick.user_id,
       notified_by_id: @user.id,
       notified_type: 'リクエストを承認')
+    end
+
+    def corrent_user
+      @user = User.find(params[:id])
+        redirect_to shops_path unless @user == current_user
     end
 
 

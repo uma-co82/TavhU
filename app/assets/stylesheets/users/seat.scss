@@ -353,6 +353,7 @@ font-size: 30px;
     overflow: hidden;
   }
   .simple-calendar {
+    margin: 20px auto;
     width: 100%;
   }
   .calendar {
@@ -371,6 +372,20 @@ font-size: 30px;
   .quick_table td {
     display: block;
     border-bottom: 1px solid #dedede;
+  }
+  .simple-calendar .day {
+    padding: 0;
+  }
+  h1 {
+    font-size: 54px;
+    margin-top: 50px;
+  }
+  .open_new, .open, .open_fill {
+    width: 43px;
+    padding: 0;
+  }
+  .new_modal {
+    width: auto;
   }
 
 }

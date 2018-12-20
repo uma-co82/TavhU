@@ -1,0 +1,25 @@
+<nav class="iphone_nav">
+  <div class="drawer">
+    <%= image_tag "logo_transparent.png", :size => '80x80'%>
+  <div class="navbar_toggle">
+    <span class="navbar_toggle_icon"></span>
+    <span class="navbar_toggle_icon"></span>
+    <span class="navbar_toggle_icon"></span>
+  </div>
+  </div>
+  <div class="menu">
+  <ul style="list-style: none;">
+    <li><%= current_author.email %>さんこんにちは</li>
+    <li><%= link_to "MYPAGE", author_path(current_author) %></li>
+    <li><%= link_to "Loagout", destroy_author_session_path, method: :delete %></li>
+  </ul>
+  </div>
+</nav>
+<script>
+$(function() {
+  $('.navbar_toggle').on('click', function () {
+    $(this).toggleClass('open_iphone');
+    $('.menu').toggleClass('open_iphone');
+  });
+});
+</script>

@@ -173,3 +173,18 @@ textarea {
 .signin {
 	margin: 0;
 }
+
+@media screen and (max-width: 425px) {
+	.iphone_all {
+		overflow: hidden;
+	}
+	.overlay, .overlay-2 {
+		width: 108%;
+		height: 108%;
+	}
+	.signup {
+		left: 53%;
+		top: 53%;
+	}
+	
+}
