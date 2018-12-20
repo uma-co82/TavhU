@@ -145,9 +145,9 @@ class UsersController < ApplicationController
       notified_type: 'リクエストを承認')
     end
 
-    def corrent_user
+    def correct_user
       @user = User.find(params[:id])
-        redirect_to shops_path unless @user == current_user
+      redirect_to shops_path unless @user == current_user
     end
 
 
