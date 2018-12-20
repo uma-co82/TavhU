@@ -10,7 +10,7 @@
 									<% if shop.shop_image.present?%>
 										<div class="swiper-slide"><%= attachment_image_tag shop, :shop_image %></div>
 									<% else %>
-										<div class="swiper-slide"><%= image_tag 'no_image.jpg', class: "no_image"%></div>
+										<div class="swiper-slide"><%= image_tag '/images/no_image.jpg', class: "no_image"%></div>
 									<% end %>
 									<% if shop.images.present?%>
 										<% shop.images.each do |image|%>
