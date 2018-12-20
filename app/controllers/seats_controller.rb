@@ -1,6 +1,8 @@
 class SeatsController < ApplicationController
   after_action :create_notifications, only: [:seat_reserve_create]
   before_action :authenticate_author!, only: [:create, :destroy, :index]
+  before_action :authenticate_user!, only: [:index_user, :seat_like, :seat_reserve, :seat_reserve_create,
+                                :quick_delete]
 
 
   def create
