@@ -1,5 +1,6 @@
 class AuthorsController < ApplicationController
     before_action :authenticate_author!
+    before_action :correct_author, only: [:show, :shop_show]
 
   def show
     @author = current_author
@@ -54,5 +55,12 @@ class AuthorsController < ApplicationController
       redirect_to author_path(current_author)
     end
   end
+
+  private 
+  
+    def correct_author
+      @author = Author.find(params[:id])
+      redirect_to new_author_session_path unless @author == current_author
+    end
 
 end

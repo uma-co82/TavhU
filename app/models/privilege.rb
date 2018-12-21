@@ -1,7 +1,7 @@
 class Privilege < ApplicationRecord
   belongs_to :shop
   validates :content, presence: true
-  validates :content, length: { maximum: 20 }
+  validates :content, length: { maximum: 30 }
 
   validate :check_number_of_shop
 

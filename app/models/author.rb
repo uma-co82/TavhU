@@ -5,4 +5,5 @@ class Author < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :shops, dependent: :destroy
+
 end

@@ -44,6 +44,13 @@
   <h3><%= seat_time.strftime("%Y年%m月%d日") %></h3>
   <button class="close" id="<%= seat_time %>">close</button>
   <table class="quick_table">
+    <tr>
+      <th>時間</th>
+      <th>人数</th>
+      <th>いいね数</th>
+      <th>ステータス</th>
+      <th>特典</th>
+    </tr>
   <% @seats.where(fill: false).each do |seat| %>
     <tr class="quick">
     <% if seat.time.to_date == seat_time %>
