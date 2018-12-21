@@ -29,16 +29,15 @@ class Shop < ApplicationRecord
 	geocoded_by :address
 	after_validation :geocode, if: :address_changed?
 
-class << self
-	def within_box(distance, latitude, longitude)
-		distance = distance
-		center_point = [latitude, longitude]
-		box = Geocoder::Calculations.bounding_box(center_point, distance)
-		self.within_bounding_box(box)
+	# 位置情報から範囲検索
+	class << self
+		def within_box(distance, latitude, longitude)
+			distance = distance
+			center_point = [latitude, longitude]
+			box = Geocoder::Calculations.bounding_box(center_point, distance)
+			self.within_bounding_box(box)
+		end
 	end
-end
-
-
 
 	def check_shop_count
 		if author && author.shops.count > 5

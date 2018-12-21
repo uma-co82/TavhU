@@ -29,6 +29,20 @@ body {
 	padding: 10px 12px;
 }
 
+.back_btn {
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+	border: solid 2px #111742;
+	border-radius: 3px;
+	transition: .4s;
+	height: 30px;
+}
+.back_btn:hover {
+	background: #111742;
+	color: white;
+}
+
 
 @media screen and (max-width: 425px) {
 	.iphone_all {
@@ -37,6 +51,9 @@ body {
 	.shop_table {
 		width: 100%;
 		margin-top: 100px;
+	}
+	.back_btn {
+		margin-top: 80px;
 	}
 
 }

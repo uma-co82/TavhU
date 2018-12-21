@@ -96,7 +96,7 @@ class ShopsController < ApplicationController
 	def show
 		@shop = Shop.find(params[:id])
 		@review = Review.new
-		@reviews = Review.where(shop_id: @shop.id).limit(5)
+		@reviews = @shop.reviews.order(created_at: "DESC")
 		@average = @reviews.average(:star)
 	end
 
@@ -106,6 +106,7 @@ class ShopsController < ApplicationController
 			redirect_to shop_url(params[:id])
 		else
 			@shop = Shop.find(params[:id])
+			@reviews = @shop.reviews.order(created_at: "DESC")
 			render 'show'
 		end
 	end

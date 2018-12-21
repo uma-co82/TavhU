@@ -1,6 +1,7 @@
 class SeatsController < ApplicationController
   after_action :create_notifications, only: [:seat_reserve_create]
   before_action :authenticate_author!, only: [:create, :destroy, :index]
+  # before_action :correct_author, only: [:index]
   before_action :authenticate_user!, only: [:index_user, :seat_like, :seat_reserve, :seat_reserve_create,
                                 :quick_delete]
 
@@ -33,7 +34,7 @@ class SeatsController < ApplicationController
   def index
     @shop = Shop.find(params[:id])
     @seat = Seat.new
-    @seats = @shop.seats
+    @seats = @shop.seats.order(time: "ASC")
     @seat_times = Array.new
     @seats.each do |seat|
       seat_time = seat.time.to_date
@@ -44,7 +45,7 @@ class SeatsController < ApplicationController
 
   def index_user
     @shop = Shop.find(params[:id])
-    @seats = @shop.seats.fill.ok
+    @seats = @shop.seats.fill.ok.order(time: "ASC")
     @seat_time = Array.new
     @seats.each do |seat|
       seat_t = seat.time.to_date
@@ -97,6 +98,18 @@ class SeatsController < ApplicationController
     redirect_to quick_user_url(current_user.id)
   end
 
+	def imasugu 
+		latitude = params[:latitude].to_f
+		longitude = params[:longitude].to_f
+		@locations = Shop.within_box(0.310686, latitude, longitude).page(params[:page])
+		@seats = []
+		for shop in @locations
+			@seats.push(shop.seats.where("?<time<?", Time.zone.now, Time.zone.now.since(2.hour)))
+		end
+		@seats = @seats.flatten
+		binding.pry
+	end
+
 
   private
 
@@ -109,5 +122,10 @@ class SeatsController < ApplicationController
         notified_by_id: current_user.id,
         notified_type: 'リクエスト')
     end
+
+    # def correct_author
+    #   @author = Author.find(params[:id])
+    #   redirect_to new_author_session_path unless @author = current_author
+    # end
     
 end

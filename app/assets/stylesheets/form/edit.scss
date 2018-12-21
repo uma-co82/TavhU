@@ -87,3 +87,16 @@ input[type="submit" i] {
 	margin: 50px auto;
 	border-radius: 0%;
 }
+
+@media screen and (max-width: 425px) {
+	.edit_form {
+		width: auto;
+		margin: 100px auto;
+	}
+	input, textarea {
+		width: 96%;
+	}
+	input[type="submit" i] {
+		width: 100%;
+	}
+}

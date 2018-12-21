@@ -369,6 +369,10 @@ font-size: 30px;
   .modal {
     width: 73%;
   }
+  .quick_table th {
+    display: block;
+    border-bottom: 1px solid white;
+  }
   .quick_table td {
     display: block;
     border-bottom: 1px solid #dedede;

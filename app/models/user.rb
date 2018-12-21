@@ -26,7 +26,7 @@ class User < ApplicationRecord
   validates :phone_number, presence: true, format: { with: VALID_PHONE_REGEX }
   validates :email, presence: true
   validates :introduce, presence: true, length: { maximum: 300 }
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 20}
   #photo
   has_many :photos, dependent: :destroy
   accepts_attachments_for :photos, attachment: :photo

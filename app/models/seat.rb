@@ -8,7 +8,9 @@ class Seat < ApplicationRecord
   
   validate :check_seat_count
 
+  # その予約が現在時間より後か
   scope :ok, -> { where("time >= ?", Time.now) }
+  # その予約が埋まってるかどうか
   scope :fill, -> { where("fill = ?", false)}
 
   def check_seat_count

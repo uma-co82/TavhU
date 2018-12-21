@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, only: [:rikuesuto, :request_reject, :request_approval,
+  before_action :correct_user, only: [:rikuesuto, :rikuesuto_show, :request_reject, :request_approval,
                           :quick, :edit, :update,
                           :following, :followers]
   after_action :create_notifications, only: [:request_approval]
