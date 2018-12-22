@@ -27,7 +27,9 @@
       <%= seat.likes.count%>
     </td>
     <td>
+    <%= link_to (seats_user_path(seat.shop.id)) do%>
       <%= seat.time.strftime("%d日%H時%M分") %>
+    <% end %>
     </td>
   </tr>
 <% end %>
