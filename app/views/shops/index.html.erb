@@ -4,7 +4,10 @@
 <%= render 'shared/iphone_menu'%>
 
 <%= render 'prefecture'%>
-<%# <button class="find_btn" onclick="getPositionquick();">Find!!</button> %>
+		<button class="ladda-button orange zoom-out imasugu_btn" onclick="getPositionquick();">
+			<span class="label">今すぐ！</span> 
+			<span class="spinner"></span>
+		</button>
 		<div>
 			<h1>TaverN</h1>
 			<p class="hitokoto">行きたいところを探そう</p>
@@ -21,4 +24,29 @@
 				</p>
 			</div>
 		</div>
+		<script>
+			var buttons = document.querySelectorAll( '.ladda-button' );
+
+			Array.prototype.slice.call( buttons ).forEach( function( button ) {
+
+					var resetTimeout;
+
+					button.addEventListener( 'click', function() {
+							
+							if( typeof button.getAttribute( 'data-loading' ) === 'string' ) {
+									button.removeAttribute( 'data-loading' );
+							}
+							else {
+									button.setAttribute( 'data-loading', '' );
+							}
+
+							clearTimeout( resetTimeout );
+							resetTimeout = setTimeout( function() {
+									button.removeAttribute( 'data-loading' );           
+							}, 2000 );
+
+					}, false );
+
+			} );
+		</script>
 <%= render 'shop_all'%>

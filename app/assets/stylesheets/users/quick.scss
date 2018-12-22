@@ -65,6 +65,11 @@ body {
   color: #fff;
 }
 
+.attachment {
+  width: 100px;
+  height: 100px;
+}
+
 @media screen and (max-width: 425px) {
   .iphone_all {
     overflow: hidden;
@@ -73,9 +78,13 @@ body {
     margin-top: 100px;
     width: 100%;
   }
-  .quick_table td {
+  .quick_table th {
     display: block;
     width: 100%;
+    border: 1px solid white;
+  }
+  .quick_table td {
+    display: block;
     border: 1px solid rgb(182, 181, 181);
   }
   .show_btn, .delete_btn, .approval_btn {
