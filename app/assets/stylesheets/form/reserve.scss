@@ -101,3 +101,11 @@ body {
 	opacity: 0.5;
 }
 
+@media screen and (max-width: 425px) {
+	.select_form {
+		margin: 6em auto;
+	}
+	.form_user {
+		padding: 0;
+	}
+}

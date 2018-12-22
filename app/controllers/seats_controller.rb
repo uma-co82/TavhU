@@ -104,9 +104,9 @@ class SeatsController < ApplicationController
     @locations = Shop.within_box(0.310686, latitude, longitude)
 		@seats = []
 		for shop in @locations
-			@seats.push(shop.seats.where(time: Time.zone.now..Time.zone.now.since(2.hour)))
+			@seats.push(shop.seats.fill.where(time: Time.zone.now..Time.zone.now.since(2.hour)))
 		end
-		@seats = @seats.flatten
+    @seats = @seats.flatten
 	end
 
   private
