@@ -101,15 +101,13 @@ class SeatsController < ApplicationController
 	def imasugu 
 		latitude = params[:latitude].to_f
 		longitude = params[:longitude].to_f
-		@locations = Shop.within_box(0.310686, latitude, longitude).page(params[:page])
+    @locations = Shop.within_box(0.310686, latitude, longitude)
 		@seats = []
 		for shop in @locations
-			@seats.push(shop.seats.where("?<time<?", Time.zone.now, Time.zone.now.since(2.hour)))
+			@seats.push(shop.seats.where(time: Time.zone.now..Time.zone.now.since(2.hour)))
 		end
 		@seats = @seats.flatten
-		binding.pry
 	end
-
 
   private
 
