@@ -1,7 +1,6 @@
 
 HI everyone!
 
-This is NOMITARINAI!
 
 飲食店、一般ユーザーの両方をターゲットとしたマッチングアプリです。
 
