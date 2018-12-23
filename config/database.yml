@@ -22,4 +22,7 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  host: rdzjxvvs5rem7c.cniwd3cd12wv.ap-northeast-1.rds.amazonaws.com
+  database: RailsSampleApp
+  username: admin
+  password: 23692369
