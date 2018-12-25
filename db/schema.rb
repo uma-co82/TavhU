@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_18_115619) do
+ActiveRecord::Schema.define(version: 2018_12_16_115443) do
 
   create_table "authors", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 2018_12_18_115619) do
     t.integer "user_id"
     t.integer "notified_by_id"
     t.string "notified_type"
-    t.boolean "read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["notified_by_id"], name: "index_notifications_on_notified_by_id"
@@ -80,7 +79,7 @@ ActiveRecord::Schema.define(version: 2018_12_18_115619) do
 
   create_table "privileges", force: :cascade do |t|
     t.integer "shop_id"
-    t.text "content"
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -107,7 +106,7 @@ ActiveRecord::Schema.define(version: 2018_12_18_115619) do
   create_table "reviews", force: :cascade do |t|
     t.integer "shop_id"
     t.integer "user_id"
-    t.text "content"
+    t.text "content", null: false
     t.integer "star"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -117,33 +116,31 @@ ActiveRecord::Schema.define(version: 2018_12_18_115619) do
     t.datetime "time"
     t.integer "count"
     t.boolean "fill", default: false
-    t.integer "shop_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "privilege_id"
     t.integer "privilege_secound_id"
     t.integer "privilege_third_id"
+    t.integer "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "shops", force: :cascade do |t|
-    t.text "shop_name"
-    t.text "shop_info"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text "shop_name", null: false
+    t.text "shop_info", null: false
     t.text "shop_image_id"
-    t.integer "favorites_count", default: 0, null: false
-    t.string "author_id"
-    t.string "genre_id"
-    t.string "station_id"
-    t.string "address_city"
-    t.integer "postcode"
-    t.integer "prefecture_code"
-    t.string "address_street"
+    t.integer "author_id"
+    t.integer "genre_id", null: false
+    t.integer "station_id"
+    t.integer "postcode", null: false
+    t.integer "prefecture_code", null: false
+    t.string "address_city", null: false
+    t.string "address_street", null: false
     t.string "address_building"
-    t.text "address_all"
+    t.string "address"
     t.float "latitude"
     t.float "longitude"
-    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stations", force: :cascade do |t|
@@ -164,14 +161,13 @@ ActiveRecord::Schema.define(version: 2018_12_18_115619) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "profile_image"
     t.string "profile_image_id"
     t.text "introduce"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.float "latitude"
     t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
