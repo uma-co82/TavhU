@@ -13,6 +13,8 @@ class AuthorsController < ApplicationController
     @shop = Shop.find(params[:shop_id])
     @privileges = @shop.privileges
     @privilege = Privilege.new
+    @reviews = @shop.reviews.order(created_at: "DESC")
+    @average = @reviews.average(:star)
   end
 
   def approval_seat    
