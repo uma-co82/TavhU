@@ -1,8 +1,3 @@
-User.create!(name: "Example User",
-						email: "example@railstutorial.org",
-						password: "foobar",
-						password_confirmation: "foobar",
-						)
 
 Genre.create!(genre_name: "和食")
 Genre.create!(genre_name: "居酒屋")

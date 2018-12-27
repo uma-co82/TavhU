@@ -22,7 +22,6 @@ test:
 
 production:
   <<: *default
-  host: rdzjxvvs5rem7c.cniwd3cd12wv.ap-northeast-1.rds.amazonaws.com
-  database: RailsSampleApp
-  username: admin
-  password: 23692369
+  database: WebCampProTest 
+  username: root
+  password: 

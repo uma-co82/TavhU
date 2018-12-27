@@ -1,7 +1,7 @@
 <div class="notfall">
   <p class="notification">Notification</p>
   <%= link_to (notifications_path), class: "notifbutton" do %>
-    <%= current_user.notifications.where(read: false).count %>
+    <%= current_user.notifications.count %>
     <span><i class="fa fa-exclamation nofificon" aria-hidden="true"></i></span>
   <% end %>
 </div>

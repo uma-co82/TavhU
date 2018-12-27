@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag "swiper"%>
 <%= stylesheet_link_tag "nomiya/show", :media => "all"%>
+<%= javascript_include_tag "jquery.raty"%>
 <%= render 'shared/author_iphone_menu'%>
 <%= link_to (author_path(current_author.id)) do %>
   <button class="back_btn">Back</button>
@@ -57,6 +58,10 @@
           </ul>
         </td>
       </tr>
+      <tr>
+        <th><button class="open" id="review">reviews</button></th>
+        <td><div id="star"></div></td>
+      </tr>
     </tbody>
   </table>
 </div>
@@ -67,3 +72,41 @@
   <%= f.submit "追加"%>
 <% end %>
     
+
+<script>
+	$('#star').raty({
+		size     : 36,
+		starOff:  '<%= asset_path('star-off.png') %>',
+		starOn : '<%= asset_path('star-on.png') %>',
+		starHalf : '<%= asset_path('star-half.png') %>',
+		scoreName: 'review[star]' ,
+		readOnly: true,
+		score: '<%= @average %>',
+		half: true
+	});
+</script>
+
+<div id="modalWindowreview">
+	<button class="close" id="review">close</button>
+	<div class="review_table">
+		<ul>
+			<% @reviews.each do |review| %>
+				<li class="review_list">
+					<div><%= review.user.name %></div>
+					<div><div class="star3<%= review.id %>"></div></div>
+					<div><p class="content"><%= review.content %></p></div>
+					<script>
+						$('.star3<%= review.id %>').raty({
+						size     : 36,
+						starOff:  '<%= asset_path('star-off.png') %>',
+						starOn : '<%= asset_path('star-on.png') %>',
+						scoreName: 'review[star]' ,
+						readOnly: true,
+						score: '<%= review.star %>'
+					});
+					</script>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</div>

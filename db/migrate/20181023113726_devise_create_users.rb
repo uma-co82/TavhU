@@ -36,7 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :profile_image_id
       t.text :introduce
-      t.integer :phone_number
+      t.string :phone_number
       t.float :latitude
       t.float :longitude
       t.timestamps null: false
