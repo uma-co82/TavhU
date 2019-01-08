@@ -11,13 +11,11 @@
 
   <ul class="abc">
     <li>HOME<div class="line"></div></li>
-    <%= link_to (user_path(current_user.id)) do %>
-    <li>MYprofile<div class="line"></div></li>
-    <% end %>
-    <li><%= link_to "TAVERN", shops_path %><div class="line"></div></li>
-    <li><%= link_to "REQUEST", rikuesuto_user_path(current_user.id) %><div class="line"></div></li>
-    <li><%= link_to "QUICK", quick_user_path(current_user.id) %><div class="line"></div></li>
-    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %><div class="line"></div></li>
+    <li><%= link_to "MyProfile", user_path(current_user.id), style: "text-decoration: none; color: white;"  %><div class="line"></div></li>
+        <li><%= link_to "TAVERN", shops_path, style: "text-decoration: none; color: white;" %><div class="line"></div></li>
+    <li><%= link_to "REQUEST", rikuesuto_user_path(current_user.id), style: "text-decoration: none; color: white;" %><div class="line"></div></li>
+    <li><%= link_to "QUICK", quick_user_path(current_user.id), style: "text-decoration: none; color: white;" %><div class="line"></div></li>
+    <li><%= link_to "Logout", destroy_user_session_path, method: :delete, style: "text-decoration: none; color: white;" %><div class="line"></div></li>
   </ul>
 
   <div id="close">

@@ -15,7 +15,7 @@
       <%= attachment_image_tag shop, :shop_image, :fill, 100, 100, fallback: "no_image.jpg" %>
     </td>
     <td>
-      <%= link_to shop_path(shop.id) do%>
+      <%= link_to shop_path(shop.id), style: "text-decoration: none; color: rgb(82, 84, 86);" do%>
       <%= shop.shop_name %>
       <% end %>
     </td>
