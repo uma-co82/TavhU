@@ -118,16 +118,16 @@ class ShopsController < ApplicationController
 	end
 
 	def fav
-	 shop = Shop.find(params[:id])
-	 if shop.favorite_by?(current_user)
-	   fav = current_user.favorites.find_by(shop_id: shop.id)
-	   fav.destroy
-	   render json: shop.id
-	 else
-	   fav = current_user.favorites.new(shop_id: shop.id)
-	   fav.save
-	   render json: shop.id
-	 end
+		shop = Shop.find(params[:id])
+		if shop.favorite_by?(current_user)
+			fav = current_user.favorites.find_by(shop_id: shop.id)
+			fav.destroy
+			render json: shop.id
+		else
+			fav = current_user.favorites.new(shop_id: shop.id)
+			fav.save
+			render json: shop.id
+		end
 	end
 
 	def shop_fav
@@ -137,8 +137,8 @@ class ShopsController < ApplicationController
 
 	private
 
-	 def shop_params
-	 	params.require(:shop).permit(:shop_name, :shop_image, :shop_info, :genre_id, :station_id, :postcode, :prefecture_code, :address_city, :address_street, :address_building, images_images: [])
-	 end
+		def shop_params
+			params.require(:shop).permit(:shop_name, :shop_image, :shop_info, :genre_id, :station_id, :postcode, :prefecture_code, :address_city, :address_street, :address_building, images_images: [])
+		end
 
 end
