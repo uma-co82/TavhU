@@ -72,7 +72,7 @@ gem "refile-mini_magick"
 gem 'font-awesome-rails'
 gem 'jp_prefecture'
 gem 'simple_calendar', '~> 2.0'
-gem 'kaminari', '~> 0.17.0'
+gem 'kaminari', '~> 1.2.1'
 gem 'geocoder'
 gem 'listen', '>= 3.0.5', '< 3.2'
 gem 'mysql2'
