@@ -105,7 +105,7 @@ GEM
     ffi (1.9.25)
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
-    geocoder (1.5.0)
+    geocoder (1.6.3)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     http-cookie (1.0.3)
@@ -160,7 +160,7 @@ GEM
     pry-rails (0.3.8)
       pry (>= 0.10.4)
     public_suffix (3.0.3)
-    puma (3.12.3)
+    puma (3.12.6)
     rack (2.2.2)
     rack-protection (2.0.5)
       rack
